@@ -25,7 +25,17 @@ public abstract class Block {
 	}
 	
 	public void rotate() {
-		//Rotate the block 90 deg. clockwise.
+		int n = shape.length;
+		int m = shape[0].length;
+		int[][] rotate = new int[m][n];
+
+		for (int i = 0; i < rotate.length; i++) {
+			for (int j = 0; j < rotate[i].length; j++) {
+				rotate[i][j] = shape[n-1-j][i];
+			}
+		}
+
+		shape = rotate;
 	}
 	
 	public int height() {

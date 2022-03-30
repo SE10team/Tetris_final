@@ -171,6 +171,14 @@ public class Board extends JPanel {
         placeBlock();
     }
 
+    protected void moveToGround() {
+        eraseCurr();
+        /*
+        바닥으로 내력가게끔
+        */
+        placeBlock();
+    }
+
     public void drawBoard() {
         StringBuffer sb = new StringBuffer();
         for(int t=0; t<WIDTH+2; t++) sb.append(BORDER_CHAR);
@@ -196,6 +204,15 @@ public class Board extends JPanel {
 
     public void reset() {
         this.board = new int[20][10];
+    }
+
+    public void showPopup() {
+        int input = JOptionPane.showConfirmDialog(this, "게임을 중단하시겠습니까? 중단될 경우, 게임의 데이터가 유실됩니다.", "confirm", JOptionPane.YES_NO_OPTION);
+        if (input == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        } else {
+            drawBoard();
+        }
     }
 
     public class PlayerKeyListener implements KeyListener {
@@ -224,16 +241,22 @@ public class Board extends JPanel {
                     curr.rotate();
                     drawBoard();
                     break;
+                case KeyEvent.VK_SPACE:
+                    moveToGround();
+                    drawBoard();
+                    break;
+                case KeyEvent.VK_ESCAPE:
+                    timer.stop();
+                    drawBoard();
+                    showPopup();
+                    timer.start();
+                    break;
+                }
             }
-        }
 
         @Override
         public void keyReleased(KeyEvent e) {
 
         }
     }
-
-
-
-
 }

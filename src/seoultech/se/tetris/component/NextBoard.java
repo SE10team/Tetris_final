@@ -22,7 +22,8 @@ public class NextBoard extends JPanel { // 다음 블럭 생성하는 것
     public Block getRandomBlock() {
         Random rnd = new Random(System.currentTimeMillis());
         int block = rnd.nextInt(7);
-        return switch (block) {
+        return
+          switch (block) {
             case 0 -> new IBlock();
             case 1 -> new JBlock();
             case 2 -> new LBlock();
