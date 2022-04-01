@@ -38,7 +38,7 @@ public class Board extends JPanel {
     private static final int initInterval = 1000;
 
     public Board() {
-        setBounds(10,20,500,700);
+        setBounds(10, 20, 500, 700);
         setBackground(Color.BLACK);
 
         //Board display setting.

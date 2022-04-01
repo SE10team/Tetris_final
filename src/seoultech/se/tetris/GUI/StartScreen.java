@@ -1,11 +1,11 @@
-package seoultech.se.tetris.start;
+package seoultech.se.tetris.GUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class StartScreen extends JFrame {
+public class StartScreen extends JFrame { // Start 화면을 그리는 곳
 
   JButton[] buttons;
   private KeyListener playerKeyListener;
