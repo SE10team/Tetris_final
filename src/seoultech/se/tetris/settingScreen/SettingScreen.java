@@ -1,8 +1,5 @@
 package seoultech.se.tetris.settingScreen;
 
-import seoultech.se.tetris.main.Tetris;
-import seoultech.se.tetris.startScreen.StartScreenMenu;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -47,7 +44,7 @@ public class SettingScreen extends JFrame {
     SettingScreenMenu settingScreenMenu = new SettingScreenMenu();
     settingScreenMenu.setBounds(130,190,145,300);
     for (int i = 0; i < settingScreenMenu.buttons.length; i++) {
-       settingScreenMenu.buttons[i].addActionListener(buttonpressed);
+       settingScreenMenu.buttons[i].addActionListener(buttonPressed);
     }
     add(settingScreenMenu);
 

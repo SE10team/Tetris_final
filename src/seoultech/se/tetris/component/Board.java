@@ -1,4 +1,5 @@
 package seoultech.se.tetris.component;
+import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.*;
 
 import java.awt.*;
@@ -30,6 +31,10 @@ public class Board extends JPanel {
     private SimpleAttributeSet styleSet;
     private Timer timer;
 
+    // 다른 클래스
+    GameScore gameScore;
+    ScoreBoard scoreBoard;
+
     private Block curr;
 //    private NewBoard nextB;
     int x = 3; //Default Position.
@@ -37,7 +42,7 @@ public class Board extends JPanel {
 
     private static final int initInterval = 1000;
 
-    public Board() {
+    public Board(GameScore gameScore, ScoreBoard scoreBoard) {
         setBounds(10, 20, 500, 700);
         setBackground(Color.BLACK);
 
@@ -65,6 +70,9 @@ public class Board extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 moveDown();
                 drawBoard();
+                gameScore.playScore(); // 스코어 증가
+                scoreBoard.updateScore(); // 점수 보여주기~
+
             }
         });
 

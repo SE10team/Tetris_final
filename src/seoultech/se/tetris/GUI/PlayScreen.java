@@ -1,6 +1,7 @@
 package seoultech.se.tetris.GUI;
 
 import seoultech.se.tetris.component.Board;
+import seoultech.se.tetris.component.GameScore;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -25,8 +26,10 @@ public class PlayScreen extends JFrame { // 게임 전체 화면을 그리는 �
 		setBackground(Color.WHITE);
 
 		Board mainBoard = new Board();
-		ScoreBoard scoreBoard = new ScoreBoard();
+		GameScore score = new GameScore();
+		ScoreBoard scoreBoard = new ScoreBoard(score);
 		NextBoard nextBoard = new NextBoard();
+
 		add(mainBoard);
 		add(scoreBoard);
 		add(nextBoard);
