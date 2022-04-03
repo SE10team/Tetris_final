@@ -4,6 +4,7 @@ package seoultech.se.tetris.main;
 import seoultech.se.tetris.GUI.NextBoard;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.component.Board;
+import seoultech.se.tetris.settingScreen.SettingScreen;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -25,6 +26,13 @@ public class Tetris extends JFrame { // 게임 전체 화면
         }
       });
      */
+
+//      EventQueue.invokeLater(new Runnable() {
+//        public void run() {
+//          SettingScreen settingScreen = new SettingScreen();
+//        }
+//      });
+
   }
 
   public Tetris(){
