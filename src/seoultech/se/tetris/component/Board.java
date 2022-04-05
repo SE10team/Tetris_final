@@ -32,8 +32,8 @@ public class Board extends JPanel {
     private Timer timer;
 
     // 다른 클래스
-    GameScore gameScore;
-    ScoreBoard scoreBoard;
+    private GameScore gameScore;
+    private ScoreBoard scoreBoard;
 
     private Block curr;
 //    private NewBoard nextB;
@@ -43,18 +43,21 @@ public class Board extends JPanel {
     private static final int initInterval = 1000;
 
     public Board(GameScore gameScore, ScoreBoard scoreBoard) {
+        this.gameScore = gameScore;
+        this.scoreBoard = scoreBoard;
+
         setBounds(10, 20, 500, 700);
         setBackground(Color.BLACK);
 
         //Board display setting.
         pane = new JTextPane();
         pane.setEditable(false);
-        pane.setBackground(Color.BLACK);
+        pane.setBackground(Color.ORANGE);
         CompoundBorder border = BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.GRAY, 10),
                 BorderFactory.createLineBorder(Color.DARK_GRAY, 5));
         pane.setBorder(border);
-//        this.getContentPane().add(pane, BorderLayout.CENTER);
+        this.add(pane, BorderLayout.CENTER);
 
         //Document default style.
         styleSet = new SimpleAttributeSet();
@@ -65,16 +68,11 @@ public class Board extends JPanel {
         StyleConstants.setAlignment(styleSet, StyleConstants.ALIGN_CENTER);
 
         //Set timer for block drops.
-        timer = new Timer(initInterval, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                moveDown();
-                drawBoard();
-                gameScore.playScore(); // 스코어 증가
-                scoreBoard.updateScore(); // 점수 보여주기~
-
-            }
+        timer = new Timer(initInterval, e -> { // lambda로 대체하랍니다~
+            moveDown();
+            drawBoard();
         });
+
 
         //Initialize board for the game.
         board = new int[HEIGHT][WIDTH]; //보드생성
@@ -131,7 +129,12 @@ public class Board extends JPanel {
 
     protected void moveDown() {
         eraseCurr();
-        if(y < HEIGHT - curr.height()) y++;// 바닥을 그냥 최대 array size로 놔서 겹쳐짐 :todo 쌓이게 하려면 board 내부를
+        if(y < HEIGHT - curr.height()) {
+            y++;
+            gameScore.playScore(); // 1. 기본 스코어 증가
+            scoreBoard.updateScore(); // 점수 보여주기~
+            // 바닥을 그냥 최대 array size로 놔서 겹쳐짐 :todo 쌓이게 하려면 board 내부를
+        }
 //		else if (y != HEIGHT - curr.height() && board[y+curr.height()+1][x]==1){ // 바닥까지 내려갈 때 index값이 넘어서 버림.
 //			placeBlock(); // 위치시키고
 //			curr = getRandomBlock(); // 새로운 블록 호출
@@ -187,6 +190,7 @@ public class Board extends JPanel {
         placeBlock();
     }
 
+    /*Board를 그려주는 함수 */
     public void drawBoard() {
         StringBuffer sb = new StringBuffer();
         for(int t=0; t<WIDTH+2; t++) sb.append(BORDER_CHAR);
@@ -212,7 +216,7 @@ public class Board extends JPanel {
 
     public void reset() {
         this.board = new int[20][10];
-    }
+    } // 초기화
 
     public void showPopup() {
         int input = JOptionPane.showConfirmDialog(this, "게임을 중단하시겠습니까? 중단될 경우, 게임의 데이터가 유실됩니다.", "confirm", JOptionPane.YES_NO_OPTION);
@@ -223,6 +227,7 @@ public class Board extends JPanel {
         }
     }
 
+    /*사용자의 키보드 입려게 대한 메소드*/
     public class PlayerKeyListener implements KeyListener {
         @Override
         public void keyTyped(KeyEvent e) {
