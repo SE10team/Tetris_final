@@ -25,9 +25,10 @@ public class PlayScreen extends JFrame { // 게임 전체 화면을 그리는 �
 		setLayout(null); // 레이아웃 설정
 		setBackground(Color.WHITE);
 
-		Board mainBoard = new Board();
+
 		GameScore score = new GameScore();
 		ScoreBoard scoreBoard = new ScoreBoard(score);
+		Board mainBoard = new Board(score, scoreBoard);
 		NextBoard nextBoard = new NextBoard();
 
 		add(mainBoard);

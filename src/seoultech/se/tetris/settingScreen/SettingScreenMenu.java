@@ -1,7 +1,5 @@
 package seoultech.se.tetris.settingScreen;
 
-import seoultech.se.tetris.startScreen.StartScreenMenu;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
