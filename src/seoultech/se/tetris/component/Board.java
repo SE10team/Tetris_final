@@ -194,18 +194,71 @@ public class Board extends JPanel {
         if (curr.getBottomEdge() == HEIGHT){
             return false;
         }
+
+        int[][]shape = curr.getShape();
+        int w = curr.width();
+        int h = curr.height();
+
+        for(int col =0; col < w; col++ )
+        {
+            for(int row = h-1; row >= 0; row--)
+            {
+                if(shape[row][col] !=0)
+                {
+                    int x = col + curr.getX();
+                    int y = row + curr.getY() +1;
+                    if(background[y][x] != null) return false;
+                }
+            }
+        }
+
         return true;
     }
 
     //왼쪽 체크
     private boolean checkLeft() {
         if(curr.getLeftEdge() ==0) return false;
+
+        int[][]shape = curr.getShape();
+        int w = curr.width();
+        int h = curr.height();
+
+        for(int row =0; row < h; row++ )
+        {
+            for(int col = 0; col < w; col++)
+            {
+                if(shape[row][col] !=0)
+                {
+                    int x = col + curr.getX() -1 ;
+                    int y = row + curr.getY();
+                    if(background[y][x] != null) return false;
+                }
+            }
+        }
         return true;
     }
 
     //오른쪽 체크
     private boolean checkRight() {
         if(curr.getRightEdge() == WIDTH) return false;
+
+        int[][]shape = curr.getShape();
+        int w = curr.width();
+        int h = curr.height();
+
+        for(int row =0; row < h; row++ )
+        {
+            for(int col = w-1; col >=0; col--)
+            {
+                if(shape[row][col] !=0)
+                {
+                    int x = col + curr.getX() +1 ;
+                    int y = row + curr.getY();
+                    if(background[y][x] != null) return false;
+                }
+            }
+        }
+
         return true;
     }
 
