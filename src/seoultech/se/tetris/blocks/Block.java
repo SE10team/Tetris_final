@@ -9,15 +9,23 @@ public abstract class Block {
 	protected int x,y;
 	
 	public Block() {
-		shape = new int[][]{ 
-				{1, 1}, 
+		shape = new int[][]{
+				{1, 1},
 				{1, 1}
 		};
 		color = Color.YELLOW;
+
+		x= 3;
+		y= 0;
+	}
+
+	public void spawn(int gridWidth) {
+		y=0;
+		x= (gridWidth - width()) / 2 ;
 	}
 	
-	public int getShape(int x, int y) {
-		return shape[y][x];
+	public int[][] getShape() {
+		return shape;
 	}
 	
 	public Color getColor() {
@@ -48,5 +56,19 @@ public abstract class Block {
 		return 0;
 	}
 
+	public int getX() {return x;} //위치 잡아주기
+
+	public int getY() {return y;}
+
+	public void moveDown() {y++;} // 이동 함수
+	public void moveLeft() {x--;}
+	public void moveRight() {x++;}
+
 	public int getBottomEdge() { return y + height(); }
+
+	public int getLeftEdge() {return x;}
+
+	public int getRightEdge() {return x+ width();}
+
+
 }

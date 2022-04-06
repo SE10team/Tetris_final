@@ -1,4 +1,5 @@
 package seoultech.se.tetris.component;
+
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.*;
 
@@ -13,8 +14,6 @@ import java.util.Random;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
 
 public class Board extends JPanel {
@@ -23,12 +22,13 @@ public class Board extends JPanel {
 
     public static final int HEIGHT = 20;
     public static final int WIDTH = 10;
-    public static final char BORDER_CHAR = 'X';
+    private int gridCellSize;
 
-    private JTextPane pane;
+    private Color[][] background;
+
+
     private int[][] board;
     private KeyListener playerKeyListener;
-    private SimpleAttributeSet styleSet;
     private Timer timer;
 
     // 다른 클래스
@@ -36,9 +36,6 @@ public class Board extends JPanel {
     private ScoreBoard scoreBoard;
 
     private Block curr;
-//    private NewBoard nextB;
-    int x = 3; //Default Position.
-    int y = 0;
 
     private static final int initInterval = 1000;
 
@@ -47,187 +44,198 @@ public class Board extends JPanel {
         this.scoreBoard = scoreBoard;
 
         setBounds(10, 20, 500, 700);
+        this.gameScore = gameScore;
+        this.scoreBoard = scoreBoard;
+        setBounds(30, 25, 350, 700);
         setBackground(Color.BLACK);
+        getBorder(); //보드 테두리 설정 : 배경이 검정이라 되는 건지..?
 
-        //Board display setting.
-        pane = new JTextPane();
-        pane.setEditable(false);
-        pane.setBackground(Color.ORANGE);
-        CompoundBorder border = BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.GRAY, 10),
-                BorderFactory.createLineBorder(Color.DARK_GRAY, 5));
-        pane.setBorder(border);
-        this.add(pane, BorderLayout.CENTER);
+        gridCellSize = getBounds().width / WIDTH; //네모네모 크기 설정
 
-        //Document default style.
-        styleSet = new SimpleAttributeSet();
-        StyleConstants.setFontSize(styleSet, 18);
-        StyleConstants.setFontFamily(styleSet, "Courier");
-        StyleConstants.setBold(styleSet, true);
-        StyleConstants.setForeground(styleSet, Color.WHITE);
-        StyleConstants.setAlignment(styleSet, StyleConstants.ALIGN_CENTER);
+        background = new Color[HEIGHT][WIDTH];
 
         //Set timer for block drops.
-        timer = new Timer(initInterval, e -> { // lambda로 대체하랍니다~
-            moveDown();
-            drawBoard();
+        timer = new Timer(initInterval, e -> {
+            moveBlockDown(); // 블럭 내려보내기
         });
 
+        timer.start();
+        spawnBlock();
 
-        //Initialize board for the game.
-        board = new int[HEIGHT][WIDTH]; //보드생성
+        //키 리스너
         playerKeyListener = new PlayerKeyListener();
         addKeyListener(playerKeyListener);
         setFocusable(true);
         requestFocus();
 
-        //Create the first block and draw.
-//        nextB.getRandomBlock(); // Todo 자바 이렇게 쓰는 게 맞나?
-        curr = getRandomBlock(); // 얘도?
-        placeBlock();
-        drawBoard();
-        timer.start();
+
+
+//        //Initialize board for the game.
+//        board = new int[HEIGHT][WIDTH]; //보드생성
+
     }
 
-    public Block getRandomBlock() {
-        Random rnd = new Random(System.currentTimeMillis());
-        int block = rnd.nextInt(7);
-        return switch (block) {
-            case 0 -> new IBlock();
-            case 1 -> new JBlock();
-            case 2 -> new LBlock();
-            case 3 -> new ZBlock();
-            case 4 -> new SBlock();
-            case 5 -> new TBlock();
-            default -> new OBlock();
-        };
+    @Override
+    public void paintComponent(Graphics g) { //컴포넌트 그리기
+        super.paintComponent(g);
+
+        drawBackground(g);
+        placeBlock(g);
     }
 
-    private void placeBlock() { //x, y 에서 curr의 shape만큼 밑에 Shape를 불러옴
-        StyledDocument doc = pane.getStyledDocument();
-        SimpleAttributeSet styles = new SimpleAttributeSet();
-        StyleConstants.setForeground(styles, curr.getColor());
-        for(int j=0; j<curr.height(); j++) {
-            int rows = y+j == 0 ? 0 : y+j-1;
-            int offset = rows * (WIDTH+3) + x + 1;
-            doc.setCharacterAttributes(offset, curr.width(), styles, true);
-            for(int i=0; i<curr.width(); i++) {
-                board[y+j][x+i] = curr.getShape(i, j);
+    private void moveBlockToBackground(){
+        int[][] shape = curr.getShape();
+        int h = curr.height();
+        int w = curr.width();
+
+        int xPos = curr.getX();
+        int yPos = curr.getY();
+
+        Color color = curr.getColor();
+
+        for (int row=0; row< h; row++)
+        {
+            for (int col = 0; col < w; col++)
+            {
+                if(shape[row][col]==1)
+                {
+                    background[row + yPos][col + xPos] = color;
+                }
             }
         }
     }
 
-    private void eraseCurr() { //블럭 사라지게 하기 Todo 블럭을 지워서 사라졌다가 다시 생기는 현상
-        for(int i=x; i<x+curr.width(); i++) {
-            for(int j=y; j<y+curr.height(); j++) {
-                board[j][i] = 0;
+    private void placeBlock(Graphics g) { // 블럭 그리기
+
+        Color color = curr.getColor();
+        int[][] shape = curr.getShape();
+
+        for (int row = 0; row < curr.height(); row++) {
+            for (int col = 0; col < curr.width(); col++) {
+                if (shape[row][col]==1) {
+                    int x = (curr.getX() + col) * gridCellSize;
+                    int y = (curr.getY() + row) * gridCellSize;
+
+                    drawGridSquare(g,color, x, y);
+                }
             }
         }
     }
 
+    private void drawBackground(Graphics g) {
+        Color color;
+
+        for (int row = 0; row < HEIGHT; row++)
+        {
+            for (int col = 0; col < WIDTH; col++)
+            {
+                color = background[row][col];
+
+                if (color != null)
+                {
+                    int x = col * gridCellSize;
+                    int y = row * gridCellSize;
+
+                    drawGridSquare(g, color, x, y );
+                }
+            }
+        }
+    }
+
+    private void drawGridSquare(Graphics g, Color color, int x , int y) {
+        g.setColor(color);
+        g.fillRect(x, y, gridCellSize, gridCellSize); //블럭 그리고
+        g.setColor(Color.BLACK);
+        g.drawRect(x, y, gridCellSize, gridCellSize); // 테두리 그리기
+    }
+
+    public void spawnBlock() { // 새로운 블럭 스폰
+        NextGenerateBlock nextblock = new NextGenerateBlock();
+        curr = nextblock.getRandomBlock();
+        curr.spawn(WIDTH);
+    }
 
 
-    protected void moveDown() {
-        eraseCurr();
-        if(y < HEIGHT - curr.height()) {
-            y++;
-            gameScore.playScore(); // 1. 기본 스코어 증가
+    protected void moveBlockDown() { //블럭 내리기
+        if(!checkBottom()) {
+            moveBlockToBackground();
+            spawnBlock();
+            repaint();
+
+        }
+        curr.moveDown();
+            gameScore.playScore(); // 스코어 증가
             scoreBoard.updateScore(); // 점수 보여주기~
-            // 바닥을 그냥 최대 array size로 놔서 겹쳐짐 :todo 쌓이게 하려면 board 내부를
-        }
-//		else if (y != HEIGHT - curr.height() && board[y+curr.height()+1][x]==1){ // 바닥까지 내려갈 때 index값이 넘어서 버림.
-//			placeBlock(); // 위치시키고
-//			curr = getRandomBlock(); // 새로운 블록 호출
-//			x = 3;
-//			y = 0;
-//
-//		}
-        else {
-            placeBlock(); // 위치시키고
+        repaint();
+    }
 
-            curr = getRandomBlock(); // 새로운 블록 호출
-//            nextB.getRandomBlock();
-            x = 3;
-            y = 0;
-        }
-        placeBlock();
+    protected void moveBlockRight() { // 오른쪽 이동
+
+        if(!checkRight()) return;
+
+        curr.moveRight();
+        repaint();
+    }
+
+    protected void moveBlockLeft() { // 왼쪽 이동
+
+        if(!checkLeft()) return;
+        curr.moveLeft();
+        repaint();
+    }
+
+    protected void rotateBlock() {
+        curr.rotate();
+        repaint();
     }
 
     //바닥 체크
     private boolean checkBottom() {
+        if (curr.getBottomEdge() == HEIGHT){
+            return false;
+        }
         return true;
     }
 
     //왼쪽 체크
     private boolean checkLeft() {
+        if(curr.getLeftEdge() ==0) return false;
         return true;
     }
 
     //오른쪽 체크
     private boolean checkRight() {
+        if(curr.getRightEdge() == WIDTH) return false;
         return true;
     }
 
-    protected void moveRight() {
-        eraseCurr();
-        if(x < WIDTH - curr.width()) x++;
-        placeBlock();
-    }
 
-    protected void moveLeft() {
-        eraseCurr();
-        if(x > 0) {
-            x--;
-        }
-        placeBlock();
-    }
 
-    protected void moveToGround() {
-        eraseCurr();
-        /*
-        바닥으로 내력가게끔
-        */
-        placeBlock();
-    }
+//
+//    protected void moveToGround() {
+//        eraseCurr();
+//        /*
+//        바닥으로 내력가게끔
+//        */
+//        placeBlock();
+//    }
 
-    /*Board를 그려주는 함수 */
-    public void drawBoard() {
-        StringBuffer sb = new StringBuffer();
-        for(int t=0; t<WIDTH+2; t++) sb.append(BORDER_CHAR);
-        sb.append("\n");
-        for(int i=0; i < board.length; i++) {
-            sb.append(BORDER_CHAR);
-            for(int j=0; j < board[i].length; j++) {
-                if(board[i][j] == 1) {
-                    sb.append("O");
-                } else {
-                    sb.append(" ");
-                }
-            }
-            sb.append(BORDER_CHAR);
-            sb.append("\n");
-        }
-        for(int t=0; t<WIDTH+2; t++) sb.append(BORDER_CHAR);
-        pane.setText(sb.toString());
-        StyledDocument doc = pane.getStyledDocument();
-        doc.setParagraphAttributes(0, doc.getLength(), styleSet, false);
-        pane.setStyledDocument(doc);
-    }
 
-    public void reset() {
-        this.board = new int[20][10];
-    } // 초기화
+
+//    public void reset() {
+//        this.board = new int[20][10];
+//    }
 
     public void showPopup() {
         int input = JOptionPane.showConfirmDialog(this, "게임을 중단하시겠습니까? 중단될 경우, 게임의 데이터가 유실됩니다.", "confirm", JOptionPane.YES_NO_OPTION);
         if (input == JOptionPane.YES_OPTION) {
             System.exit(0);
         } else {
-            drawBoard();
+            repaint();
         }
     }
 
-    /*사용자의 키보드 입려게 대한 메소드*/
+    /* 사용자의 키보드 입력에 대한 메소드 */
     public class PlayerKeyListener implements KeyListener {
         @Override
         public void keyTyped(KeyEvent e) {
@@ -238,29 +246,24 @@ public class Board extends JPanel {
         public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
                 case KeyEvent.VK_DOWN:
-                    moveDown();
-                    drawBoard();
+                    moveBlockDown();
                     break;
                 case KeyEvent.VK_RIGHT:
-                    moveRight();
-                    drawBoard();
+                    moveBlockRight();
                     break;
                 case KeyEvent.VK_LEFT:
-                    moveLeft();
-                    drawBoard();
+                    moveBlockLeft();
                     break;
                 case KeyEvent.VK_UP:
-                    eraseCurr();
-                    curr.rotate();
-                    drawBoard();
+                    rotateBlock();
                     break;
                 case KeyEvent.VK_SPACE:
-                    moveToGround();
-                    drawBoard();
+//                    moveToGround();
+//                    drawBoard();
                     break;
                 case KeyEvent.VK_ESCAPE:
                     timer.stop();
-                    drawBoard();
+                    repaint();
                     showPopup();
                     timer.start();
                     break;

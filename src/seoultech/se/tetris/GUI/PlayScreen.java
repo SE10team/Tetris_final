@@ -28,8 +28,8 @@ public class PlayScreen extends JFrame { // 게임 전체 화면을 그리는 �
 
 		GameScore score = new GameScore();
 		ScoreBoard scoreBoard = new ScoreBoard(score);
-		Board mainBoard = new Board(score, scoreBoard);
 		NextBoard nextBoard = new NextBoard();
+		Board mainBoard = new Board(score, scoreBoard);
 
 		add(mainBoard);
 		add(scoreBoard);

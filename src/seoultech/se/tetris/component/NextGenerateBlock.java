@@ -5,11 +5,11 @@ import seoultech.se.tetris.blocks.*;
 import java.util.Random;
 
 public class NextGenerateBlock {
+
     private Block nextblock;
 
-    public Block currblock() { return nextblock; }
 
-    public void getNextblock() { nextblock = getRandomBlock();  } // 필요 있나?
+
 
     public Block getRandomBlock() {
         Random rnd = new Random(System.currentTimeMillis());
