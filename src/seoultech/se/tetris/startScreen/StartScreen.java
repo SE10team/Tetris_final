@@ -10,7 +10,11 @@ import java.awt.event.ActionEvent;
 
 public class StartScreen extends JFrame {
 
+  StartScreenMenu startScreenMenu;
+
   public StartScreen() {
+
+    startScreenMenu = new StartScreenMenu(this);
 
     AbstractAction buttonPressed = new AbstractAction() {
       @Override
@@ -51,7 +55,7 @@ public class StartScreen extends JFrame {
     add(startScreenTitle);
 
     // 메뉴 버튼들
-    StartScreenMenu startScreenMenu = new StartScreenMenu();
+//    StartScreenMenu startScreenMenu = new StartScreenMenu();
     startScreenMenu.setBounds(130, 190, 145, 300);
     for (int i = 0; i < startScreenMenu.buttons.length; i++) {
       startScreenMenu.buttons[i].addActionListener(buttonPressed);

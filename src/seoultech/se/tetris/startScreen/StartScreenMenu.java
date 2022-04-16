@@ -1,5 +1,6 @@
 package seoultech.se.tetris.startScreen;
 
+import seoultech.se.tetris.component.Board;
 import seoultech.se.tetris.main.Tetris;
 
 import javax.swing.*;
@@ -12,13 +13,14 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class StartScreenMenu extends JPanel implements KeyListener{
+public class StartScreenMenu extends JPanel{
 
-  private KeyListener playerKeyListener;
+  StartScreen startScreen;
+  private PlayerKeyListener playerKeyListener;
   JButton[] buttons;
 
-  public StartScreenMenu() {
-
+  public StartScreenMenu(StartScreen startScreen) {
+    this.startScreen = startScreen;
     playerKeyListener = new PlayerKeyListener();
 
     String[] btnText = {"일반 모드 게임 시작", "아이템 모드 게임 시작", "게임 설정", "스코어 보드", "게임 종료"};
@@ -44,32 +46,7 @@ public class StartScreenMenu extends JPanel implements KeyListener{
         KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
       }
     });
-
-    this.addKeyListener(this);
-
-
   }
-
-  @Override
-  public void keyTyped(KeyEvent e) {
-
-  }
-
-  @Override
-  public void keyPressed(KeyEvent e) {
-    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-      if (e.getSource() == buttons[0]) {
-        System.out.println("dddddddd");
-      }
-    }
-
-  }
-
-  @Override
-  public void keyReleased(KeyEvent e) {
-
-  }
-
 
   public class PlayerKeyListener implements KeyListener{
     @Override
@@ -80,10 +57,26 @@ public class StartScreenMenu extends JPanel implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
       if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-        System.out.println("ddddd");
         if (e.getSource() == buttons[0]) {
-          System.out.println("dddd");
+          startScreen.setVisible(false);
+          Tetris tetris = new Tetris();
+          tetris.setVisible(true);
+        } else if (e.getSource() == buttons[1]) {
+          startScreen.setVisible(false);
+          Tetris tetris = new Tetris();
+          tetris.setVisible(true);
+        } else if (e.getSource() == buttons[2]) {
+          startScreen.setVisible(false);
+          Tetris tetris = new Tetris();
+          tetris.setVisible(true);
+        } else if (e.getSource() == buttons[3]) {
+          startScreen.setVisible(false);
+          Tetris tetris = new Tetris();
+          tetris.setVisible(true);
+        } else if (e.getSource() == buttons[4]) {
+          System.exit(0);
         }
+
       } else {
         System.out.println("");
       }
@@ -94,5 +87,4 @@ public class StartScreenMenu extends JPanel implements KeyListener{
 
     }
   }
-
 }
