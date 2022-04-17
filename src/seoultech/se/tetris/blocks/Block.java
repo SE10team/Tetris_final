@@ -1,5 +1,7 @@
 package seoultech.se.tetris.blocks;
 
+import seoultech.se.tetris.blocks.colorSetting.ColorSetting;
+
 import java.awt.*;
 
 public abstract class Block {
@@ -7,6 +9,7 @@ public abstract class Block {
 	protected int[][] shape;
 	protected Color color;
 	protected int x,y;
+	public ColorSetting colorSetting = new ColorSetting();
 	
 	public Block() {
 		shape = new int[][]{
