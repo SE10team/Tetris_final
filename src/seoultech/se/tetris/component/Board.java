@@ -184,6 +184,13 @@ public class Board extends JPanel {
         repaint();
     }
 
+    protected void dropBlock() {
+        while (checkBottom()) {
+            moveBlockDown();
+        }
+        repaint();
+    }
+
     protected void rotateBlock() {
         curr.rotate();
         repaint();
@@ -311,8 +318,7 @@ public class Board extends JPanel {
                     rotateBlock();
                     break;
                 case KeyEvent.VK_SPACE:
-//                    moveToGround();
-//                    drawBoard();
+                    dropBlock();
                     break;
                 case KeyEvent.VK_ESCAPE:
                     timer.stop();
