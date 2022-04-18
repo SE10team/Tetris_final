@@ -2,6 +2,7 @@ package seoultech.se.tetris.startScreen;
 
 import seoultech.se.tetris.component.Board;
 import seoultech.se.tetris.main.Tetris;
+import seoultech.se.tetris.settingScreen.SettingScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,19 +60,37 @@ public class StartScreenMenu extends JPanel{
       if (e.getKeyCode() == KeyEvent.VK_ENTER) {
         if (e.getSource() == buttons[0]) {
           startScreen.setVisible(false);
-          Tetris tetris = new Tetris();
+          Tetris tetris = null;
+          try {
+            tetris = new Tetris();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
           tetris.setVisible(true);
         } else if (e.getSource() == buttons[1]) {
           startScreen.setVisible(false);
-          Tetris tetris = new Tetris();
+          Tetris tetris = null;
+          try {
+            tetris = new Tetris();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
           tetris.setVisible(true);
         } else if (e.getSource() == buttons[2]) {
           startScreen.setVisible(false);
-          Tetris tetris = new Tetris();
-          tetris.setVisible(true);
+          try {
+            SettingScreen settingScreen = new SettingScreen();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
         } else if (e.getSource() == buttons[3]) {
           startScreen.setVisible(false);
-          Tetris tetris = new Tetris();
+          Tetris tetris = null;
+          try {
+            tetris = new Tetris();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
           tetris.setVisible(true);
         } else if (e.getSource() == buttons[4]) {
           System.exit(0);

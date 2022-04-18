@@ -2,6 +2,7 @@ package seoultech.se.tetris.startScreen;
 
 
 import seoultech.se.tetris.main.Tetris;
+import seoultech.se.tetris.settingScreen.SettingScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,13 +22,23 @@ public class StartScreen extends JFrame {
       public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "일반 모드 게임 시작") {
           setVisible(false);
-          Tetris tetris = new Tetris();
+          Tetris tetris = null;
+          try {
+            tetris = new Tetris();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
           tetris.setVisible(true);
         } else if (e.getActionCommand() == "아이템 모드 게임 시작") {
           System.out.println("아이템 모드 게임 시작 버튼을 눌렀음");
           // 추후 추가 예정
         } else if (e.getActionCommand() == "게임 설정") {
-          System.out.println("게임 설정 버튼을 눌렀음");
+          setVisible(false);
+          try {
+            SettingScreen settingScreen = new SettingScreen();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
           // 추후 추가 예정
         } else if (e.getActionCommand() == "스코어 보드") {
           System.out.println("스코어 보드 버튼을 눌렀음");

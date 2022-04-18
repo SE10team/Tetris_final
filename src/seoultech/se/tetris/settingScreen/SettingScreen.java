@@ -1,12 +1,21 @@
 package seoultech.se.tetris.settingScreen;
 
+import seoultech.se.tetris.blocks.colorSetting.ColorSetting;
+import seoultech.se.tetris.startScreen.StartScreen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.*;
+import java.util.HashMap;
 
 public class SettingScreen extends JFrame {
 
-  public SettingScreen() {
+  int colorCount = 0;
+  ColorSetting colorSetting;
+
+  public SettingScreen() throws Exception {
+    colorSetting = new ColorSetting();
 
     // "게임 화면 크기 조절", "게임 조작 키 설정", "스코어 보드 기록 초기화", "색맹 모드", "설정 초기화"
     AbstractAction buttonPressed = new AbstractAction() {
@@ -24,11 +33,92 @@ public class SettingScreen extends JFrame {
           System.out.println("스코어 보드 기록 초기화 버튼을 눌렀음");
           // 추후 추가 예정
         } else if (e.getActionCommand() == "색맹 모드") {
-          System.out.println("색맹 모드 버튼을 눌렀음");
-          // 추후 추가 예정
+          if (colorCount % 2 == 1) {
+            try {
+              String filename = "/Users/home/Desktop/colorSetting.ser";
+              File colorSettingFile = new File(filename);
+              if (colorSettingFile.exists()) {
+                if (colorSettingFile.delete()) {
+                  System.out.println("성공적으로 파일 삭제");
+                } else {
+                  System.out.println("파일 삭제 실패");
+                }
+              }
+
+
+              FileOutputStream fileOutputStream = new FileOutputStream(filename);
+              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+              HashMap<String, Color> hashMap = new HashMap<>();
+              hashMap.put("iblock", new Color(0,161,117));
+              hashMap.put("jblock", new Color(231,159,0));
+              hashMap.put("lblock", new Color(88,179,234));
+              hashMap.put("oblock", new Color(240,228,67));
+              hashMap.put("sblock", new Color(0,113,177));
+              hashMap.put("tblock", new Color(253,67,0));
+              hashMap.put("zblock", new Color(206,120,167));
+
+              colorSetting.setIblock(new Color(0,161,117));
+              colorSetting.setJblock(new Color(231,159,0));
+              colorSetting.setLblock(new Color(88,179,234));
+              colorSetting.setOblock(new Color(240,228,67));
+              colorSetting.setSblock(new Color(0,113,177));
+              colorSetting.setTblock(new Color(253,67,0));
+              colorSetting.setZblock(new Color(206,120,167));
+
+              objectOutputStream.writeObject(hashMap);
+              System.out.println(hashMap);
+              objectOutputStream.close();
+              } catch (IOException fileNotFoundException) {
+              fileNotFoundException.printStackTrace();
+            }
+            colorCount++;
+          } else {
+            try {
+              String filename = "/Users/home/Desktop/colorSetting.ser";
+              File colorSettingFile = new File(filename);
+              if (colorSettingFile.exists()) {
+                if (colorSettingFile.delete()) {
+                  System.out.println("성공적으로 파일 삭제");
+                } else {
+                  System.out.println("파일 삭제 실패");
+                }
+              }
+
+              FileOutputStream fileOutputStream = new FileOutputStream(filename);
+              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+              HashMap<String, Color> hashMap = new HashMap<>();
+              hashMap.put("iblock", Color.CYAN);
+              hashMap.put("jblock", Color.BLUE);
+              hashMap.put("lblock", Color.ORANGE);
+              hashMap.put("oblock", Color.YELLOW);
+              hashMap.put("sblock", Color.GREEN);
+              hashMap.put("tblock", Color.MAGENTA);
+              hashMap.put("zblock", Color.RED);
+
+              colorSetting.setIblock(Color.CYAN);
+              colorSetting.setJblock(Color.BLUE);
+              colorSetting.setLblock(Color.ORANGE);
+              colorSetting.setOblock(Color.YELLOW);
+              colorSetting.setSblock(Color.GREEN);
+              colorSetting.setTblock(Color.MAGENTA);
+              colorSetting.setZblock(Color.RED);
+
+              System.out.println(hashMap);
+
+              objectOutputStream.writeObject(hashMap);
+              objectOutputStream.close();
+            } catch (IOException fileNotFoundException) {
+              fileNotFoundException.printStackTrace();
+            }
+            colorCount++;
+          }
         } else if (e.getActionCommand() == "설정 초기화") {
           System.exit(0);
           System.out.println("설정 초기화 버튼을 눌렀음");
+          // 추후 추가 예정
+        } else if (e.getActionCommand() == "메인 화면으로") {
+          setVisible(false);
+          StartScreen startScreen = new StartScreen();
           // 추후 추가 예정
         }
       }
