@@ -1,5 +1,7 @@
 package seoultech.se.tetris.settingScreen.colorSetting;
 
+import seoultech.se.tetris.settingScreen.osChecking.OSValidator;
+
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,6 +13,8 @@ import java.util.Objects;
 public class GetColorFromFile {
   public Color[] colors = new Color[7];
   public GetColorFromFile() throws IOException, ClassNotFoundException {
+//    OSValidator osValidator = new OSValidator();
+//    if(osValidator)
     String filename = "/Users/home/Desktop/colorSetting.ser";
     FileInputStream fileInputStream = new FileInputStream(filename);
     ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
