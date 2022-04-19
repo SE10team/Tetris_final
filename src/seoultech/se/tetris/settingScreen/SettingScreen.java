@@ -6,6 +6,7 @@ import seoultech.se.tetris.startScreen.StartScreen;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.HashMap;
 
@@ -94,9 +95,62 @@ public class SettingScreen extends JFrame {
             colorCount++;
           }
         } else if (e.getActionCommand() == "설정 초기화") {
-          System.exit(0);
-          System.out.println("설정 초기화 버튼을 눌렀음");
-          // 추후 추가 예정
+
+          //색맹모드 초기화
+          try {
+            String filename = "/Users/home/Desktop/colorSetting.ser";
+            File colorSettingFile = new File(filename);
+            if (colorSettingFile.exists()) {
+              if (colorSettingFile.delete()) {
+                System.out.println("성공적으로 파일 삭제");
+              } else {
+                System.out.println("파일 삭제 실패");
+              }
+            }
+
+            FileOutputStream fileOutputStream = new FileOutputStream(filename);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            HashMap<String, Color> hashMap = new HashMap<>();
+            hashMap.put("iblock", Color.CYAN);
+            hashMap.put("jblock", Color.BLUE);
+            hashMap.put("lblock", Color.ORANGE);
+            hashMap.put("oblock", Color.YELLOW);
+            hashMap.put("sblock", Color.GREEN);
+            hashMap.put("tblock", Color.MAGENTA);
+            hashMap.put("zblock", Color.RED);
+
+            System.out.println(hashMap);
+
+            objectOutputStream.writeObject(hashMap);
+            objectOutputStream.close();
+          } catch (IOException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+          }
+
+          //조작키 설정 초기화
+          try {
+            File colorSettingFile = new File("/Users/home/Desktop/keySetting.ser");
+            if (colorSettingFile.exists()) {
+              if (colorSettingFile.delete()) {
+                System.out.println("성공적으로 파일 삭제");
+              } else {
+                System.out.println("파일 삭제 실패");
+              }
+            }
+            FileOutputStream fileOutputStream = new FileOutputStream("/Users/home/Desktop/keySetting.ser");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            HashMap<String, Integer> hashMap = new HashMap<>();
+            hashMap.put("UP", KeyEvent.VK_UP);
+            hashMap.put("DOWN", KeyEvent.VK_DOWN);
+            hashMap.put("LEFT", KeyEvent.VK_LEFT);
+            hashMap.put("RIGHT", KeyEvent.VK_RIGHT);
+
+            objectOutputStream.writeObject(hashMap);
+            System.out.println(hashMap);
+            objectOutputStream.close();
+          } catch (IOException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+          }
         } else if (e.getActionCommand() == "메인 화면으로") {
           setVisible(false);
           StartScreen startScreen = new StartScreen();
