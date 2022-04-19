@@ -11,7 +11,7 @@ public class NextGenerateBlock {
 
 
 
-    public Block getRandomBlock() {
+    public Block getRandomBlock() throws Exception {
         Random rnd = new Random(System.currentTimeMillis());
         int block = rnd.nextInt(7);
         return

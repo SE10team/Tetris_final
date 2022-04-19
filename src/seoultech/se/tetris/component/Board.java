@@ -9,6 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.swing.*;
@@ -39,7 +43,7 @@ public class Board extends JPanel {
 
     private static final int initInterval = 1000;
 
-    public Board(GameScore gameScore, ScoreBoard scoreBoard) {
+    public Board(GameScore gameScore, ScoreBoard scoreBoard) throws Exception {
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
 
@@ -56,7 +60,11 @@ public class Board extends JPanel {
 
         //Set timer for block drops.
         timer = new Timer(initInterval, e -> {
-            moveBlockDown(); // 블럭 내려보내기
+            try {
+                moveBlockDown(); // 블럭 내려보내기
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
 
         timer.start();
@@ -149,14 +157,14 @@ public class Board extends JPanel {
         g.drawRect(x, y, gridCellSize, gridCellSize); // 테두리 그리기
     }
 
-    public void spawnBlock() { // 새로운 블럭 스폰
+    public void spawnBlock() throws Exception { // 새로운 블럭 스폰
         NextGenerateBlock nextblock = new NextGenerateBlock();
         curr = nextblock.getRandomBlock();
         curr.spawn(WIDTH);
     }
 
 
-    protected void moveBlockDown() { //블럭 내리기
+    protected void moveBlockDown() throws Exception { //블럭 내리기
         if(!checkBottom()) {
             moveBlockToBackground();
             spawnBlock();
@@ -181,6 +189,13 @@ public class Board extends JPanel {
 
         if(!checkLeft()) return;
         curr.moveLeft();
+        repaint();
+    }
+
+    protected void dropBlock() throws Exception {
+        while (checkBottom()) {
+            moveBlockDown();
+        }
         repaint();
     }
 
@@ -262,6 +277,22 @@ public class Board extends JPanel {
         return true;
     }
 
+    protected void makeColorSettingFile() throws Exception {
+        FileOutputStream fileOutputStream = new FileOutputStream("/Users/home/Desktop/colorSetting.ser");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        HashMap<String, Color> hashMap = new HashMap<>();
+        hashMap.put("iblock", Color.CYAN);
+        hashMap.put("jblock", Color.BLUE);
+        hashMap.put("lblock", Color.ORANGE);
+        hashMap.put("oblock", Color.YELLOW);
+        hashMap.put("sblock", Color.GREEN);
+        hashMap.put("tblock", Color.MAGENTA);
+        hashMap.put("zblock", Color.RED);
+
+        objectOutputStream.writeObject(hashMap);
+        objectOutputStream.close();
+    }
+
 
 
 //
@@ -299,7 +330,11 @@ public class Board extends JPanel {
         public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
                 case KeyEvent.VK_DOWN:
-                    moveBlockDown();
+                    try {
+                        moveBlockDown();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                     break;
                 case KeyEvent.VK_RIGHT:
                     moveBlockRight();
@@ -311,8 +346,11 @@ public class Board extends JPanel {
                     rotateBlock();
                     break;
                 case KeyEvent.VK_SPACE:
-//                    moveToGround();
-//                    drawBoard();
+                    try {
+                        dropBlock();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                     break;
                 case KeyEvent.VK_ESCAPE:
                     timer.stop();

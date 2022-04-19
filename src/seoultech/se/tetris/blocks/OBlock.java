@@ -1,14 +1,13 @@
 package seoultech.se.tetris.blocks;
 
-import java.awt.*;
-
 public class OBlock extends Block {
 
-	public OBlock() {
+	public OBlock() throws Exception{
 		shape = new int[][] { 
 			{1, 1}, 
 			{1, 1}
 		};
-		color = Color.YELLOW;
+
+		color = getColorFromFile.colors[4];
 	}
 }

@@ -1,9 +1,13 @@
 package seoultech.se.tetris.settingScreen.operationKeySetting;
 
 import java.awt.event.KeyEvent;
+import java.io.Serial;
+import java.io.Serializable;
 
-public class OperationKeys {
+public class OperationKeys implements Serializable {
 
+  @Serial
+  private static final long serialVersionUID = -4993533686469353035L;
   private int up;
   private int down;
   private int left;

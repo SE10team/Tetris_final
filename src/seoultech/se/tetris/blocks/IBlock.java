@@ -1,13 +1,12 @@
 package seoultech.se.tetris.blocks;
 
-import java.awt.*;
-
 public class IBlock extends Block {
-	
-	public IBlock() {
+
+	public IBlock() throws Exception{
 		shape = new int[][] { 
 			{1, 1, 1, 1}
 		};
-		color = Color.CYAN;
+
+		color = getColorFromFile.colors[1];
 	}
 }
