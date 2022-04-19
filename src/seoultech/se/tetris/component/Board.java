@@ -310,6 +310,7 @@ public class Board extends JPanel {
             if (e.getKeyCode() == keySetting[1]) {
                 try {
                     moveBlockDown();
+
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -322,7 +323,8 @@ public class Board extends JPanel {
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 try {
                     dropBlock();
-                    repaint();
+                    moveBlockToBackground();
+
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
