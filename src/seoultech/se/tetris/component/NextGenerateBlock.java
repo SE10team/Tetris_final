@@ -8,7 +8,17 @@ public class NextGenerateBlock {
 
     private Block nextblock;
 
+    public NextGenerateBlock() throws Exception {
+        nextblock = getRandomBlock();
+    }
 
+    public Block getNextblock() {
+        return nextblock;
+    }
+
+    public void generateBlock() throws Exception {
+        nextblock = getRandomBlock();
+    }
 
 
     public Block getRandomBlock() throws Exception {

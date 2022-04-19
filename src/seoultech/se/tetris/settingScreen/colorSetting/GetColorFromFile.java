@@ -15,7 +15,7 @@ public class GetColorFromFile {
   public GetColorFromFile() throws IOException, ClassNotFoundException {
 //    OSValidator osValidator = new OSValidator();
 //    if(osValidator)
-    String filename = "/Users/home/Desktop/colorSetting.ser";
+    String filename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
     FileInputStream fileInputStream = new FileInputStream(filename);
     ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 

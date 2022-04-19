@@ -19,7 +19,7 @@ public class KeySettingScreen extends JFrame {
 
   public KeySettingScreen() {
 
-    String keySettingFile = "/Users/home/Desktop/keySetting.ser";
+    String keySettingFile = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
 
     AbstractAction buttonPressed = new AbstractAction() {
       @Override

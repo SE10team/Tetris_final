@@ -1,5 +1,6 @@
 package seoultech.se.tetris.component;
 
+import seoultech.se.tetris.GUI.NextBoard;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.*;
 import seoultech.se.tetris.settingScreen.operationKeySetting.GetKeySetting;
@@ -32,14 +33,18 @@ public class Board extends JPanel {
 
     private Color[][] background;
 
+    //GameOver 설정
+    private JLabel text;
+    private Font font;
 
-    private int[][] board;
     private KeyListener playerKeyListener;
     private Timer timer;
 
     // 다른 클래스
     private GameScore gameScore;
     private ScoreBoard scoreBoard;
+    private NextGenerateBlock nextBlock;
+    private NextBoard nextBoard;
 
     private Block curr;
 
@@ -48,18 +53,30 @@ public class Board extends JPanel {
 
     private static final int initInterval = 1000;
 
-    public Board(GameScore gameScore, ScoreBoard scoreBoard) throws Exception {
+    public Board(GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard) throws Exception{
+
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
 
-        setBounds(10, 20, 500, 700);
+        //보드 설정
+        setBounds(30, 25, 350, 700);
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
-        setBounds(30, 25, 350, 700);
         setBackground(Color.BLACK);
-        getBorder(); //보드 테두리 설정 : 배경이 검정이라 되는 건지..?
 
         gridCellSize = getBounds().width / WIDTH; //네모네모 크기 설정
+
+        /*컴포넌트 설정*/
+        text = new JLabel("Game Over"); // 글자
+        text.setBounds(100,300, 250,120);
+
+        /*폰트 설정*/
+        font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
+        text.setForeground(Color.RED);
+        text.setFont(font);
+        text.setVisible(false);
+        this.add(text); // 글자 표시
+
 
         background = new Color[HEIGHT][WIDTH];
 
@@ -73,6 +90,8 @@ public class Board extends JPanel {
         });
 
         timer.start();
+        this.nextBlock = nextGBlock;
+        this.nextBoard = nextBoard;
         spawnBlock();
 
         //키 리스너
@@ -99,10 +118,56 @@ public class Board extends JPanel {
         super.paintComponent(g);
 
         drawBackground(g);
-        placeBlock(g);
+
+        if(!isBlockOutOfBounds()) placeBlock(g);
+
     }
 
-    private void moveBlockToBackground(){
+    public void clearLines() {
+        boolean lineFilled;
+
+        for (int row = HEIGHT -1; row >=0; row--){
+
+            lineFilled = true;
+
+            for(int col = 0; col < WIDTH; col++)
+            {
+                if(background[row][col] ==null)
+                {
+                    lineFilled = false;
+                    break;
+                }
+            }
+
+            if(lineFilled)
+            {
+                clearLine(row);
+                shiftDown(row);
+                clearLine(0);
+                row++;
+                gameScore.line();
+                repaint();
+            }
+        }
+    }
+
+    private void clearLine(int row) {
+        for(int i = 0; i < WIDTH; i++)
+            {
+                background[row][i] = null;
+            }
+    }
+
+    private void shiftDown(int row) {
+        for(int r = row; r >0; r--){
+            for (int col = 0; col < WIDTH; col++)
+            {
+                background[r][col] = background[r-1][col];
+            }
+        }
+    }
+
+    private void moveBlockToBackground(){ //블럭 background로 보내기
         int[][] shape = curr.getShape();
         int h = curr.height();
         int w = curr.width();
@@ -141,7 +206,7 @@ public class Board extends JPanel {
         }
     }
 
-    private void drawBackground(Graphics g) {
+    private void drawBackground(Graphics g) { // background 그리기
         Color color;
 
         for (int row = 0; row < HEIGHT; row++)
@@ -161,23 +226,60 @@ public class Board extends JPanel {
         }
     }
 
-    private void drawGridSquare(Graphics g, Color color, int x , int y) {
+    private void drawGridSquare(Graphics g, Color color, int x , int y) { //블럭 그리기(painting)
         g.setColor(color);
         g.fillRect(x, y, gridCellSize, gridCellSize); //블럭 그리고
         g.setColor(Color.BLACK);
         g.drawRect(x, y, gridCellSize, gridCellSize); // 테두리 그리기
     }
 
-    public void spawnBlock() throws Exception { // 새로운 블럭 스폰
-        NextGenerateBlock nextblock = new NextGenerateBlock();
-        curr = nextblock.getRandomBlock();
-        curr.spawn(WIDTH);
+    public void spawnBlock() throws Exception{ // 새로운 블럭 스폰
+        curr = nextBlock.getNextblock(); // 새로운 블럭 스폰
+        nextBlock.generateBlock();
+        nextBoard.updateBlock();
+    }
+
+    public void makeGameOverbackground(){
+        Color color;
+
+        for (int row = 0; row < HEIGHT; row++)
+        {
+            for (int col = 0; col < WIDTH; col++)
+            {
+                color = background[row][col];
+
+                if (color != null)
+                    background[row][col] = Color.gray;
+            }
+        }
+    }
+
+    public boolean isBlockOutOfBounds(){
+
+        for(int col = 0; col < WIDTH; col++)
+        {
+            if(background[2][col] != null) return true;
+        }
+
+        return false;
     }
 
 
     protected void moveBlockDown() throws Exception { //블럭 내리기
         if(!checkBottom()) {
+            if(isBlockOutOfBounds())
+            {
+                timer.stop();
+                repaint();
+                System.out.println("Game Over");
+                this.makeGameOverbackground(); // 종료
+                text.setVisible(true);
+
+
+                return;
+            }
             moveBlockToBackground();
+            clearLines();
             spawnBlock();
             repaint();
 
@@ -189,15 +291,15 @@ public class Board extends JPanel {
     }
 
     protected void moveBlockRight() { // 오른쪽 이동
+        if(isBlockOutOfBounds()) return;
 
         if(!checkRight()) return;
-
         curr.moveRight();
         repaint();
     }
 
     protected void moveBlockLeft() { // 왼쪽 이동
-
+        if(isBlockOutOfBounds()) return;
         if(!checkLeft()) return;
         curr.moveLeft();
         repaint();
@@ -210,9 +312,43 @@ public class Board extends JPanel {
         repaint();
     }
 
-    protected void rotateBlock() {
-        curr.rotate();
+    protected void rotateBlock() { // 블럭 회전
+        if(!checkBottom())return;
+        if(isBlockOutOfBounds()) return;
+        if (checkRotate(curr.rotate())) curr.setShape(curr.rotate());
+        if(!checkRight())
+        {
+            if(!checkLeft()) return;
+        }
         repaint();
+
+    }
+
+    //rotate 자리에 !null 있는지 체크
+    private boolean checkRotate(int[][] shape) {
+
+        int w = curr.width();
+        int h = curr.height();
+
+        for(int row =0; row < w; row++ )
+        {
+            for(int col = 0; col < h; col++)
+            {
+                if(shape[row][col] !=0)
+                {
+                    int x = col + curr.getX();
+                    int y = row + curr.getY();
+                    if(x < WIDTH && y<HEIGHT){
+                        if(background[y][x] != null) return false;
+                    }
+                    else if(x >= WIDTH && checkLeft()) moveBlockLeft();
+                    else return false;
+
+                }
+            }
+        }
+
+        return true;
     }
 
     //바닥 체크
@@ -266,7 +402,7 @@ public class Board extends JPanel {
 
     //오른쪽 체크
     private boolean checkRight() {
-        if(curr.getRightEdge() == WIDTH) return false;
+        if(curr.getRightEdge() == WIDTH ) return false;
 
         int[][]shape = curr.getShape();
         int w = curr.width();

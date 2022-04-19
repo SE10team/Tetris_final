@@ -9,6 +9,7 @@ public abstract class Block {
 	protected int[][] shape;
 	protected Color color;
 	protected int x,y;
+	private int WIDTH = 10;
 	public GetColorFromFile getColorFromFile = new GetColorFromFile();
 	
 	public Block() throws Exception {
@@ -20,14 +21,10 @@ public abstract class Block {
 
 		color = getColorFromFile.colors[0];
 
-		x= 3;
+		x= (WIDTH - width()) / 2 ;
 		y= 0;
 	}
 
-	public void spawn(int gridWidth) {
-		y=0;
-		x= (gridWidth - width()) / 2 ;
-	}
 	
 	public int[][] getShape() {
 		return shape;
@@ -37,7 +34,7 @@ public abstract class Block {
 		return color;
 	}
 	
-	public void rotate() {
+	public int[][] rotate() {
 		int n = shape.length;
 		int m = shape[0].length;
 		int[][] rotate = new int[m][n];
@@ -48,6 +45,10 @@ public abstract class Block {
 			}
 		}
 
+		return rotate;
+	}
+
+	public void setShape(int[][] rotate) {
 		shape = rotate;
 	}
 	
@@ -73,7 +74,7 @@ public abstract class Block {
 
 	public int getLeftEdge() {return x;}
 
-	public int getRightEdge() {return x+ width();}
+	public int getRightEdge() {return x + width();}
 
 
 }

@@ -2,6 +2,7 @@ package seoultech.se.tetris.GUI;
 
 import seoultech.se.tetris.component.Board;
 import seoultech.se.tetris.component.GameScore;
+import seoultech.se.tetris.component.NextGenerateBlock;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -9,8 +10,8 @@ import java.awt.*;
 
 
 public class PlayScreen extends JFrame { // 게임 전체 화면을 그리는 곳
-	private JTextPane pane;
-	private SimpleAttributeSet styleSet;
+
+	private Board mainBoard;
 
 	public static void main(String[] args) throws Exception {
 		PlayScreen tetris = new PlayScreen();
@@ -28,12 +29,18 @@ public class PlayScreen extends JFrame { // 게임 전체 화면을 그리는 �
 
 		GameScore score = new GameScore();
 		ScoreBoard scoreBoard = new ScoreBoard(score);
-		NextBoard nextBoard = new NextBoard();
-		Board mainBoard = new Board(score, scoreBoard);
+
+		NextGenerateBlock nextBlock = new NextGenerateBlock();
+		NextBoard nextBoard = new NextBoard(nextBlock);
+		mainBoard = new Board(score, scoreBoard, nextBlock, nextBoard);
+
 
 		add(mainBoard);
 		add(scoreBoard);
 		add(nextBoard);
 
+
 	}
+
+
 }

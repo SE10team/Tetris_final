@@ -35,7 +35,7 @@ public class SettingScreen extends JFrame {
         } else if (e.getActionCommand() == "색맹 모드") {
           if (colorCount % 2 == 1) {
             try {
-              String filename = "/Users/home/Desktop/colorSetting.ser";
+              String filename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
               File colorSettingFile = new File(filename);
               if (colorSettingFile.exists()) {
                 if (colorSettingFile.delete()) {
@@ -64,7 +64,7 @@ public class SettingScreen extends JFrame {
             colorCount++;
           } else {
             try {
-              String filename = "/Users/home/Desktop/colorSetting.ser";
+              String filename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
               File colorSettingFile = new File(filename);
               if (colorSettingFile.exists()) {
                 if (colorSettingFile.delete()) {
@@ -98,7 +98,7 @@ public class SettingScreen extends JFrame {
 
           //색맹모드 초기화
           try {
-            String filename = "/Users/home/Desktop/colorSetting.ser";
+            String filename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
             File colorSettingFile = new File(filename);
             if (colorSettingFile.exists()) {
               if (colorSettingFile.delete()) {
@@ -129,7 +129,7 @@ public class SettingScreen extends JFrame {
 
           //조작키 설정 초기화
           try {
-            File colorSettingFile = new File("/Users/home/Desktop/keySetting.ser");
+            File colorSettingFile = new File("D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser");
             if (colorSettingFile.exists()) {
               if (colorSettingFile.delete()) {
                 System.out.println("성공적으로 파일 삭제");
@@ -137,7 +137,7 @@ public class SettingScreen extends JFrame {
                 System.out.println("파일 삭제 실패");
               }
             }
-            FileOutputStream fileOutputStream = new FileOutputStream("/Users/home/Desktop/keySetting.ser");
+            FileOutputStream fileOutputStream = new FileOutputStream("D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             HashMap<String, Integer> hashMap = new HashMap<>();
             hashMap.put("UP", KeyEvent.VK_UP);

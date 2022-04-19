@@ -14,7 +14,7 @@ public class GetKeySetting {
   public GetKeySetting() throws IOException, ClassNotFoundException {
 //    OSValidator osValidator = new OSValidator();
 //    if(osValidator)
-    String filename = "/Users/home/Desktop/keySetting.ser";
+    String filename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
     FileInputStream fileInputStream = new FileInputStream(filename);
     ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 

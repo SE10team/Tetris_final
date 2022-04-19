@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db733796-5e8a-41ea-889d-04a394f0f95f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/SettingScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/SettingScreen.java" afterDir="false" />
-    </list>
-    <list default="true" id="455b88c1-d1c4-4e9a-8bc2-026c58cf0031" name="Changes" comment="pull 용 커밋">
+    <list default="true" id="db733796-5e8a-41ea-889d-04a394f0f95f" name="Changes" comment="pull 용 커밋">
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/GUI/NextBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/GUI/NextBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/GUI/PlayScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/GUI/PlayScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/blocks/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/blocks/Block.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board$PlayerKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board$PlayerKeyListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/NextGenerateBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/NextGenerateBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/main/Tetris$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/main/Tetris$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/main/Tetris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/main/Tetris.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/SettingScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/SettingScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/colorSetting/GetColorFromFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/colorSetting/GetColorFromFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/operationKeySetting/GetKeySetting.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/operationKeySetting/GetKeySetting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/operationKeySetting/KeySettingScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/operationKeySetting/KeySettingScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/GUI/NextBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/GUI/NextBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/GUI/PlayScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/GUI/PlayScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/blocks/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/blocks/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/component/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/component/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/component/NextGenerateBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/component/NextGenerateBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/SettingScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/SettingScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/colorSetting/GetColorFromFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/colorSetting/GetColorFromFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/operationKeySetting/GetKeySetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/operationKeySetting/GetKeySetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/operationKeySetting/KeySettingScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/operationKeySetting/KeySettingScreen.java" afterDir="false" />
     </list>
     <list id="1a7495ec-4bc5-4022-a6e8-dd67b361d898" name="Changes by USER" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,18 +86,6 @@
       <recent name="seoultech.se.tetris.score" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PlayScreen">
-  <component name="ProjectId" id="27yF59fQtKjxfRqNGTzuVwbSP98" />
-  <component name="ProjectViewState">
-    <option name="compactDirectories" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
   <component name="RunManager" selected="Application.Tetris">
     <configuration name="PlayScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="seoultech.se.tetris.GUI.PlayScreen" />
@@ -108,80 +115,12 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PlayScreen" />
-        <item itemvalue="Application.Tetris" />
         <item itemvalue="Application.Tetris" />
         <item itemvalue="Application.PlayScreen" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="db733796-5e8a-41ea-889d-04a394f0f95f" name="Changes" comment="" />
-      <created>1650284233318</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1650284233318</updated>
-      <workItem from="1650284237390" duration="230000" />
-      <workItem from="1650284496075" duration="507000" />
-      <workItem from="1650285015648" duration="2694000" />
-      <workItem from="1650288471132" duration="19371000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-      <changelist id="455b88c1-d1c4-4e9a-8bc2-026c58cf0031" name="Changes" comment="" />
-      <created>1648623171250</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1648623171250</updated>
-    </task>
-    <task id="LOCAL-00001" summary="윤재 1차 이터레이션">
-      <created>1648625042595</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1648625042595</updated>
-    </task>
-    <task id="LOCAL-00002" summary="2022-04-03 17:28 pull 용 커밋">
-      <created>1648974536009</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1648974536009</updated>
-    </task>
-    <task id="LOCAL-00003" summary="style_4_Board뒤엎,Block함수추가">
-      <created>1649239725669</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1649239725669</updated>
-    </task>
-    <task id="LOCAL-00004" summary="feat_4_충돌!!!!!">
-      <created>1649241173846</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1649241173846</updated>
-    </task>
-    <task id="LOCAL-00005" summary="pull 용 커밋">
-      <created>1650372624492</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1650372624492</updated>
-    </task>
-    <task id="LOCAL-00006" summary="pull 용 커밋">
-      <created>1650373788898</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1650373788898</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,22 +133,13 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="윤재 1차 이터레이션" />
-    <MESSAGE value="2022-04-03 17:28 pull 용 커밋" />
-    <MESSAGE value="style_4_Board뒤엎,Block함수추가" />
-    <MESSAGE value="feat_4_충돌!!!!!" />
-    <MESSAGE value="pull 용 커밋" />
-    <option name="LAST_COMMIT_MESSAGE" value="pull 용 커밋" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
-          <option name="timeStamp" value="1" />
+          <properties class="java.io.FileNotFoundException" package="java.io" />
+          <option name="timeStamp" value="5" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
