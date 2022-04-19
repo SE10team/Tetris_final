@@ -2,6 +2,7 @@ package seoultech.se.tetris.component;
 
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.*;
+import seoultech.se.tetris.settingScreen.operationKeySetting.GetKeySetting;
 
 import java.awt.*;
 
@@ -11,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Random;
@@ -40,6 +42,9 @@ public class Board extends JPanel {
     private ScoreBoard scoreBoard;
 
     private Block curr;
+
+    GetKeySetting getKeySetting;
+    int[] keySetting;
 
     private static final int initInterval = 1000;
 
@@ -76,6 +81,12 @@ public class Board extends JPanel {
         setFocusable(true);
         requestFocus();
 
+        getKeySetting = new GetKeySetting();
+        keySetting = new int[4];
+        keySetting[0] = getKeySetting.keys[0];
+        keySetting[1] = getKeySetting.keys[1];
+        keySetting[2] = getKeySetting.keys[2];
+        keySetting[3] = getKeySetting.keys[3];
 
 
 //        //Initialize board for the game.
@@ -277,39 +288,6 @@ public class Board extends JPanel {
         return true;
     }
 
-    protected void makeColorSettingFile() throws Exception {
-        FileOutputStream fileOutputStream = new FileOutputStream("/Users/home/Desktop/colorSetting.ser");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        HashMap<String, Color> hashMap = new HashMap<>();
-        hashMap.put("iblock", Color.CYAN);
-        hashMap.put("jblock", Color.BLUE);
-        hashMap.put("lblock", Color.ORANGE);
-        hashMap.put("oblock", Color.YELLOW);
-        hashMap.put("sblock", Color.GREEN);
-        hashMap.put("tblock", Color.MAGENTA);
-        hashMap.put("zblock", Color.RED);
-
-        objectOutputStream.writeObject(hashMap);
-        objectOutputStream.close();
-    }
-
-
-
-//
-//    protected void moveToGround() {
-//        eraseCurr();
-//        /*
-//        바닥으로 내력가게끔
-//        */
-//        placeBlock();
-//    }
-
-
-
-//    public void reset() {
-//        this.board = new int[20][10];
-//    }
-
     public void showPopup() {
         int input = JOptionPane.showConfirmDialog(this, "게임을 중단하시겠습니까? 중단될 경우, 게임의 데이터가 유실됩니다.", "confirm", JOptionPane.YES_NO_OPTION);
         if (input == JOptionPane.YES_OPTION) {
@@ -321,6 +299,7 @@ public class Board extends JPanel {
 
     /* 사용자의 키보드 입력에 대한 메소드 */
     public class PlayerKeyListener implements KeyListener {
+
         @Override
         public void keyTyped(KeyEvent e) {
 
@@ -328,38 +307,31 @@ public class Board extends JPanel {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            switch(e.getKeyCode()) {
-                case KeyEvent.VK_DOWN:
-                    try {
-                        moveBlockDown();
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    moveBlockRight();
-                    break;
-                case KeyEvent.VK_LEFT:
-                    moveBlockLeft();
-                    break;
-                case KeyEvent.VK_UP:
-                    rotateBlock();
-                    break;
-                case KeyEvent.VK_SPACE:
-                    try {
-                        dropBlock();
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    timer.stop();
-                    repaint();
-                    showPopup();
-                    timer.start();
-                    break;
+            if (e.getKeyCode() == keySetting[1]) {
+                try {
+                    moveBlockDown();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
+            } else if (e.getKeyCode() == keySetting[3]) {
+                moveBlockRight();
+            } else if (e.getKeyCode() == keySetting[2]) {
+                moveBlockLeft();
+            } else if (e.getKeyCode() == keySetting[0]) {
+                rotateBlock();
+            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                try {
+                    dropBlock();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                timer.stop();
+                repaint();
+                showPopup();
+                timer.start();
             }
+        }
 
         @Override
         public void keyReleased(KeyEvent e) {

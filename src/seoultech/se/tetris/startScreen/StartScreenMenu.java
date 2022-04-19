@@ -1,17 +1,14 @@
 package seoultech.se.tetris.startScreen;
 
-import seoultech.se.tetris.component.Board;
 import seoultech.se.tetris.main.Tetris;
 import seoultech.se.tetris.settingScreen.SettingScreen;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 public class StartScreenMenu extends JPanel{
@@ -49,7 +46,7 @@ public class StartScreenMenu extends JPanel{
     });
   }
 
-  public class PlayerKeyListener implements KeyListener{
+  public class PlayerKeyListener extends Component implements KeyListener{
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -96,8 +93,6 @@ public class StartScreenMenu extends JPanel{
           System.exit(0);
         }
 
-      } else {
-        System.out.println("");
       }
     }
 

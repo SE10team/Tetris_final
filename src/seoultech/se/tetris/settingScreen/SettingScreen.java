@@ -1,5 +1,6 @@
 package seoultech.se.tetris.settingScreen;
 
+import seoultech.se.tetris.settingScreen.operationKeySetting.KeySettingScreen;
 import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
@@ -24,6 +25,7 @@ public class SettingScreen extends JFrame {
         } else if (e.getActionCommand() == "게임 조작 키 설정") {
           System.out.println("게임 조작 키 설정 버튼을 눌렀음");
           setVisible(false);
+          KeySettingScreen keySettingScreen = new KeySettingScreen();
 
           // 추후 추가 예정
         } else if (e.getActionCommand() == "스코어 보드 기록 초기화") {
@@ -41,8 +43,6 @@ public class SettingScreen extends JFrame {
                   System.out.println("파일 삭제 실패");
                 }
               }
-
-
               FileOutputStream fileOutputStream = new FileOutputStream(filename);
               ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
               HashMap<String, Color> hashMap = new HashMap<>();
@@ -106,14 +106,14 @@ public class SettingScreen extends JFrame {
     };
 
     setTitle("설정 화면");
-    setSize(800, 800);
+    setSize(400, 450);
     setResizable(false);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(null);
     setLocationRelativeTo(null); // 창 가운데로
 
     SettingScreenMenu settingScreenMenu = new SettingScreenMenu();
-    settingScreenMenu.setBounds(130,190,145,300);
+    settingScreenMenu.setBounds(120,100,160,300);
     for (int i = 0; i < settingScreenMenu.buttons.length; i++) {
        settingScreenMenu.buttons[i].addActionListener(buttonPressed);
     }
