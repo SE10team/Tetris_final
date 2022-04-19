@@ -1,5 +1,7 @@
 package seoultech.se.tetris.blocks;
 
+import seoultech.se.tetris.settingScreen.colorSetting.GetColorFromFile;
+
 import java.awt.*;
 
 public abstract class Block {

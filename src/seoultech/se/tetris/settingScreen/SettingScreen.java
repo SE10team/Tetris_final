@@ -1,6 +1,5 @@
 package seoultech.se.tetris.settingScreen;
 
-import seoultech.se.tetris.blocks.colorSetting.ColorSetting;
 import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
@@ -12,10 +11,8 @@ import java.util.HashMap;
 public class SettingScreen extends JFrame {
 
   int colorCount = 0;
-  ColorSetting colorSetting;
 
   public SettingScreen() throws Exception {
-    colorSetting = new ColorSetting();
 
     // "게임 화면 크기 조절", "게임 조작 키 설정", "스코어 보드 기록 초기화", "색맹 모드", "설정 초기화"
     AbstractAction buttonPressed = new AbstractAction() {
@@ -57,14 +54,6 @@ public class SettingScreen extends JFrame {
               hashMap.put("tblock", new Color(253,67,0));
               hashMap.put("zblock", new Color(206,120,167));
 
-              colorSetting.setIblock(new Color(0,161,117));
-              colorSetting.setJblock(new Color(231,159,0));
-              colorSetting.setLblock(new Color(88,179,234));
-              colorSetting.setOblock(new Color(240,228,67));
-              colorSetting.setSblock(new Color(0,113,177));
-              colorSetting.setTblock(new Color(253,67,0));
-              colorSetting.setZblock(new Color(206,120,167));
-
               objectOutputStream.writeObject(hashMap);
               System.out.println(hashMap);
               objectOutputStream.close();
@@ -94,14 +83,6 @@ public class SettingScreen extends JFrame {
               hashMap.put("sblock", Color.GREEN);
               hashMap.put("tblock", Color.MAGENTA);
               hashMap.put("zblock", Color.RED);
-
-              colorSetting.setIblock(Color.CYAN);
-              colorSetting.setJblock(Color.BLUE);
-              colorSetting.setLblock(Color.ORANGE);
-              colorSetting.setOblock(Color.YELLOW);
-              colorSetting.setSblock(Color.GREEN);
-              colorSetting.setTblock(Color.MAGENTA);
-              colorSetting.setZblock(Color.RED);
 
               System.out.println(hashMap);
 
