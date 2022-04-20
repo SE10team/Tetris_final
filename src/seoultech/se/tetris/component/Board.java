@@ -49,8 +49,12 @@ public class Board extends JPanel {
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
 
+        fileInputOutput = new FileInputOutput();
+
+        int[] locationArr = fileInputOutput.InputScreenSizeFile();
+
         //보드 설정
-        setBounds(30, 25, 350, 700);
+        setBounds(locationArr[2], locationArr[3], 350, 700);
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
         setBackground(Color.BLACK);

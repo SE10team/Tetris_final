@@ -57,13 +57,12 @@ public class StartScreenMenu extends JPanel{
       if (e.getKeyCode() == KeyEvent.VK_ENTER) {
         if (e.getSource() == buttons[0]) {
           startScreen.setVisible(false);
-          Tetris tetris = null;
           try {
-            tetris = new Tetris();
+            Tetris tetris = new Tetris();
+            tetris.setVisible(true);
           } catch (Exception ex) {
             ex.printStackTrace();
           }
-          tetris.setVisible(true);
         } else if (e.getSource() == buttons[1]) {
           startScreen.setVisible(false);
           Tetris tetris = null;

@@ -14,10 +14,12 @@ public class FileInputOutput {
   // 맥 (유빈)
   private final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
   private final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
+  private final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
 
   // 윈도우 (윤재)
   // private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
   // private final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
+  // private final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
 
 
 
@@ -84,6 +86,39 @@ public class FileInputOutput {
     returnKeys[2] = keys[2];
     returnKeys[3] = keys[3];
     return returnKeys;
+  }
+
+  public int[] InputScreenSizeFile() throws IOException, ClassNotFoundException {
+    int[] screenSizeArr = new int[8];
+    FileInputStream fileInputStream = new FileInputStream(screenSizeFilename);
+    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+    Object object = objectInputStream.readObject();
+    objectInputStream.close();
+    HashMap<String, Integer> hashMap = (HashMap<String, Integer>) object;
+    Iterator<String> iterator = hashMap.keySet().iterator();
+    while (iterator.hasNext()) {
+      String name = iterator.next();
+      Integer size = hashMap.get(name);
+      if (Objects.equals(name, "size800width")) {
+        screenSizeArr[0] = size;
+      } else if (Objects.equals(name, "size800height")) {
+        screenSizeArr[1] = size;
+      } else if (Objects.equals(name, "playScreenX")) {
+        screenSizeArr[2] = size;
+      } else if (Objects.equals(name, "playScreenY")) {
+        screenSizeArr[3] = size;
+      } else if (Objects.equals(name, "scoreX")) {
+        screenSizeArr[4] = size;
+      } else if (Objects.equals(name, "scoreY")) {
+        screenSizeArr[5] = size;
+      } else if (Objects.equals(name, "nextBlockX")) {
+        screenSizeArr[6] = size;
+      } else if (Objects.equals(name, "nextBlockY")) {
+        screenSizeArr[7] = size;
+      }
+    }
+    return screenSizeArr;
   }
 
 
@@ -193,6 +228,96 @@ public class FileInputOutput {
       hashMap.put("DOWN", KeyEvent.VK_S);
       hashMap.put("LEFT", KeyEvent.VK_A);
       hashMap.put("RIGHT", KeyEvent.VK_D);
+
+      objectOutputStream.writeObject(hashMap);
+      System.out.println(hashMap);
+      objectOutputStream.close();
+    } catch (IOException fileNotFoundException) {
+      fileNotFoundException.printStackTrace();
+    }
+  }
+
+  public void OutputScreenSize800800() {
+    try {
+      File colorSettingFile = new File(screenSizeFilename);
+      if (colorSettingFile.exists()) {
+        if (colorSettingFile.delete()) {
+          System.out.println("성공적으로 파일 삭제");
+        } else {
+          System.out.println("파일 삭제 실패");
+        }
+      }
+      FileOutputStream fileOutputStream = new FileOutputStream(screenSizeFilename);
+      ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+      HashMap<String, Integer> hashMap = new HashMap<>();
+      hashMap.put("size800width", 800);
+      hashMap.put("size800height", 800);
+      hashMap.put("playScreenX", 30);
+      hashMap.put("playScreenY", 25);
+      hashMap.put("scoreX", 580);
+      hashMap.put("scoreY", 100);
+      hashMap.put("nextBlockX", 550);
+      hashMap.put("nextBlockY", 400);
+
+      objectOutputStream.writeObject(hashMap);
+      System.out.println(hashMap);
+      objectOutputStream.close();
+    } catch (IOException fileNotFoundException) {
+      fileNotFoundException.printStackTrace();
+    }
+  }
+
+  public void OutputScreenSize10001000() {
+    try {
+      File colorSettingFile = new File(screenSizeFilename);
+      if (colorSettingFile.exists()) {
+        if (colorSettingFile.delete()) {
+          System.out.println("성공적으로 파일 삭제");
+        } else {
+          System.out.println("파일 삭제 실패");
+        }
+      }
+      FileOutputStream fileOutputStream = new FileOutputStream(screenSizeFilename);
+      ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+      HashMap<String, Integer> hashMap = new HashMap<>();
+      hashMap.put("size800width", 1000);
+      hashMap.put("size800height", 1000);
+      hashMap.put("playScreenX", 130);
+      hashMap.put("playScreenY", 65);
+      hashMap.put("scoreX", 680);
+      hashMap.put("scoreY", 100);
+      hashMap.put("nextBlockX", 650);
+      hashMap.put("nextBlockY", 500);
+
+      objectOutputStream.writeObject(hashMap);
+      System.out.println(hashMap);
+      objectOutputStream.close();
+    } catch (IOException fileNotFoundException) {
+      fileNotFoundException.printStackTrace();
+    }
+  }
+
+  public void OutputScreenSize13001000() {
+    try {
+      File colorSettingFile = new File(screenSizeFilename);
+      if (colorSettingFile.exists()) {
+        if (colorSettingFile.delete()) {
+          System.out.println("성공적으로 파일 삭제");
+        } else {
+          System.out.println("파일 삭제 실패");
+        }
+      }
+      FileOutputStream fileOutputStream = new FileOutputStream(screenSizeFilename);
+      ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+      HashMap<String, Integer> hashMap = new HashMap<>();
+      hashMap.put("size800width", 1300);
+      hashMap.put("size800height", 1000);
+      hashMap.put("playScreenX", 170);
+      hashMap.put("playScreenY", 65);
+      hashMap.put("scoreX", 800);
+      hashMap.put("scoreY", 100);
+      hashMap.put("nextBlockX", 800);
+      hashMap.put("nextBlockY", 500);
 
       objectOutputStream.writeObject(hashMap);
       System.out.println(hashMap);

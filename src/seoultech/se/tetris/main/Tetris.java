@@ -11,6 +11,7 @@ import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class Tetris extends JFrame { // 게임 전체 화면
 
@@ -40,14 +41,26 @@ public class Tetris extends JFrame { // 게임 전체 화면
 
   public Tetris() throws Exception {
     super("테스트"); // 게임 실행시 이름
-    setSize(800,800); // 전체 화면 크기
+    System.out.println("시작");
+
+    FileInputOutput fileInputOutput = new FileInputOutput();
+    if (!(new File(("/Users/home/Desktop/colorSetting.ser")).exists())) {
+      fileInputOutput.OutputColorFileNotForBlind();
+    }
+    if (!(new File(("/Users/home/Desktop/keySetting.ser")).exists())) {
+      fileInputOutput.OutputKeySettingFileToArrow();
+    }
+    if (!(new File(("/Users/home/Desktop/screenSizeSetting.ser")).exists())) {
+      fileInputOutput.OutputScreenSize800800();
+    }
+
+
+    int[] screenSizeArr = fileInputOutput.InputScreenSizeFile();
+
+    setSize(screenSizeArr[0],screenSizeArr[1]); // 전체 화면 크기
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 버튼 설정
     setLayout(null); // 레이아웃 설정
     setBackground(Color.WHITE);
-
-    FileInputOutput fileInputOutput = new FileInputOutput();
-    fileInputOutput.OutputKeySettingFileToArrow();
-    fileInputOutput.OutputColorFileNotForBlind();
 
     GameScore score = new GameScore();
     ScoreBoard scoreBoard = new ScoreBoard(score);

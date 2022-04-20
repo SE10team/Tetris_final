@@ -19,6 +19,7 @@ public class SettingScreen extends JFrame {
         if (e.getActionCommand() == "게임 화면 크기 조절") {
 
               setVisible(false);
+              ScreenSettingScreen settingScreen = new ScreenSettingScreen();
               // 추후 추가 예정
 
         } else if (e.getActionCommand() == "게임 조작 키 설정") {
@@ -45,8 +46,11 @@ public class SettingScreen extends JFrame {
 
               //색맹모드 초기화
               fileInputOutput.OutputColorFileNotForBlind();
+              colorCount = 0;
               //조작키 설정 초기화
               fileInputOutput.OutputKeySettingFileToArrow();
+              //화면 크기 초기화
+              fileInputOutput.OutputScreenSize800800();
 
         } else if (e.getActionCommand() == "메인 화면으로") {
 

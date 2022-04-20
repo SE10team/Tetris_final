@@ -2,9 +2,11 @@ package seoultech.se.tetris.GUI;
 
 import seoultech.se.tetris.blocks.*;
 import seoultech.se.tetris.component.NextGenerateBlock;
+import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Random;
 
 public class NextBoard extends JPanel { // 다음 블럭을 그리는 곳
@@ -14,8 +16,12 @@ public class NextBoard extends JPanel { // 다음 블럭을 그리는 곳
     private Block nextOne;
     private int cellDivider;
 
-    public NextBoard(NextGenerateBlock nextBlock){
-        setBounds(550,400, 200,200);
+    public NextBoard(NextGenerateBlock nextBlock) throws IOException, ClassNotFoundException {
+
+        FileInputOutput fileInputOutput = new FileInputOutput();
+        int[] locationArr = fileInputOutput.InputScreenSizeFile();
+
+        setBounds(locationArr[6],locationArr[7], 200,200);
         setBackground(Color.BLACK);
         setBorder(getBorder());
         setLayout(null);

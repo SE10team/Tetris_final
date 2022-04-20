@@ -1,21 +1,27 @@
 package seoultech.se.tetris.GUI;
 
 import seoultech.se.tetris.component.GameScore;
+import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class ScoreBoard extends JPanel { // Score 현황을 그리는 곳
     private JLabel scoreDisplay,text;
     private Font font,font2;
     private GameScore gameScore;
 
-    public ScoreBoard(GameScore gameScore){
+    public ScoreBoard(GameScore gameScore) throws IOException, ClassNotFoundException {
+
+        FileInputOutput fileInputOutput = new FileInputOutput();
+        int[] locationArr = fileInputOutput.InputScreenSizeFile();
+
         this.gameScore = gameScore;
 
         /*배경 설정*/
         setLayout(new GridLayout(2,1));
-        setBounds(580,100, 200,100);
+        setBounds(locationArr[4],locationArr[5], 200,100);
 
         /*컴포넌트 설정*/
         scoreDisplay = new JLabel(); // 점수 보여주는 객체
