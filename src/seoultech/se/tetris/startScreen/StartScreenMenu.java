@@ -27,23 +27,21 @@ public class StartScreenMenu extends JPanel{
     for (int i = 0; i < 5; i++) {
       buttons[i] = new JButton(btnText[i]);
       add( buttons[i] );
+
       Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(
         KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS ) );
       set.add( KeyStroke.getKeyStroke( "UP" ) );
       buttons[i].setFocusTraversalKeys(
         KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, set );
+
+      Set<AWTKeyStroke> set2 = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(
+        KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS ) );
+      set2.add( KeyStroke.getKeyStroke( "DOWN" ) );
+      buttons[i].setFocusTraversalKeys(
+        KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, set2 );
+
       buttons[i].addKeyListener(playerKeyListener);
     }
-
-    InputMap im = getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-    String rightText = "DOWN";
-    im.put(KeyStroke.getKeyStroke(rightText), rightText);
-    getActionMap().put(rightText, new AbstractAction() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
-      }
-    });
   }
 
   public class PlayerKeyListener extends Component implements KeyListener{
@@ -92,6 +90,8 @@ public class StartScreenMenu extends JPanel{
           System.exit(0);
         }
 
+      } else if (e.getKeyCode() != KeyEvent.VK_ENTER || e.getKeyCode() != KeyEvent.VK_DOWN || e.getKeyCode() != KeyEvent.VK_UP) {
+        JOptionPane.showConfirmDialog(this, "엔터와 위아래 화살표를 눌러주세요", "confirm", JOptionPane.INFORMATION_MESSAGE);
       }
     }
 

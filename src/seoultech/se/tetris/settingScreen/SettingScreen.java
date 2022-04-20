@@ -9,8 +9,11 @@ public class SettingScreen extends JFrame {
 
   int colorCount = 0;
   FileInputOutput fileInputOutput = new FileInputOutput();
+  SettingScreenMenu settingScreenMenu;
 
   public SettingScreen() throws Exception {
+
+    settingScreenMenu = new SettingScreenMenu(this);
 
     // "게임 화면 크기 조절", "게임 조작 키 설정", "스코어 보드 기록 초기화", "색맹 모드", "설정 초기화"
     AbstractAction buttonPressed = new AbstractAction() {
@@ -68,7 +71,7 @@ public class SettingScreen extends JFrame {
     setLayout(null);
     setLocationRelativeTo(null); // 창 가운데로
 
-    SettingScreenMenu settingScreenMenu = new SettingScreenMenu();
+    SettingScreenMenu settingScreenMenu = new SettingScreenMenu(this);
     settingScreenMenu.setBounds(120,100,160,300);
     for (int i = 0; i < settingScreenMenu.buttons.length; i++) {
        settingScreenMenu.buttons[i].addActionListener(buttonPressed);

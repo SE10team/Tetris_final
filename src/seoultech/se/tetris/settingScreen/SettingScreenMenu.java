@@ -1,5 +1,9 @@
 package seoultech.se.tetris.settingScreen;
 
+import seoultech.se.tetris.main.Tetris;
+import seoultech.se.tetris.startScreen.StartScreen;
+import seoultech.se.tetris.startScreen.StartScreenMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,8 +20,13 @@ import java.util.Set;
 public class SettingScreenMenu extends JPanel {
 
   JButton[] buttons;
+  PlayerKeyListener playerKeyListener;
+  SettingScreen settingScreen;
 
-  public SettingScreenMenu() {
+  public SettingScreenMenu(SettingScreen settingScreen) {
+    this.settingScreen = settingScreen;
+
+    playerKeyListener = new PlayerKeyListener();
 
     String[] btnText = {"게임 화면 크기 조절", "게임 조작 키 설정", "스코어 보드 기록 초기화", "색맹 모드", "설정 초기화", "메인 화면으로"};
     buttons = new JButton[6];
@@ -25,23 +34,82 @@ public class SettingScreenMenu extends JPanel {
     for (int i = 0; i < 6; i++) {
       buttons[i] = new JButton(btnText[i]);
       add(buttons[i]);
-      Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>(buttons[i].getFocusTraversalKeys(
-        KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
-      set.add(KeyStroke.getKeyStroke("UP"));
+
+      Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(
+        KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS ) );
+      set.add( KeyStroke.getKeyStroke( "UP" ) );
       buttons[i].setFocusTraversalKeys(
-        KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, set);
+        KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, set );
+
+      Set<AWTKeyStroke> set2 = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(
+        KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS ) );
+      set2.add( KeyStroke.getKeyStroke( "DOWN" ) );
+      buttons[i].setFocusTraversalKeys(
+        KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, set2 );
+
+      buttons[i].addKeyListener(playerKeyListener);
     }
 
-    InputMap im = getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-    String rightText = "DOWN";
-    im.put(KeyStroke.getKeyStroke(rightText), rightText);
-    getActionMap().put(rightText, new AbstractAction() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+
+  }
+
+  public class PlayerKeyListener extends Component implements KeyListener{
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+      if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (e.getSource() == buttons[0]) {
+
+          settingScreen.setVisible(false);
+          ScreenSettingScreen settingScreen = new ScreenSettingScreen();
+
+        } else if (e.getSource() == buttons[1]) {
+
+          settingScreen.setVisible(false);
+          KeySettingScreen keySettingScreen = new KeySettingScreen();
+
+        } else if (e.getSource() == buttons[2]) {
+
+          System.out.println("스코어 보드 기록 초기화 버튼을 눌렀음");
+          // 추후 추가 예정
+
+        } else if (e.getSource() == buttons[3]) {
+
+          if (settingScreen.colorCount % 2 == 1) {
+            settingScreen.fileInputOutput.OutputColorFileForBlind();
+            settingScreen.colorCount++;
+          } else {
+            settingScreen.fileInputOutput.OutputColorFileNotForBlind();
+            settingScreen.colorCount++;
+          }
+
+        } else if (e.getSource() == buttons[4]) {
+
+          //색맹모드 초기화
+          settingScreen.fileInputOutput.OutputColorFileNotForBlind();
+          settingScreen.colorCount = 0;
+          //조작키 설정 초기화
+          settingScreen.fileInputOutput.OutputKeySettingFileToArrow();
+          //화면 크기 초기화
+          settingScreen.fileInputOutput.OutputScreenSize800800();
+
+        } else if (e.getSource() == buttons[5]) {
+          settingScreen.setVisible(false);
+          StartScreen startScreen = new StartScreen();
+        }
+
+      } else if (e.getKeyCode() != KeyEvent.VK_ENTER || e.getKeyCode() != KeyEvent.VK_DOWN || e.getKeyCode() != KeyEvent.VK_UP) {
+        JOptionPane.showConfirmDialog(this, "엔터와 위아래 화살표를 눌러주세요", "confirm", JOptionPane.INFORMATION_MESSAGE);
       }
-    });
+    }
 
+    @Override
+    public void keyReleased(KeyEvent e) {
 
+    }
   }
 }
