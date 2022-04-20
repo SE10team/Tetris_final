@@ -3,6 +3,7 @@ package seoultech.se.tetris.GUI;
 import seoultech.se.tetris.component.Board;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
+import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -33,6 +34,7 @@ public class PlayScreen extends JFrame { // 게임 전체 화면을 그리는 �
 		NextGenerateBlock nextBlock = new NextGenerateBlock();
 		NextBoard nextBoard = new NextBoard(nextBlock);
 		mainBoard = new Board(score, scoreBoard, nextBlock, nextBoard);
+
 
 
 		add(mainBoard);

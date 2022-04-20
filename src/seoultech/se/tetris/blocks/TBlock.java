@@ -8,6 +8,6 @@ public class TBlock extends Block {
 			{1, 1, 1}
 		};
 
-		color = getColorFromFile.colors[6];
+		color = colors[6];
 	}
 }

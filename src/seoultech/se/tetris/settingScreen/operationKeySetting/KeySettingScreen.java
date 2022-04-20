@@ -1,89 +1,36 @@
 package seoultech.se.tetris.settingScreen.operationKeySetting;
 
-import seoultech.se.tetris.main.Tetris;
+import seoultech.se.tetris.settingScreen.FileInputOutput;
 import seoultech.se.tetris.settingScreen.SettingScreen;
-import seoultech.se.tetris.settingScreen.SettingScreenMenu;
-import seoultech.se.tetris.startScreen.StartScreenMenu;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.HashMap;
 
 public class KeySettingScreen extends JFrame {
 
   public KeySettingScreen() {
 
-    String keySettingFile = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
+    FileInputOutput fileInputOutput = new FileInputOutput();
 
     AbstractAction buttonPressed = new AbstractAction() {
       @Override
       public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "W, A, S, D 키로 조작") {
 
-          try {
-            File colorSettingFile = new File(keySettingFile);
-            if (colorSettingFile.exists()) {
-              if (colorSettingFile.delete()) {
-                System.out.println("성공적으로 파일 삭제");
-              } else {
-                System.out.println("파일 삭제 실패");
-              }
-            }
-            FileOutputStream fileOutputStream = new FileOutputStream(keySettingFile);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            HashMap<String, Integer> hashMap = new HashMap<>();
-            hashMap.put("UP", KeyEvent.VK_W);
-            hashMap.put("DOWN", KeyEvent.VK_S);
-            hashMap.put("LEFT", KeyEvent.VK_A);
-            hashMap.put("RIGHT", KeyEvent.VK_D);
-
-            objectOutputStream.writeObject(hashMap);
-            System.out.println(hashMap);
-            objectOutputStream.close();
-          } catch (IOException fileNotFoundException) {
-            fileNotFoundException.printStackTrace();
-          }
+              fileInputOutput.OutputKeySettingWithWASD();
 
         } else if (e.getActionCommand() == "화살표 방향키로 조작") {
 
-          try {
-            File colorSettingFile = new File(keySettingFile);
-            if (colorSettingFile.exists()) {
-              if (colorSettingFile.delete()) {
-                System.out.println("성공적으로 파일 삭제");
-              } else {
-                System.out.println("파일 삭제 실패");
-              }
-            }
-            FileOutputStream fileOutputStream = new FileOutputStream(keySettingFile);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            HashMap<String, Integer> hashMap = new HashMap<>();
-            hashMap.put("UP", KeyEvent.VK_UP);
-            hashMap.put("DOWN", KeyEvent.VK_DOWN);
-            hashMap.put("LEFT", KeyEvent.VK_LEFT);
-            hashMap.put("RIGHT", KeyEvent.VK_RIGHT);
-
-            objectOutputStream.writeObject(hashMap);
-            System.out.println(hashMap);
-            objectOutputStream.close();
-          } catch (IOException fileNotFoundException) {
-            fileNotFoundException.printStackTrace();
-          }
-
+              fileInputOutput.OutputKeySettingFileToArrow();
 
         } else if (e.getActionCommand() == "뒤로가기") {
-          setVisible(false);
-          try {
-            SettingScreen settingScreen = new SettingScreen();
-          } catch (Exception ex) {
-            ex.printStackTrace();
-          }
+              setVisible(false);
+              try {
+                SettingScreen settingScreen = new SettingScreen();
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
         }
       }
     };

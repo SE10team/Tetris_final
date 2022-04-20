@@ -8,6 +8,6 @@ public class JBlock extends Block {
 				{0, 0, 1}
 		};
 
-		color = getColorFromFile.colors[2];
+		color = colors[2];
 	}
 }

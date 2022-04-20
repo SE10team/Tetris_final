@@ -3,24 +3,14 @@ package seoultech.se.tetris.component;
 import seoultech.se.tetris.GUI.NextBoard;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.*;
-import seoultech.se.tetris.settingScreen.operationKeySetting.GetKeySetting;
+import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import java.awt.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.HashMap;
-import java.util.Random;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
-import javax.swing.text.SimpleAttributeSet;
 
 
 public class Board extends JPanel {
@@ -48,8 +38,9 @@ public class Board extends JPanel {
 
     private Block curr;
 
-    GetKeySetting getKeySetting;
-    int[] keySetting;
+    FileInputOutput fileInputOutput;
+
+    int[] keySettingArr;
 
     private static final int initInterval = 1000;
 
@@ -100,16 +91,9 @@ public class Board extends JPanel {
         setFocusable(true);
         requestFocus();
 
-        getKeySetting = new GetKeySetting();
-        keySetting = new int[4];
-        keySetting[0] = getKeySetting.keys[0];
-        keySetting[1] = getKeySetting.keys[1];
-        keySetting[2] = getKeySetting.keys[2];
-        keySetting[3] = getKeySetting.keys[3];
 
-
-//        //Initialize board for the game.
-//        board = new int[HEIGHT][WIDTH]; //보드생성
+        fileInputOutput = new FileInputOutput();
+        keySettingArr = fileInputOutput.InputKeyFile();
 
     }
 
@@ -433,6 +417,8 @@ public class Board extends JPanel {
         }
     }
 
+
+
     /* 사용자의 키보드 입력에 대한 메소드 */
     public class PlayerKeyListener implements KeyListener {
 
@@ -443,18 +429,18 @@ public class Board extends JPanel {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == keySetting[1]) {
+            if (e.getKeyCode() == keySettingArr[1]) {
                 try {
                     moveBlockDown();
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-            } else if (e.getKeyCode() == keySetting[3]) {
+            } else if (e.getKeyCode() == keySettingArr[3]) {
                 moveBlockRight();
-            } else if (e.getKeyCode() == keySetting[2]) {
+            } else if (e.getKeyCode() == keySettingArr[2]) {
                 moveBlockLeft();
-            } else if (e.getKeyCode() == keySetting[0]) {
+            } else if (e.getKeyCode() == keySettingArr[0]) {
                 rotateBlock();
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 try {

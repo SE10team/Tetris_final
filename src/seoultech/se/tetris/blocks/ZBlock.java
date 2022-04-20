@@ -8,6 +8,6 @@ public class ZBlock extends Block {
 			{0, 1, 1}
 		};
 
-		color = getColorFromFile.colors[0];
+		color = colors[0];
 	}
 }

@@ -7,6 +7,6 @@ public class IBlock extends Block {
 			{1, 1, 1, 1}
 		};
 
-		color = getColorFromFile.colors[1];
+		color = colors[1];
 	}
 }

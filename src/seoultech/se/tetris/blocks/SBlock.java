@@ -8,6 +8,6 @@ public class SBlock extends Block {
 			{1, 1, 0}
 		};
 
-		color = getColorFromFile.colors[5];
+		color = colors[5];
 	}
 }

@@ -8,6 +8,6 @@ public class LBlock extends Block {
 			{1, 0, 0}  ///
 		};
 
-		color = getColorFromFile.colors[3];
+		color = colors[3];
 	}
 }

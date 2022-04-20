@@ -6,6 +6,7 @@ import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.component.Board;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
+import seoultech.se.tetris.settingScreen.FileInputOutput;
 import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
@@ -43,6 +44,10 @@ public class Tetris extends JFrame { // 게임 전체 화면
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 버튼 설정
     setLayout(null); // 레이아웃 설정
     setBackground(Color.WHITE);
+
+    FileInputOutput fileInputOutput = new FileInputOutput();
+    fileInputOutput.OutputKeySettingFileToArrow();
+    fileInputOutput.OutputColorFileNotForBlind();
 
     GameScore score = new GameScore();
     ScoreBoard scoreBoard = new ScoreBoard(score);

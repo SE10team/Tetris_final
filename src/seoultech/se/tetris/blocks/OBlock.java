@@ -8,6 +8,6 @@ public class OBlock extends Block {
 			{1, 1}
 		};
 
-		color = getColorFromFile.colors[4];
+		color = colors[4];
 	}
 }

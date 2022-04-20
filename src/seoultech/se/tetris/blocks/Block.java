@@ -1,6 +1,6 @@
 package seoultech.se.tetris.blocks;
 
-import seoultech.se.tetris.settingScreen.colorSetting.GetColorFromFile;
+import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import java.awt.*;
 
@@ -10,7 +10,8 @@ public abstract class Block {
 	protected Color color;
 	protected int x,y;
 	private int WIDTH = 10;
-	public GetColorFromFile getColorFromFile = new GetColorFromFile();
+	public FileInputOutput fileInputOutput = new FileInputOutput();
+	public Color[] colors = fileInputOutput.InputColorFile();
 	
 	public Block() throws Exception {
 
@@ -19,7 +20,7 @@ public abstract class Block {
 				{1, 1}
 		};
 
-		color = getColorFromFile.colors[0];
+		color = colors[0];
 
 		x= (WIDTH - width()) / 2 ;
 		y= 0;
