@@ -2,13 +2,11 @@ package seoultech.se.tetris.main;
 
 
 import seoultech.se.tetris.GUI.NextBoard;
-import seoultech.se.tetris.GUI.PlayScreen;
 import seoultech.se.tetris.GUI.ScoreBoard;
-import seoultech.se.tetris.component.Board;
+import seoultech.se.tetris.component.Board.Board;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
-import seoultech.se.tetris.settingScreen.SettingScreen;
 import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;

@@ -4,7 +4,7 @@ import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import java.awt.*;
 
-public abstract class Block {
+public class Block {
 		
 	protected int[][] shape;
 	protected Color color;

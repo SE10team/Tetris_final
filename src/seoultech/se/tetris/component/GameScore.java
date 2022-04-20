@@ -27,10 +27,21 @@ public class GameScore {
         total_score += plus;
     } // 게임이 진행될 때 자동으로 추가되는 점수
     public void setPlus(int speed){ plus += speed; System.out.println("plus : " + plus);} // 속도가 올라감에 따라 plus를 증가하는 함수
-    public void line(){total_score += 10;} // 한 행을 맞췄을 때
-    public void multiLine(int line_num){ total_score += 10*line_num*line_num;} // 콤보 점수 - 한 번에 여러 해을 맞췄을 때
     public int getTotal_score() {
         return total_score;
     } // 최종 점수 반환
+
+    //normal
+    public void line(){total_score += 10;} // 한 행을 맞췄을 때
+    public void multiLine(int line_num){ total_score += 10*line_num*line_num;} // 콤보 점수 - 한 번에 여러 해을 맞췄을 때
+
+    //easy
+    public void easyLine(){total_score += 9;} // 한 행을 맞췄을 때
+    public void multiEasyLine(int line_num){ total_score += 10*(line_num-1)*line_num;} // 콤보 점수 - 한 번에 여러 해을 맞췄을 때
+
+
+    //hard
+    public void hardLine(){total_score += 10;} // 한 행을 맞췄을 때
+    public void multiHardLine(int line_num){ total_score += 10*(line_num+1)*line_num;} // 콤보 점수 - 한 번에 여러 해을 맞췄을 때
 
 }

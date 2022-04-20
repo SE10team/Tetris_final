@@ -1,12 +1,11 @@
 package seoultech.se.tetris.GUI;
 
-import seoultech.se.tetris.component.Board;
+import seoultech.se.tetris.component.Board.Board;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import javax.swing.*;
-import javax.swing.text.SimpleAttributeSet;
 import java.awt.*;
 
 

@@ -1,13 +1,14 @@
-package seoultech.se.tetris.component;
+package seoultech.se.tetris.component.Board;
 
 import seoultech.se.tetris.GUI.NextBoard;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.*;
+import seoultech.se.tetris.component.GameScore;
+import seoultech.se.tetris.component.NextGenerateBlock;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import java.awt.*;
 
-import java.awt.desktop.ScreenSleepEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -16,37 +17,36 @@ import javax.swing.*;
 
 public class Board extends JPanel {
 
-    private static final long serialVersionUID = 2434035659171694595L;
+    protected static final long serialVersionUID = 2434035659171694595L;
 
     public static final int HEIGHT = 20;
     public static final int WIDTH = 10;
-    private int gridCellSize;
+    protected final int gridCellSize;
 
-    private Color[][] background;
+    protected final Color[][] background;
 
     //GameOver 설정
-    private JLabel text;
-    private Font font;
+    protected final JLabel text;
 
-    private KeyListener playerKeyListener;
-    private Timer timer;
+    protected KeyListener playerKeyListener;
+    protected final Timer timer;
 
     // 다른 클래스
-    private GameScore gameScore;
-    private ScoreBoard scoreBoard;
-    private NextGenerateBlock nextBlock;
-    private NextBoard nextBoard;
+    protected GameScore gameScore;
+    protected ScoreBoard scoreBoard;
+    protected final NextGenerateBlock nextBlock;
+    protected final NextBoard nextBoard;
 
-    private Block curr;
+    protected Block curr;
 
     FileInputOutput fileInputOutput;
 
     int[] keySettingArr;
 
-    private int initInterval = 1000;
-    private int completeLines = 0; //완료 행 수
-    private int levelLines= 5; //레벨 올라갈 때 필요한 줄 수
-    private int pluslevelLines = 5; // 필요한 줄 수 더하기
+    protected int initInterval = 1000;
+    protected int completeLines = 0; //완료 행 수
+    protected int levelLines= 5; //레벨 올라갈 때 필요한 줄 수
+    protected int pluslevelLines = 5; // 필요한 줄 수 더하기
 
     public Board(GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard) throws Exception{
 
@@ -70,7 +70,7 @@ public class Board extends JPanel {
         text.setBounds(100,300, 250,120);
 
         /*폰트 설정*/
-        font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
+        Font font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
         text.setForeground(Color.RED);
         text.setFont(font);
         text.setVisible(false);
@@ -137,7 +137,7 @@ public class Board extends JPanel {
 
                 clearEvent(row);
                 this.paint(this.getGraphics());
-                Thread.sleep(200);
+                Thread.sleep(150);
                 clearLine(row);
                 shiftDown(row);
                 clearLine(0);
@@ -155,24 +155,24 @@ public class Board extends JPanel {
         if (completeRows >=2) gameScore.multiLine(completeRows);
     }
 
-    private void clearLine(int row) {
+    protected void clearLine(int row) {
         for(int i = 0; i < WIDTH; i++)
             {
                 background[row][i] = null;
             }
     }
 
-    private void clearEvent(int row) {
+    protected void clearEvent(int row) {
         for(int i = 0; i < WIDTH; i++)
         {
-            background[row][i] = Color.white;
+            background[row][i] = Color.LIGHT_GRAY;
         }
 
         System.out.println("ClearEvent");
 
     }
 
-    private void shiftDown(int row) {
+    protected void shiftDown(int row) {
         for(int r = row; r >0; r--){
             for (int col = 0; col < WIDTH; col++)
             {
@@ -181,7 +181,7 @@ public class Board extends JPanel {
         }
     }
 
-    private void setInterval() {
+    protected void setInterval() {
         if (completeLines >= levelLines) {
             initInterval -= 100;
             levelLines += pluslevelLines;
@@ -192,7 +192,7 @@ public class Board extends JPanel {
         }
     }
 
-    private void moveBlockToBackground(){ //블럭 background로 보내기
+    protected void moveBlockToBackground(){ //블럭 background로 보내기
         int[][] shape = curr.getShape();
         int h = curr.height();
         int w = curr.width();
@@ -214,7 +214,7 @@ public class Board extends JPanel {
         }
     }
 
-    private void placeBlock(Graphics g) { // 블럭 그리기
+    protected void placeBlock(Graphics g) { // 블럭 그리기
 
         Color color = curr.getColor();
         int[][] shape = curr.getShape();
@@ -231,7 +231,7 @@ public class Board extends JPanel {
         }
     }
 
-    private void drawBackground(Graphics g) { // background 그리기
+    protected void drawBackground(Graphics g) { // background 그리기
         Color color;
 
         for (int row = 0; row < HEIGHT; row++)
@@ -251,7 +251,7 @@ public class Board extends JPanel {
         }
     }
 
-    private void drawGridSquare(Graphics g, Color color, int x , int y) { //블럭 그리기(painting)
+    protected void drawGridSquare(Graphics g, Color color, int x , int y) { //블럭 그리기(painting)
         g.setColor(color);
         g.fillRect(x, y, gridCellSize, gridCellSize); //블럭 그리고
         g.setColor(Color.BLACK);
@@ -350,7 +350,7 @@ public class Board extends JPanel {
     }
 
     //rotate 자리에 !null 있는지 체크
-    private boolean checkRotate(int[][] shape) {
+    protected boolean checkRotate(int[][] shape) {
 
         int w = curr.width();
         int h = curr.height();
@@ -377,7 +377,7 @@ public class Board extends JPanel {
     }
 
     //바닥 체크
-    private boolean checkBottom() {
+    protected boolean checkBottom() {
         if (curr.getBottomEdge() == HEIGHT){
             return false;
         }
@@ -403,7 +403,7 @@ public class Board extends JPanel {
     }
 
     //왼쪽 체크
-    private boolean checkLeft() {
+    protected boolean checkLeft() {
         if(curr.getLeftEdge() ==0) return false;
 
         int[][]shape = curr.getShape();
@@ -426,7 +426,7 @@ public class Board extends JPanel {
     }
 
     //오른쪽 체크
-    private boolean checkRight() {
+    protected boolean checkRight() {
         if(curr.getRightEdge() == WIDTH ) return false;
 
         int[][]shape = curr.getShape();
