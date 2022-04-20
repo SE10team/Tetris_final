@@ -7,6 +7,7 @@ import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import java.awt.*;
 
+import java.awt.desktop.ScreenSleepEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -114,7 +115,7 @@ public class Board extends JPanel {
 
     }
 
-    public void clearLines() {
+    public void clearLines() throws InterruptedException {
         boolean lineFilled;
         int completeRows =0;
 
@@ -133,10 +134,16 @@ public class Board extends JPanel {
 
             if(lineFilled)
             {
+
+                clearEvent(row);
+                this.paint(this.getGraphics());
+                Thread.sleep(200);
                 clearLine(row);
                 shiftDown(row);
                 clearLine(0);
                 row++;
+
+                //스코어 증가
                 gameScore.line();
                 completeLines++;
                 completeRows++;
@@ -153,6 +160,16 @@ public class Board extends JPanel {
             {
                 background[row][i] = null;
             }
+    }
+
+    private void clearEvent(int row) {
+        for(int i = 0; i < WIDTH; i++)
+        {
+            background[row][i] = Color.white;
+        }
+
+        System.out.println("ClearEvent");
+
     }
 
     private void shiftDown(int row) {
@@ -283,12 +300,12 @@ public class Board extends JPanel {
                 this.makeGameOverbackground(); // 종료
                 text.setVisible(true);
 
-
                 return;
             }
             moveBlockToBackground();
-            clearLines();
             spawnBlock();
+            clearLines();
+
             repaint();
 
         }

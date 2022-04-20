@@ -45,14 +45,14 @@ public class Tetris extends JFrame { // 게임 전체 화면
     super("Tetris");
     System.out.println("시작");
     // 맥 (유빈)
-    final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
-    final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
-    final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
+//    final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
+//    final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
+//    final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
 
     // 윈도우 (윤재)
-//   private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
-//   private final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
-//   private final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
+    final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
+    final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
+    final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
 
     FileInputOutput fileInputOutput = new FileInputOutput();
     if (!(new File((colorFilename)).exists())) {
