@@ -1,4 +1,4 @@
-package seoultech.se.tetris.settingScreen.operationKeySetting;
+package seoultech.se.tetris.settingScreen;
 
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 import seoultech.se.tetris.settingScreen.SettingScreen;

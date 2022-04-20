@@ -1,14 +1,9 @@
 package seoultech.se.tetris.settingScreen;
 
-import seoultech.se.tetris.settingScreen.operationKeySetting.KeySettingScreen;
 import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.io.*;
-import java.util.HashMap;
 
 public class SettingScreen extends JFrame {
 

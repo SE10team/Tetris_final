@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db733796-5e8a-41ea-889d-04a394f0f95f" name="Changes" comment="pull 용 커밋">
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="1a7495ec-4bc5-4022-a6e8-dd67b361d898" name="Changes by USER" comment="" />
     <option name="SHOW_DIALOG" value="false" />
