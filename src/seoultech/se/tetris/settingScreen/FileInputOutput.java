@@ -10,8 +10,14 @@ import java.util.Objects;
 public class FileInputOutput {
 
   // 경로설정 바꿀곳!
+
+  // 맥 (유빈)
   private final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
   private final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
+
+  // 윈도우 (윤재)
+  // private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
+  // private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
 
 
 
