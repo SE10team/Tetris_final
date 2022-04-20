@@ -2,11 +2,13 @@ package seoultech.se.tetris.main;
 
 
 import seoultech.se.tetris.GUI.NextBoard;
+import seoultech.se.tetris.GUI.PlayScreen;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.component.Board;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
+import seoultech.se.tetris.settingScreen.SettingScreen;
 import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
@@ -40,7 +42,7 @@ public class Tetris extends JFrame { // 게임 전체 화면
   }
 
   public Tetris() throws Exception {
-    super("테스트"); // 게임 실행시 이름
+    super("Tetris");
     System.out.println("시작");
 
     FileInputOutput fileInputOutput = new FileInputOutput();
@@ -54,24 +56,6 @@ public class Tetris extends JFrame { // 게임 전체 화면
       fileInputOutput.OutputScreenSize800800();
     }
 
-
-    int[] screenSizeArr = fileInputOutput.InputScreenSizeFile();
-
-    setSize(screenSizeArr[0],screenSizeArr[1]); // 전체 화면 크기
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 버튼 설정
-    setLayout(null); // 레이아웃 설정
-    setBackground(Color.WHITE);
-
-    GameScore score = new GameScore();
-    ScoreBoard scoreBoard = new ScoreBoard(score);
-
-    NextGenerateBlock nextBlock = new NextGenerateBlock();
-    NextBoard nextBoard = new NextBoard(nextBlock);
-    mainBoard = new Board(score, scoreBoard, nextBlock, nextBoard);
-
-    add(mainBoard);
-    add(scoreBoard);
-    add(nextBoard);
 
   }
 }

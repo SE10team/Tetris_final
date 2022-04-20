@@ -10,15 +10,15 @@ import javax.swing.text.SimpleAttributeSet;
 import java.awt.*;
 
 
-public class PlayScreen extends JFrame { // 게임 전체 화면을 그리는 곳
+public class PlayScreen extends JFrame { // 게임 화면을 그리는 곳
 
 	private Board mainBoard;
 
-	public static void main(String[] args) throws Exception {
-		PlayScreen tetris = new PlayScreen();
-		tetris.setVisible(true);
-
-	}
+//	public static void main(String[] args) throws Exception {
+//		PlayScreen tetris = new PlayScreen();
+//		tetris.setVisible(true);
+//
+//	}
 
 	public PlayScreen() throws Exception {
 		super("테스트"); // 게임 실행시 이름
