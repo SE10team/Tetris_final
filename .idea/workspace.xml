@@ -1,14 +1,57 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-        version="2.1">
-
-    <tlib-version>1.0</tlib-version>
-    <short-name>myshortname</short-name>
-    <uri>http://mycompany.com</uri>
-
-    <!-- Invoke 'Generate' action to add tags or functions -->
-
-</taglib>
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a99b02de-6aae-4eff-a841-a91910ccdaf8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/FileInputOutput.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/FileInputOutput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Tag Library Descriptor" />
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tetris" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="seoultech.se.tetris.main.Tetris" />
+      <module name="SE10" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="seoultech.se.tetris.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Tetris" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
