@@ -17,7 +17,7 @@ public class FileInputOutput {
 
   // 윈도우 (윤재)
   // private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
-  // private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
+  // private final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
 
 
 
