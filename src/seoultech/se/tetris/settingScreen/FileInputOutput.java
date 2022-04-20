@@ -28,8 +28,6 @@ public class FileInputOutput {
 
 
 
-
-
   public Color[] InputColorFile() throws IOException, ClassNotFoundException {
       Color[] colors = new Color[7];
       FileInputStream fileInputStream = new FileInputStream(colorFilename);

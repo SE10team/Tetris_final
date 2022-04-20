@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="83c37eef-76fc-4cfd-8b4e-f944a69ad6c6" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.java" afterDir="false" />
@@ -21,12 +22,20 @@
       <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/startScreen/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/startScreen/StartScreen.java" afterDir="false" />
+=======
+    <list default="true" id="a99b02de-6aae-4eff-a841-a91910ccdaf8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/FileInputOutput.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/FileInputOutput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" afterDir="false" />
+>>>>>>> c14892eea82dcb9863bac6fdd25811447e37e546
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -59,6 +68,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Tag Library Descriptor" />
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+>>>>>>> c14892eea82dcb9863bac6fdd25811447e37e546
     <configuration name="Tetris" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="seoultech.se.tetris.main.Tetris" />
       <module name="SE10" />
@@ -75,6 +94,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Tetris" />
+<<<<<<< HEAD
         <item itemvalue="Application.PlayScreen" />
       </list>
     </recent_temporary>
@@ -88,6 +108,12 @@
       <option name="presentableId" value="Default" />
       <updated>1650439988931</updated>
     </task>
+=======
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+>>>>>>> c14892eea82dcb9863bac6fdd25811447e37e546
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,6 +128,7 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/GameScoreTest_java$ScoreCsvTest.ic" NAME="ScoreCsvTest Coverage Results" MODIFIED="1650430223982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>seoultech.se.tetris.scoreData.dao.*</FILTER>
@@ -110,4 +137,6 @@
       <FILTER>seoultech.se.tetris.main.*</FILTER>
     </SUITE>
   </component>
+=======
+>>>>>>> c14892eea82dcb9863bac6fdd25811447e37e546
 </project>
