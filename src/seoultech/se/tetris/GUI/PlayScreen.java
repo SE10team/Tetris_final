@@ -20,7 +20,7 @@ public class PlayScreen extends JFrame { // 게임 화면을 그리는 곳
 //	}
 
 	public PlayScreen() throws Exception {
-		super("테스트"); // 게임 실행시 이름
+		super("일반 모드 테트리스"); // 게임 실행시 이름
 
 		FileInputOutput fileInputOutput = new FileInputOutput();
 		int[] screenSizeArr = fileInputOutput.InputScreenSizeFile();

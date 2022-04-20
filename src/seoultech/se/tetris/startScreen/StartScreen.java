@@ -1,8 +1,8 @@
 package seoultech.se.tetris.startScreen;
 
 
+import seoultech.se.tetris.itemMode.ItemModePlayScreen;
 import seoultech.se.tetris.GUI.PlayScreen;
-import seoultech.se.tetris.main.Tetris;
 import seoultech.se.tetris.settingScreen.SettingScreen;
 
 import javax.swing.*;
@@ -31,8 +31,12 @@ public class StartScreen extends JFrame {
           }
           playScreen.setVisible(true);
         } else if (e.getActionCommand() == "아이템 모드 게임 시작") {
-          System.out.println("아이템 모드 게임 시작 버튼을 눌렀음");
-          // 추후 추가 예정
+          setVisible(false);
+          try {
+            ItemModePlayScreen itemModePlayScreen = new ItemModePlayScreen();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
         } else if (e.getActionCommand() == "게임 설정") {
           setVisible(false);
           try {

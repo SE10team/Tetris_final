@@ -1,6 +1,8 @@
-package seoultech.se.tetris.component;
+package seoultech.se.tetris.itemMode;
 
-import seoultech.se.tetris.GUI.NextBoard;
+import seoultech.se.tetris.blocks.OneBlock;
+import seoultech.se.tetris.blocks.WeightBlock;
+import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.Block;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
@@ -9,6 +11,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Objects;
+
+import static seoultech.se.tetris.itemMode.ItemModeNextGenerateBlock.currItemBlock;
 
 
 public class ItemModeBoard extends JPanel {
@@ -31,9 +36,8 @@ public class ItemModeBoard extends JPanel {
     // 다른 클래스
     private GameScore gameScore;
     private ScoreBoard scoreBoard;
-    private NextGenerateBlock nextBlock;
     private ItemModeNextGenerateBlock itemModeNextGenerateBlock;
-    private NextBoard nextBoard;
+    private ItemModeNextBoard nextBoard;
 
     private Block curr;
 
@@ -42,11 +46,13 @@ public class ItemModeBoard extends JPanel {
     int[] keySettingArr;
 
     private int initInterval = 1000;
-    private int completeLines = 0; //완료 행 수
+    public static int completeLines = 0; //완료 행 수
     private int levelLines= 5; //레벨 올라갈 때 필요한 줄 수
     private int pluslevelLines = 5; // 필요한 줄 수 더하기
+    public static int countCompleteLines = completeLines;
+    private int gridRows;
 
-    public ItemModeBoard(GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard, ItemModeNextGenerateBlock itemModeNextGenerateBlock) throws Exception{
+    public ItemModeBoard(GameScore gameScore, ScoreBoard scoreBoard, ItemModeNextGenerateBlock itemModeNextGenerateBlock, ItemModeNextBoard nextBoard) throws Exception{
 
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
@@ -62,6 +68,7 @@ public class ItemModeBoard extends JPanel {
         setBackground(Color.BLACK);
 
         gridCellSize = getBounds().width / WIDTH; //네모네모 크기 설정
+        gridRows = this.getBounds().height / gridCellSize;
 
         /*컴포넌트 설정*/
         text = new JLabel("Game Over"); // 글자
@@ -80,14 +87,18 @@ public class ItemModeBoard extends JPanel {
         //Set timer for block drops.
         timer = new Timer(initInterval, e -> {
             try {
-                moveBlockDown(); // 블럭 내려보내기
+                moveBlockDown();
+//                if (currItemBlock == 1) {
+//                    whenWeightBlockTouchingBottom();
+//                } else {
+//                    moveBlockDown(); // 블럭 내려보내기
+//                }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
 
         timer.start();
-        this.nextBlock = nextGBlock;
         this.itemModeNextGenerateBlock = itemModeNextGenerateBlock;
         this.nextBoard = nextBoard;
         spawnBlock();
@@ -101,6 +112,23 @@ public class ItemModeBoard extends JPanel {
 
         fileInputOutput = new FileInputOutput();
         keySettingArr = fileInputOutput.InputKeyFile();
+
+    }
+
+    public void whenOneBlockTouchedBottom() throws Exception {
+
+    }
+
+    public void whenWeightBlockTouchingBottom() throws Exception {
+
+        for (int x = curr.getBottomEdge(); x < gridRows; x++) {
+            for (int y = curr.getLeftEdge(); y < curr.getRightEdge(); y++) {
+                background[x][y] = null;
+            }
+            curr.moveDown();
+            repaint();
+        }
+        moveBlockToBackground();
 
     }
 
@@ -139,6 +167,7 @@ public class ItemModeBoard extends JPanel {
                 row++;
                 gameScore.line();
                 completeLines++;
+                countCompleteLines = completeLines;
                 completeRows++;
                 repaint();
                 setInterval();
@@ -242,15 +271,9 @@ public class ItemModeBoard extends JPanel {
     }
 
     public void spawnBlock() throws Exception{ // 새로운 블럭 스폰
-        if (completeLines % 10 == 0) {
-            curr = itemModeNextGenerateBlock.getNextblock();
-            itemModeNextGenerateBlock.generateBlock();
-            nextBoard.updateBlock();
-        } else {
-            curr = nextBlock.getNextblock(); // 새로운 블럭 스폰
-            nextBlock.generateBlock();
-            nextBoard.updateBlock();
-        }
+        curr = itemModeNextGenerateBlock.getNextblock();
+        itemModeNextGenerateBlock.generateBlock();
+        nextBoard.updateBlock();
     }
 
     public void makeGameOverbackground(){
@@ -288,19 +311,16 @@ public class ItemModeBoard extends JPanel {
                 System.out.println("Game Over");
                 this.makeGameOverbackground(); // 종료
                 text.setVisible(true);
-
-
                 return;
             }
             moveBlockToBackground();
             clearLines();
             spawnBlock();
             repaint();
-
         }
         curr.moveDown();
-            gameScore.playScore(); // 스코어 증가
-            scoreBoard.updateScore(); // 점수 보여주기~
+        gameScore.playScore(); // 스코어 증가
+        scoreBoard.updateScore(); // 점수 보여주기~
         repaint();
     }
 
