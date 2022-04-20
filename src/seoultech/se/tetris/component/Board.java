@@ -42,7 +42,10 @@ public class Board extends JPanel {
 
     int[] keySettingArr;
 
-    private static final int initInterval = 1000;
+    private int initInterval = 1000;
+    private int completeLines = 0; //완료 행 수
+    private int levelLines= 5; //레벨 올라갈 때 필요한 줄 수
+    private int pluslevelLines = 5; // 필요한 줄 수 더하기
 
     public Board(GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard) throws Exception{
 
@@ -113,6 +116,7 @@ public class Board extends JPanel {
 
     public void clearLines() {
         boolean lineFilled;
+        int completeRows =0;
 
         for (int row = HEIGHT -1; row >=0; row--){
 
@@ -134,9 +138,14 @@ public class Board extends JPanel {
                 clearLine(0);
                 row++;
                 gameScore.line();
+                completeLines++;
+                completeRows++;
                 repaint();
+                setInterval();
             }
         }
+
+        if (completeRows >=2) gameScore.multiLine(completeRows);
     }
 
     private void clearLine(int row) {
@@ -152,6 +161,17 @@ public class Board extends JPanel {
             {
                 background[r][col] = background[r-1][col];
             }
+        }
+    }
+
+    private void setInterval() {
+        if (completeLines >= levelLines) {
+            initInterval -= 100;
+            levelLines += pluslevelLines;
+            pluslevelLines += 2;
+            timer.setDelay(initInterval);
+            gameScore.setPlus(2);
+            System.out.println("Delay : " + timer.getDelay());
         }
     }
 
