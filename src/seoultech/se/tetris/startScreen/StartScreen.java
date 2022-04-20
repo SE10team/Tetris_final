@@ -2,6 +2,7 @@ package seoultech.se.tetris.startScreen;
 
 
 import seoultech.se.tetris.GUI.PlayScreen;
+import seoultech.se.tetris.main.Tetris;
 import seoultech.se.tetris.settingScreen.SettingScreen;
 
 import javax.swing.*;
