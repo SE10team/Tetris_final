@@ -4,19 +4,17 @@ import seoultech.se.tetris.GUI.HighScoreScreen;
 import seoultech.se.tetris.GUI.NextBoard;
 import seoultech.se.tetris.GUI.PlayScreen;
 import seoultech.se.tetris.GUI.ScoreBoard;
-import seoultech.se.tetris.blocks.*;
+import seoultech.se.tetris.blocks.Block;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
 import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
 import seoultech.se.tetris.scoreData.model.NormalScore;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 
+import javax.swing.*;
 import java.awt.*;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import javax.swing.*;
 
 
 public class Board extends JPanel {
@@ -304,7 +302,6 @@ public class Board extends JPanel {
             // 이름 입력 및 예외 처리
             String name = inputDialog();
             String difficulty = normalScoreCsv.getLevel();
-            System.out.println(difficulty);
             NormalScore normalScore = new NormalScore(name,temp,difficulty);
 
             this.normalScoreCsv = new NormalScoreCsv(normalScore);
@@ -316,7 +313,6 @@ public class Board extends JPanel {
                 //저장 가능하면
                 String name = inputDialog();
                 String difficulty = normalScoreCsv.getLevel();
-                System.out.println(difficulty);
                 NormalScore normalScore = new NormalScore(name,temp,difficulty);
 
                 this.normalScoreCsv = new NormalScoreCsv(normalScore, isRank);

@@ -17,7 +17,7 @@ public class FileInputOutput {
 //  private final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
 //  private final String modeSettingFilename = "/Users/home/Desktop/modeSetting.ser";
 
-////  // 윈도우 (윤재)
+//////  // 윈도우 (윤재)
 //   private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
 //   private final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
 //   private final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";

@@ -1,7 +1,5 @@
 package seoultech.se.tetris.component;
 
-import seoultech.se.tetris.GUI.ScoreBoard;
-
 public class GameScore {
     /*field*/
     private int total_score; // 최종 점수

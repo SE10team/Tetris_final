@@ -1,13 +1,12 @@
 package seoultech.se.tetris.GUI;
 
-import seoultech.se.tetris.blocks.*;
+import seoultech.se.tetris.blocks.Block;
 import seoultech.se.tetris.component.NextGenerateBlock;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.util.Random;
 
 public class NextBoard extends JPanel { // 다음 블럭을 그리는 곳
 

@@ -89,7 +89,7 @@ public class StartScreen extends JFrame {
 //    final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
 //    final String modeSettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/modeSetting.ser";
 
-   // 윈도우 (의정)
+    //윈도우 (의정)
    final String colorFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/colorSetting.ser";
    final String keySettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/keySetting.ser";
    final String screenSizeFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/screenSizeSetting.ser";

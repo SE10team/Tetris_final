@@ -97,13 +97,13 @@ public class ItemModeBoard extends JPanel {
         //Set timer for block drops.
         timer = new Timer(initInterval, e -> {
             try {
-//                moveBlockDown();
-                if (curr.getThisBlock() == weightBlock.getThisBlock()) {
-                    System.out.println("weight!");
-                    whenWeightBlockTouchingBottom();
-                } else {
-                    moveBlockDown(); // 블럭 내려보내기
-                }
+                moveBlockDown();
+//                if (curr.getThisBlock() == weightBlock.getThisBlock()) {
+//                    System.out.println("weight!");
+//                    whenWeightBlockTouchingBottom();
+//                } else {
+//                    moveBlockDown(); // 블럭 내려보내기
+//                }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -144,15 +144,16 @@ public class ItemModeBoard extends JPanel {
                 scoreBoard.updateScore(); // 점수 보여주기~
 
             }
-            moveBlockToBackground();
+
+//            moveBlockToBackground();
             clearLines();
-            spawnBlock();
-            repaint();
+//            spawnBlock();
+//            repaint();
 
         }
-        curr.moveDown();
-        gameScore.playScore(); // 스코어 증가
-        scoreBoard.updateScore(); // 점수 보여주기~
+//        curr.moveDown();
+//        gameScore.playScore(); // 스코어 증가
+//        scoreBoard.updateScore(); // 점수 보여주기~
         repaint();
 
 
@@ -385,6 +386,9 @@ public class ItemModeBoard extends JPanel {
                 itemModePlayScreen.setVisible(false);
                 return;
             }
+            if(curr.getThisBlock()==1){
+                whenWeightBlockTouchingBottom();
+            }
             moveBlockToBackground();
             clearLines();
             spawnBlock();
@@ -567,7 +571,7 @@ public class ItemModeBoard extends JPanel {
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 try {
                     dropBlock();
-                    moveBlockToBackground();
+//                    moveBlockToBackground();
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
