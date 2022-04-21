@@ -37,22 +37,21 @@ public class PlayScreen extends JFrame { // 게임 화면을 그리는 곳
 
 		GameScore score = new GameScore();
 		ScoreBoard scoreBoard = new ScoreBoard(score);
-
 		NextGenerateBlock nextBlock = new NextGenerateBlock();
 		NextBoard nextBoard = new NextBoard(nextBlock);
 
 		switch (setMode){
 			case 1 -> {
-				EasyBoard mainBoard = new EasyBoard(score,scoreBoard,nextBlock,nextBoard, new NormalScoreCsv("Easy"));
+				EasyBoard mainBoard = new EasyBoard(this,score,scoreBoard,nextBlock,nextBoard,new NormalScoreCsv("Easy"));
 				add(mainBoard);
 			}
 
 			case 2 -> {
-				Board mainBoard = new Board(score,scoreBoard,nextBlock,nextBoard, new NormalScoreCsv("Normal"));
+				Board mainBoard = new Board(this,score,scoreBoard,nextBlock,nextBoard,new NormalScoreCsv("Normal"));
 				add(mainBoard);
 			}
 			case 3 -> {
-				HardBoard mainBoard = new HardBoard(score,scoreBoard,nextBlock,nextBoard, new NormalScoreCsv("Hard"));
+				HardBoard mainBoard = new HardBoard(this, score,scoreBoard,nextBlock,nextBoard,new NormalScoreCsv("Hard"));
 				add(mainBoard);
 			}
 		}

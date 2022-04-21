@@ -2,6 +2,7 @@ package seoultech.se.tetris.component.Board;
 
 import seoultech.se.tetris.GUI.HighScoreScreen;
 import seoultech.se.tetris.GUI.NextBoard;
+import seoultech.se.tetris.GUI.PlayScreen;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.*;
 import seoultech.se.tetris.component.GameScore;
@@ -40,6 +41,7 @@ public class Board extends JPanel {
     protected final NextGenerateBlock nextBlock;
     protected final NextBoard nextBoard;
     protected NormalScoreCsv normalScoreCsv;
+    protected PlayScreen playScreen;
 
     protected Block curr;
 
@@ -52,8 +54,8 @@ public class Board extends JPanel {
     protected int levelLines= 5; //레벨 올라갈 때 필요한 줄 수
     protected int pluslevelLines = 5; // 필요한 줄 수 더하기
 
-    public Board(GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard, NormalScoreCsv normalScoreCsv) throws Exception{
-
+    public Board(PlayScreen playScreen, GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard, NormalScoreCsv normalScoreCsv) throws Exception{
+        this.playScreen = playScreen;
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
         this.normalScoreCsv = normalScoreCsv;
@@ -302,6 +304,7 @@ public class Board extends JPanel {
             // 이름 입력 및 예외 처리
             String name = inputDialog();
             String difficulty = normalScoreCsv.getLevel();
+            System.out.println(difficulty);
             NormalScore normalScore = new NormalScore(name,temp,difficulty);
 
             this.normalScoreCsv = new NormalScoreCsv(normalScore);
@@ -313,6 +316,7 @@ public class Board extends JPanel {
                 //저장 가능하면
                 String name = inputDialog();
                 String difficulty = normalScoreCsv.getLevel();
+                System.out.println(difficulty);
                 NormalScore normalScore = new NormalScore(name,temp,difficulty);
 
                 this.normalScoreCsv = new NormalScoreCsv(normalScore, isRank);
@@ -333,7 +337,7 @@ public class Board extends JPanel {
     // 이름을 사용자 입력에 대한 예외 처리
     public String inputDialog(){
         String name = JOptionPane.showInputDialog(this,"Congratulations! Enter your English name!"); // 입력 요구
-        while(name == null && name.equals(name.toUpperCase())){ // null 값과 한글 입력의 경우
+        while(name == null || name.equals(name.toUpperCase())){ // null 값과 한글 입력의 경우
             name = JOptionPane.showInputDialog(this, "영어 이름 입력하라구요! 왜 말을 안 들어!", "이럴 줄 알았다", JOptionPane.WARNING_MESSAGE);
         }
         return name;
@@ -352,6 +356,7 @@ public class Board extends JPanel {
                 // 스코어 보드 화면 보여주기
                 HighScoreScreen highScoreScreen = new HighScoreScreen(normalScoreCsv);
                 highScoreScreen.setVisible(true);
+                playScreen.setVisible(false);
 
                 return;
             }

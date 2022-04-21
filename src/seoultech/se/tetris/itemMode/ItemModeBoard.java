@@ -1,11 +1,16 @@
 package seoultech.se.tetris.itemMode;
 
+import seoultech.se.tetris.GUI.HighScoreScreen;
 import seoultech.se.tetris.blocks.IBlock;
 import seoultech.se.tetris.blocks.OneBlock;
 import seoultech.se.tetris.blocks.WeightBlock;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.Block;
+import seoultech.se.tetris.scoreData.dao.ItemScoreCsv;
+import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
+import seoultech.se.tetris.scoreData.model.ItemScore;
+import seoultech.se.tetris.scoreData.model.NormalScore;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import javax.swing.*;
@@ -52,12 +57,15 @@ public class ItemModeBoard extends JPanel {
     private int pluslevelLines = 5; // 필요한 줄 수 더하기
     public static int countCompleteLines = completeLines;
     private int gridRows;
+    private ItemScoreCsv itemScoreCsv;
+    private ItemModePlayScreen itemModePlayScreen;
 
-    public ItemModeBoard(GameScore gameScore, ScoreBoard scoreBoard, ItemModeNextGenerateBlock itemModeNextGenerateBlock, ItemModeNextBoard nextBoard) throws Exception{
+    public ItemModeBoard(ItemModePlayScreen itemPlayScreen, GameScore gameScore, ScoreBoard scoreBoard, ItemModeNextGenerateBlock itemModeNextGenerateBlock, ItemModeNextBoard nextBoard, ItemScoreCsv itemScoreCsv) throws Exception{
 
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
-
+        this.itemScoreCsv = itemScoreCsv;
+        this.itemModePlayScreen = itemPlayScreen;
         fileInputOutput = new FileInputOutput();
 
         int[] locationArr = fileInputOutput.InputScreenSizeFile();
@@ -319,6 +327,47 @@ public class ItemModeBoard extends JPanel {
         return false;
     }
 
+    // 스코어 받고 저장하는 메소드
+    public void gameOverScore(){
+        int temp = gameScore.getTotal_score();
+        if(itemScoreCsv.getRecords().isEmpty()){ // 비어 있으면
+            // 이름 입력 및 예외 처리
+            String name = inputDialog();
+            ItemScore itemScore = new ItemScore(name,temp);
+
+            this.itemScoreCsv = new ItemScoreCsv(itemScore);
+            itemScoreCsv.finalScoreEmpty(); // 파일에 저장
+        }
+        else{
+            int isRank = itemScoreCsv.isRank(temp);
+            if(isRank != 11){
+                //저장 가능하면
+                String name = inputDialog();
+                ItemScore itemScore = new ItemScore(name,temp);
+
+                this.itemScoreCsv = new ItemScoreCsv(itemScore, isRank);
+                itemScoreCsv.finalScoreNotEmpty(); // 파일에 저장
+            }
+            else{
+                // 불가능하면
+                String name = "";
+                ItemScore itemScore = new ItemScore(name,temp);
+
+                this.itemScoreCsv = new ItemScoreCsv(itemScore, isRank);
+                itemScoreCsv.finalScoreNotEmpty(); // 파일에 저장
+            }
+        }
+    }
+
+    // 이름을 사용자 입력에 대한 예외 처리
+    public String inputDialog(){
+        String name = JOptionPane.showInputDialog(this,"Congratulations! Enter your English name!"); // 입력 요구
+        while(name == null || name.equals(name.toUpperCase())){ // null 값과 한글 입력의 경우
+            name = JOptionPane.showInputDialog(this, "영어 이름 입력하라구요! 왜 말을 안 들어!", "이럴 줄 알았다", JOptionPane.WARNING_MESSAGE);
+        }
+        return name;
+    }
+
 
     protected void moveBlockDown() throws Exception { //블럭 내리기
         if(!checkBottom()) {
@@ -329,6 +378,11 @@ public class ItemModeBoard extends JPanel {
                 System.out.println("Game Over");
                 this.makeGameOverbackground(); // 종료
                 text.setVisible(true);
+                gameOverScore(); // 스코어 처리
+                // 스코어 보드 화면 보여주기
+                HighScoreScreen highScoreScreen = new HighScoreScreen(itemScoreCsv);
+                highScoreScreen.setVisible(true);
+                itemModePlayScreen.setVisible(false);
                 return;
             }
             moveBlockToBackground();

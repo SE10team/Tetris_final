@@ -1,5 +1,7 @@
 package seoultech.se.tetris.settingScreen;
 
+import seoultech.se.tetris.scoreData.dao.ItemScoreCsv;
+import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
 import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
@@ -31,8 +33,11 @@ public class SettingScreen extends JFrame {
               KeySettingScreen keySettingScreen = new KeySettingScreen();
 
         } else if (e.getActionCommand() == "스코어 보드 기록 초기화") {
-
-              System.out.println("스코어 보드 기록 초기화 버튼을 눌렀음");
+            NormalScoreCsv normalScoreCsv = new NormalScoreCsv();
+            ItemScoreCsv itemScoreCsv = new ItemScoreCsv();
+            normalScoreCsv.resetCsv();
+            itemScoreCsv.resetCsv();
+            System.out.println("스코어 보드 기록 초기화 버튼을 눌렀음");
               // 추후 추가 예정
 
         } else if (e.getActionCommand() == "색맹 모드") {
@@ -60,6 +65,11 @@ public class SettingScreen extends JFrame {
               fileInputOutput.OutputKeySettingFileToArrow();
               //화면 크기 초기화
               fileInputOutput.OutputScreenSize800800();
+              // 스코어 보드 초기화
+              NormalScoreCsv normalScoreCsv = new NormalScoreCsv();
+              ItemScoreCsv itemScoreCsv = new ItemScoreCsv();
+              normalScoreCsv.resetCsv();
+              itemScoreCsv.resetCsv();
 
         } else if (e.getActionCommand() == "메인 화면으로") {
 

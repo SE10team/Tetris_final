@@ -12,8 +12,10 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class HighScoreScreen extends JFrame { // 스코어 보드
-    JPanel pane1 = new JPanel(); // 화면
-    JPanel pane2 = new JPanel(); // 화면
+    JPanel pane1 = new JPanel(); // 전체 스코어 보드 화면
+    JPanel pane2 = new JPanel(); // 전체 스코어 보드 화면
+    JPanel panel1 = new JPanel(); // 화면
+    JPanel panel2 = new JPanel(); // 화면
     JLabel title = new JLabel("HIGH SCORE PLAYER"); // 제목
     JLabel t = new JLabel(); // 분류
     JLabel myScore;
@@ -131,30 +133,30 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
         add(title);
 
         // 스코어 판 레이아웃 설정
-        pane1.setLayout(new GridLayout(0,4,2,0)); // 레이아웃 설정 - 열은 무조건 4열 행이 늘어나는 경우
-        pane1.setBackground(new Color(0,0,0,150)); // 검은 배경
-        pane1.setBounds(20,100,550,500); // 위치
+        panel1.setLayout(new GridLayout(0,4,2,0)); // 레이아웃 설정 - 열은 무조건 4열 행이 늘어나는 경우
+        panel1.setBackground(new Color(0,0,0,150)); // 검은 배경
+        panel1.setBounds(20,100,550,500); // 위치
         List<List<String>> records = csv.readCSVFile();
 
         // 분류
         t = new JLabel("RANK");
         t.setForeground(Color.WHITE);
         t.setFont(font2);
-        pane1.add(t);
+        panel1.add(t);
         t = new JLabel("SCORE");
         t.setForeground(Color.WHITE);
         t.setFont(font2);
-        pane1.add(t);
+        panel1.add(t);
         t = new JLabel("NAME");
         t.setForeground(Color.WHITE);
         t.setFont(font2);
         t.setHorizontalAlignment(JLabel.RIGHT);
-        pane1.add(t);
+        panel1.add(t);
         t = new JLabel("Lev");
         t.setForeground(Color.WHITE);
         t.setFont(font2);
         t.setHorizontalAlignment(JLabel.RIGHT);
-        pane1.add(t);
+        panel1.add(t);
 
 
         for(int i=0; i < records.size(); i++){
@@ -167,7 +169,7 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
                 text.setOpaque(true); // 백그라운드 설정을 위해
                 text.setBackground(new Color(255,255,0,200));
             }
-            pane1.add(text);
+            panel1.add(text);
             //스코어
             text = new JLabel(records.get(i).get(1));
             text.setFont(font3);
@@ -177,7 +179,7 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
                 text.setOpaque(true); // 백그라운드 설정을 위해
                 text.setBackground(new Color(255,255,0,200));
             }
-            pane1.add(text);
+            panel1.add(text);
             //이름
             text = new JLabel(records.get(i).get(0));
             text.setFont(font3);
@@ -188,7 +190,7 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
                 text.setOpaque(true); // 백그라운드 설정을 위해
                 text.setBackground(new Color(255,255,0,200));
             }
-            pane1.add(text);
+            panel1.add(text);
             // 레벨
             text = new JLabel(records.get(i).get(2));
             text.setFont(font3);
@@ -199,10 +201,9 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
                 text.setOpaque(true); // 백그라운드 설정을 위해
                 text.setBackground(new Color(255,255,0,200));
             }
-            pane1.add(text);; // 난이도
+            panel1.add(text);; // 난이도
 
         }
-
 
         // 없는 경우
         for(int i=records.size(); i < 10; i++){
@@ -210,18 +211,24 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
             text = new JLabel("---");
             text.setFont(font3);
             text.setForeground(Color.WHITE);
-            pane1.add(text);
+            panel1.add(text);
             //스코어
             text = new JLabel("---");
             text.setFont(font3);
             text.setForeground(Color.WHITE);
-            pane1.add(text);
+            panel1.add(text);
             //이름
             text = new JLabel("---");
             text.setFont(font3);
             text.setForeground(Color.WHITE);
-            text.setHorizontalAlignment(JLabel.CENTER);
-            pane1.add(text);
+            text.setHorizontalAlignment(JLabel.RIGHT);
+            panel1.add(text);
+            //레벨
+            text = new JLabel("---");
+            text.setFont(font3);
+            text.setForeground(Color.WHITE);
+            text.setHorizontalAlignment(JLabel.RIGHT);
+            panel1.add(text);
         }
 
         // 버튼 추가
@@ -229,15 +236,16 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
         btn1.addActionListener(new ActionListener(){ //익명클래스로 리스너 작성
             public void actionPerformed(ActionEvent e){
                 JButton btn1 = (JButton) e.getSource();
-                if(btn1.getText().equals("HOME")) // 홉버튼을 눌렀을 때
+                if(btn1.getText().equals("HOME")){
                     setVisible(false);
-                StartScreen startScreen = new StartScreen();
+                    StartScreen startScreen = new StartScreen();// 홉버튼을 눌렀을 때
+                }
+
             }
         });
         add(btn1);
 
-
-        add(pane1);
+        add(panel1);
         add(title);
         add(myScore);
 
@@ -259,6 +267,7 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
         // 타이틀
         title.setForeground(Color.RED);
         title.setBounds(70,40,500,50);
+        title.setFont(font);
         add(title);
 
         // 내 점수
@@ -268,25 +277,25 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
         myScore.setForeground(Color.ORANGE);
 
         // 스코어 판 레이아웃 설정
-        pane1.setLayout(new GridLayout(0,3,2,0)); // 레이아웃 설정 - 열은 무조건 4열 행이 늘어나는 경우
-        pane1.setBackground(new Color(0,0,0,150)); // 검은 배경
-        pane1.setBounds(20,100,550,500); // 위치
+        panel2.setLayout(new GridLayout(0,3,2,0)); // 레이아웃 설정 - 열은 무조건 4열 행이 늘어나는 경우
+        panel2.setBackground(new Color(0,0,0,150)); // 검은 배경
+        panel2.setBounds(20,100,550,500); // 위치
         List<List<String>> records = csv2.readCSVFile();
 
         // 분류
         t = new JLabel("RANK");
         t.setForeground(Color.WHITE);
         t.setFont(font2);
-        pane1.add(t);
+        panel2.add(t);
         t = new JLabel("SCORE");
         t.setForeground(Color.WHITE);
         t.setFont(font2);
-        pane1.add(t);
+        panel2.add(t);
         t = new JLabel("NAME");
         t.setForeground(Color.WHITE);
         t.setFont(font2);
         t.setHorizontalAlignment(JLabel.CENTER);
-        pane1.add(t);
+        panel2.add(t);
 
 
         for(int i=0; i < records.size(); i++){
@@ -298,26 +307,26 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
                 text.setOpaque(true); // 백그라운드 설정을 위해
                 text.setBackground(new Color(255,255,0,200));
             }
-            pane1.add(text);
+            panel2.add(text);
             //스코어
             text = new JLabel(records.get(i).get(1));
             text.setFont(font3);
             text.setForeground(Color.WHITE);
-            if(csv.getHighlight() == i){
+            if(csv2.getHighlight() == i){
                 text.setOpaque(true); // 백그라운드 설정을 위해
                 text.setBackground(new Color(255,255,0,200));
             }
-            pane1.add(text);
+            panel2.add(text);
             //이름
             text = new JLabel(records.get(i).get(0));
             text.setFont(font3);
             text.setForeground(Color.WHITE);
             text.setHorizontalAlignment(JLabel.CENTER);
-            if(csv.getHighlight() == i){
+            if(csv2.getHighlight() == i){
                 text.setOpaque(true); // 백그라운드 설정을 위해
                 text.setBackground(new Color(255,255,0,200));
             }
-            pane1.add(text);
+            panel2.add(text);
         }
 
         // 없는 경우
@@ -326,33 +335,35 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
             text = new JLabel("---");
             text.setFont(font3);
             text.setForeground(Color.WHITE);
-            pane1.add(text);
+            panel2.add(text);
             //스코어
             text = new JLabel("---");
             text.setFont(font3);
             text.setForeground(Color.WHITE);
-            pane1.add(text);
+            panel2.add(text);
             //이름
             text = new JLabel("---");
             text.setFont(font3);
             text.setForeground(Color.WHITE);
             text.setHorizontalAlignment(JLabel.CENTER);
-            pane1.add(text);
+            panel2.add(text);
         }
 
+        // 버튼 추가
         btn1.setBounds(10,600,100,20);
         btn1.addActionListener(new ActionListener(){ //익명클래스로 리스너 작성
             public void actionPerformed(ActionEvent e){
                 JButton btn1 = (JButton) e.getSource();
-                if(btn1.getText().equals("HOME")) // 홉버튼을 눌렀을 때
+                if(btn1.getText().equals("HOME")){
                     setVisible(false);
-                StartScreen startScreen = new StartScreen();
+                    StartScreen startScreen = new StartScreen();// 홉버튼을 눌렀을 때
+                }
+
             }
         });
         add(btn1);
 
-
-        add(pane1);
+        add(panel2);
         add(title);
         add(myScore);
 
@@ -474,29 +485,17 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
             text = new JLabel((i+1)+"");
             text.setFont(font3);
             text.setForeground(Color.WHITE);
-            if(csv2.getHighlight() == i){
-                text.setOpaque(true); // 백그라운드 설정을 위해
-                text.setBackground(new Color(255,255,0,200));
-            }
-            pane1.add(text);
+            pane2.add(text);
             //스코어
             text = new JLabel(records.get(i).get(1));
             text.setFont(font3);
             text.setForeground(Color.WHITE);
-            if(csv.getHighlight() == i){
-                text.setOpaque(true); // 백그라운드 설정을 위해
-                text.setBackground(new Color(255,255,0,200));
-            }
             pane2.add(text);
             //이름
             text = new JLabel(records.get(i).get(0));
             text.setFont(font3);
             text.setForeground(Color.WHITE);
             text.setHorizontalAlignment(JLabel.CENTER);
-            if(csv.getHighlight() == i){
-                text.setOpaque(true); // 백그라운드 설정을 위해
-                text.setBackground(new Color(255,255,0,200));
-            }
             pane2.add(text);
         }
 

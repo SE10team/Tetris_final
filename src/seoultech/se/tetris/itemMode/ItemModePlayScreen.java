@@ -2,6 +2,7 @@ package seoultech.se.tetris.itemMode;
 
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.component.*;
+import seoultech.se.tetris.scoreData.dao.ItemScoreCsv;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import javax.swing.*;
@@ -30,7 +31,8 @@ public class ItemModePlayScreen extends JFrame { // 게임 화면을 그리는 �
 
 		ItemModeNextGenerateBlock itemModeNextGenerateBlock = new ItemModeNextGenerateBlock();
 		ItemModeNextBoard itemModeNextBoard = new ItemModeNextBoard(itemModeNextGenerateBlock);
-		mainBoard = new ItemModeBoard(score, scoreBoard, itemModeNextGenerateBlock, itemModeNextBoard);
+
+		mainBoard = new ItemModeBoard(this,score, scoreBoard, itemModeNextGenerateBlock, itemModeNextBoard, new ItemScoreCsv());
 
 
 

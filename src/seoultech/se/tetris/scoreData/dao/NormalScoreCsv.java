@@ -108,7 +108,11 @@ public class NormalScoreCsv extends ScoreCsv{
                 writerCsv(records); // 적기
                 break; // 있어야 종료 된다.
             }
-
+        }
+        if(records.size() != 10){
+            records.add(records.size(),temp); // 중간에 추가!
+            resetCsv(); // 초기화 후
+            writerCsv(records); // 적기
         }
     }
 
@@ -120,14 +124,15 @@ public class NormalScoreCsv extends ScoreCsv{
                     return i;
                 }
             }
+        if(records.size() != 10){
+            return records.size();
+        }
             // 들어갈 자리가 없으면
             return 11;
     }
 
-
-
     @Override
-    void resetCsv(){ // Setting SCreen에 추가하기
+    public void resetCsv(){ // Setting SCreen에 추가하기
         BufferedWriter bw = null; // 출력 스트림 생성
         try{
             bw = new BufferedWriter(new FileWriter(f));
