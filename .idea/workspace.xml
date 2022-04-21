@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db733796-5e8a-41ea-889d-04a394f0f95f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/GUI/PlayScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/GUI/PlayScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board$PlayerKeyListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/GameScore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/GameScore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/NextGenerateBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/NextGenerateBlock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard$PlayerKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard$PlayerKeyListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/main/Tetris$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/main/Tetris$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/main/Tetris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/main/Tetris.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/GUI/PlayScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/GUI/PlayScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/component/NextGenerateBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/component/NextGenerateBlock.java" afterDir="false" />
+    <list default="true" id="8446e341-a632-435a-a7de-5adc6194b9a8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/main/Tetris.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/startScreen/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/startScreen/StartScreen.java" afterDir="false" />
     </list>
-    <list id="1a7495ec-4bc5-4022-a6e8-dd67b361d898" name="Changes by USER" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +66,20 @@
       <recent name="seoultech.se.tetris.GUI" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.NextGenerateBlockTest">
+  <component name="RunManager" selected="Application.Tetris">
+    <configuration name="Tetris" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="seoultech.se.tetris.main.Tetris" />
+      <module name="SE10" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="seoultech.se.tetris.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NextGenerateBlockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE10" />
       <extension name="coverage">
@@ -90,22 +91,6 @@
       <option name="PACKAGE_NAME" value="seoultech.se.tetris.component" />
       <option name="MAIN_CLASS_NAME" value="seoultech.se.tetris.component.NextGenerateBlockTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NextGenerateBlockTest.getEasyRandomBlock" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SE10" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="seoultech.se.tetris.component.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="seoultech.se.tetris.component" />
-      <option name="MAIN_CLASS_NAME" value="seoultech.se.tetris.component.NextGenerateBlockTest" />
-      <option name="METHOD_NAME" value="getEasyRandomBlock" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -160,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Tetris" />
         <item itemvalue="JUnit.NextGenerateBlockTest" />
         <item itemvalue="JUnit.NextGenerateBlockTest.getRandomBlock" />
         <item itemvalue="JUnit.NextGenerateBlockTest.getNextblock" />
         <item itemvalue="JUnit.NextGenerateBlockTest.getHardRandomBlock" />
-        <item itemvalue="JUnit.NextGenerateBlockTest.getEasyRandomBlock" />
       </list>
     </recent_temporary>
   </component>
@@ -204,6 +189,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="윤재_feat_1_속도조절, 콤보 점수추가" />
@@ -221,18 +207,47 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tetris_final$BlockTest_setShape.ic" NAME="BlockTest.setShape Coverage Results" MODIFIED="1650528119624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Tetris_final$NextGenerateBlockTest.ic" NAME="NextGenerateBlockTest Coverage Results" MODIFIED="1650459668070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.component.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Tetris_final$NextGenerateBlockTest_getHardRandomBlock.ic" NAME="NextGenerateBlockTest.getHardRandomBlock Coverage Results" MODIFIED="1650532037723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.component.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Tetris_final$SBlockTest.ic" NAME="SBlockTest Coverage Results" MODIFIED="1650527574105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>seoultech.se.tetris.blocks.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Tetris_final$BlockTest.ic" NAME="BlockTest Coverage Results" MODIFIED="1650526734158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>seoultech.se.tetris.blocks.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Tetris_final$TBlockTest.ic" NAME="TBlockTest Coverage Results" MODIFIED="1650527772625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Tetris_final$ZBlockTest.ic" NAME="ZBlockTest Coverage Results" MODIFIED="1650527922088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Tetris_final$JBlockTest.ic" NAME="JBlockTest Coverage Results" MODIFIED="1650527194867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Tetris_final$IBlockTest.ic" NAME="IBlockTest Coverage Results" MODIFIED="1650526979889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Tetris_final$BlockTest_width.ic" NAME="BlockTest.width Coverage Results" MODIFIED="1650527661148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Tetris_final$BlockTest_setShape.ic" NAME="BlockTest.setShape Coverage Results" MODIFIED="1650528119624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Tetris_final$LBlockTest.ic" NAME="LBlockTest Coverage Results" MODIFIED="1650527436006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>seoultech.se.tetris.blocks.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Tetris_final$TBlockTest.ic" NAME="TBlockTest Coverage Results" MODIFIED="1650527772625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
+    <SUITE FILE_PATH="coverage/Tetris_final$LBlockTest_getShape_and_1_more.ic" NAME="LBlockTest,getShape and 1 more Coverage Results" MODIFIED="1650527470679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Tetris_final$NextGenerateBlockTest_getEasyRandomBlock.ic" NAME="NextGenerateBlockTest.getEasyRandomBlock Coverage Results" MODIFIED="1650456983908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.component.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Tetris_final$NextGenerateBlockTest_getNextblock.ic" NAME="NextGenerateBlockTest.getNextblock Coverage Results" MODIFIED="1650532367640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>seoultech.se.tetris.component.*</FILTER>
@@ -240,30 +255,8 @@
     <SUITE FILE_PATH="coverage/Tetris_final$OBlockTest.ic" NAME="OBlockTest Coverage Results" MODIFIED="1650527443358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>seoultech.se.tetris.blocks.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Tetris_final$NextGenerateBlockTest.ic" NAME="NextGenerateBlockTest Coverage Results" MODIFIED="1650531342069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>seoultech.se.tetris.component.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Tetris_final$NextGenerateBlockTest_getHardRandomBlock.ic" NAME="NextGenerateBlockTest.getHardRandomBlock Coverage Results" MODIFIED="1650532037723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>seoultech.se.tetris.component.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Tetris_final$BlockTest_width.ic" NAME="BlockTest.width Coverage Results" MODIFIED="1650527661148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Tetris_final$LBlockTest_getShape_and_1_more.ic" NAME="LBlockTest,getShape and 1 more Coverage Results" MODIFIED="1650527470679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Tetris_final$NextGenerateBlockTest_getEasyRandomBlock.ic" NAME="NextGenerateBlockTest.getEasyRandomBlock Coverage Results" MODIFIED="1650531956896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>seoultech.se.tetris.component.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Tetris_final$SBlockTest.ic" NAME="SBlockTest Coverage Results" MODIFIED="1650527574105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Tetris_final$JBlockTest.ic" NAME="JBlockTest Coverage Results" MODIFIED="1650527194867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Tetris_final$ZBlockTest.ic" NAME="ZBlockTest Coverage Results" MODIFIED="1650527922088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Tetris_final$IBlockTest.ic" NAME="IBlockTest Coverage Results" MODIFIED="1650526979889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>seoultech.se.tetris.blocks.*</FILTER>
+    <SUITE FILE_PATH="coverage/Tetris_final$FileInputOutputTest.ic" NAME="FileInputOutputTest Coverage Results" MODIFIED="1650532945523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>seoultech.se.tetris.settingScreen.*</FILTER>
     </SUITE>
   </component>
 </project>

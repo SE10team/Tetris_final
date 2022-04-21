@@ -3,11 +3,13 @@ package seoultech.se.tetris.startScreen;
 
 import seoultech.se.tetris.itemMode.ItemModePlayScreen;
 import seoultech.se.tetris.GUI.PlayScreen;
+import seoultech.se.tetris.settingScreen.FileInputOutput;
 import seoultech.se.tetris.settingScreen.SettingScreen;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 
 public class StartScreen extends JFrame {
@@ -63,6 +65,29 @@ public class StartScreen extends JFrame {
     setBackground(Color.PINK);
     setLayout(null);
     setLocationRelativeTo(null); // 창 가운데로
+
+
+    // 맥 (유빈)
+//    final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
+//    final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
+//    final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
+
+    // 윈도우 (윤재)
+    final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
+    final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
+    final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
+
+    FileInputOutput fileInputOutput = new FileInputOutput();
+    if (!(new File((colorFilename)).exists())) {
+      fileInputOutput.OutputColorFileNotForBlind();
+    }
+    if (!(new File((keySettingFilename)).exists())) {
+      fileInputOutput.OutputKeySettingFileToArrow();
+    }
+    if (!(new File((screenSizeFilename)).exists())) {
+      fileInputOutput.OutputScreenSize800800();
+    }
+
 
 
     // 테트리스 제목
