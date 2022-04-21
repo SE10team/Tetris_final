@@ -1,0 +1,34 @@
+package seoultech.se.tetris.blocks;
+
+import org.junit.jupiter.api.Test;
+import seoultech.se.tetris.settingScreen.FileInputOutput;
+
+import java.awt.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class TBlockTest {
+
+    public FileInputOutput fileInputOutput = new FileInputOutput();
+    public Color[] colors = fileInputOutput.InputColorFile();
+
+    TBlock block = new TBlock();
+
+    TBlockTest() throws Exception {
+    }
+
+    @Test
+    void getShape() {
+        for (int i = 0; i < 2; i++) {
+            int[] row = block.getShape()[i];
+            int[][] expected = {{0, 1, 0}, {1, 1, 1}};
+            assertArrayEquals(expected[i], row);
+        }
+    }
+
+    @Test
+    void getColor() {
+        assertEquals(colors[6], block.getColor());
+    }
+
+}
