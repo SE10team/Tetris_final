@@ -23,22 +23,16 @@ public class GameDifficultyScreen extends JFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "Easy 모드") {
+          fileInputOutput.OutputModeSetting(1);
 
-          // 이지 모드로 되게끔 파일 인풋아웃풋 함수 선언
-          // 밑에는 예시!
-          // fileInputOutput.OutputKeySettingFileToArrow();
 
         } else if (e.getActionCommand() == "Normal 모드") {
+          fileInputOutput.OutputModeSetting(2);
 
-          // 노멀 모드로 되게끔 파일 인풋아웃풋 함수 선언
-          // 밑에는 예시!
-          // fileInputOutput.OutputKeySettingFileToArrow();
 
         } else if (e.getActionCommand() == "Hard 모드") {
+          fileInputOutput.OutputModeSetting(2);
 
-          // 하드 모드로 되게끔 파일 인풋아웃풋 함수 선언
-          // 밑에는 예시!
-          // fileInputOutput.OutputKeySettingFileToArrow();
 
         } else if (e.getActionCommand() == "뒤로가기") {
           setVisible(false);
@@ -146,21 +140,15 @@ public class GameDifficultyScreen extends JFrame {
       if (e.getKeyCode() == KeyEvent.VK_ENTER) {
         if (e.getSource() == jButtons[0]) {
 
-          // 이지 모드로 되게끔 파일 인풋아웃풋 함수 선언
-          // 밑에는 예시!
-          // fileInputOutput.OutputKeySettingFileToArrow();
+          fileInputOutput.OutputModeSetting(1);
 
         } else if (e.getSource() == jButtons[1]) {
 
-          // 노멀 모드로 되게끔 파일 인풋아웃풋 함수 선언
-          // 밑에는 예시!
-          // fileInputOutput.OutputKeySettingFileToArrow();
+          fileInputOutput.OutputModeSetting(2);
 
         } else if (e.getSource() == jButtons[2]) {
 
-          // 하드 모드로 되게끔 파일 인풋아웃풋 함수 선언
-          // 밑에는 예시!
-          // fileInputOutput.OutputKeySettingFileToArrow();
+          fileInputOutput.OutputModeSetting(3);
 
         } else if (e.getSource() == jButtons[3]) {
 

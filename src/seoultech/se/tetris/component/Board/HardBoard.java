@@ -9,6 +9,7 @@ public class HardBoard extends Board {
 
     public HardBoard(GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard) throws Exception {
         super(gameScore, scoreBoard, nextGBlock, nextBoard);
+        System.out.println("Hard");
     }
 
     protected void setInterval() {

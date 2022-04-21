@@ -103,6 +103,7 @@ public class Board extends JPanel {
         fileInputOutput = new FileInputOutput();
         keySettingArr = fileInputOutput.InputKeyFile();
 
+        System.out.println("Normal");
     }
 
     @Override

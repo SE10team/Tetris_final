@@ -15,16 +15,19 @@ public class FileInputOutput {
 //  private final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
 //  private final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
 //  private final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
+//  private final String modeSettingFilename = "/Users/home/Desktop/modeSetting.ser";
 
 //  // 윈도우 (윤재)
    private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
    private final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
    private final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
+   private final String modeSettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/modeSetting.ser";
 
 //   // 윈도우 (의정)
 //   private final String colorFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/colorSetting.ser";
 //   private final String keySettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/keySetting.ser";
 //   private final String screenSizeFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/screenSizeSetting.ser";
+//   private final String modeSettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/modeSetting.ser";
 
 
 
@@ -123,6 +126,25 @@ public class FileInputOutput {
     return screenSizeArr;
   }
 
+
+  public int InputModeFile() throws IOException, ClassNotFoundException {
+    int setMode = 0;
+    FileInputStream fileInputStream = new FileInputStream(modeSettingFilename);
+    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+    Object object = objectInputStream.readObject();
+    objectInputStream.close();
+    HashMap<String, Integer> hashMap = (HashMap<String, Integer>) object;
+    Iterator<String> iterator = hashMap.keySet().iterator();
+    while (iterator.hasNext()) {
+      String difficulty = iterator.next();
+      Integer mode = hashMap.get(difficulty);
+      if (Objects.equals(difficulty, "difficulty")) {
+         setMode= mode;
+      }
+    }
+    return setMode;
+  }
 
 
   public void OutputColorFileNotForBlind() {
@@ -320,6 +342,29 @@ public class FileInputOutput {
       hashMap.put("scoreY", 100);
       hashMap.put("nextBlockX", 800);
       hashMap.put("nextBlockY", 500);
+
+      objectOutputStream.writeObject(hashMap);
+      System.out.println(hashMap);
+      objectOutputStream.close();
+    } catch (IOException fileNotFoundException) {
+      fileNotFoundException.printStackTrace();
+    }
+  }
+
+  public void OutputModeSetting(int mode) {
+    try {
+      File modeSettingFile = new File(modeSettingFilename);
+      if (modeSettingFile.exists()) {
+        if (modeSettingFile.delete()) {
+          System.out.println("성공적으로 파일 삭제");
+        } else {
+          System.out.println("파일 삭제 실패");
+        }
+      }
+      FileOutputStream fileOutputStream = new FileOutputStream(modeSettingFilename);
+      ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+      HashMap<String, Integer> hashMap = new HashMap<>();
+      hashMap.put("difficulty", mode);
 
       objectOutputStream.writeObject(hashMap);
       System.out.println(hashMap);

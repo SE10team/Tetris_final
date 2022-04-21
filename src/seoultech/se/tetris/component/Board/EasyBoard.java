@@ -10,6 +10,7 @@ public class EasyBoard extends Board {
 
     public EasyBoard(GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard) throws Exception {
         super(gameScore, scoreBoard, nextGBlock, nextBoard);
+        System.out.println("Easy");
 
         //속도 증가
         //점수 증가
