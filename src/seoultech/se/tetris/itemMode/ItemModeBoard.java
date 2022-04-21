@@ -430,6 +430,11 @@ public class ItemModeBoard extends JPanel {
             repaint();
         }
         curr.moveDown();
+
+        if (curr.getThisBlock() == 2) {
+            background[curr.getY()][curr.getX()] = null;
+            repaint();
+        }
         gameScore.playScore(); // 스코어 증가
         scoreBoard.updateScore(); // 점수 보여주기~
         repaint();
