@@ -6,6 +6,9 @@ import seoultech.se.tetris.GUI.PlayScreen;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
+import java.time.LocalTime;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class StartScreenTest {
 
@@ -29,6 +32,25 @@ class StartScreenTest {
 
 
     // then
+  }
+
+  @DisplayName("시작 화면 팝업 속도 테스트")
+  @Test
+  public void start_screen_popup_speed_test() throws Exception {
+
+    // given
+    LocalTime before_popup_time;
+    LocalTime after_popup_time;
+
+    // when
+    before_popup_time = LocalTime.now();
+    new StartScreen();
+    after_popup_time = LocalTime.now();
+
+    // then
+    int diff = after_popup_time.getSecond() - before_popup_time.getSecond();
+    boolean isDiffLessThan3 = diff < 3;
+    assertTrue(isDiffLessThan3);
   }
 
 }
