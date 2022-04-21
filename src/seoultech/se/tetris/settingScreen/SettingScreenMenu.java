@@ -28,10 +28,10 @@ public class SettingScreenMenu extends JPanel {
 
     playerKeyListener = new PlayerKeyListener();
 
-    String[] btnText = {"게임 화면 크기 조절", "게임 조작 키 설정", "스코어 보드 기록 초기화", "색맹 모드", "설정 초기화", "메인 화면으로"};
-    buttons = new JButton[6];
+    String[] btnText = {"게임 화면 크기 조절", "게임 조작 키 설정", "스코어 보드 기록 초기화", "색맹 모드", "게임 난이도 선택", "설정 초기화", "메인 화면으로"};
+    buttons = new JButton[7];
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 7; i++) {
       buttons[i] = new JButton(btnText[i]);
       add(buttons[i]);
 
@@ -89,6 +89,11 @@ public class SettingScreenMenu extends JPanel {
 
         } else if (e.getSource() == buttons[4]) {
 
+          setVisible(false);
+          GameDifficultyScreen gameDifficultyScreen = new GameDifficultyScreen();
+
+        } else if (e.getSource() == buttons[5]) {
+
           //색맹모드 초기화
           settingScreen.fileInputOutput.OutputColorFileNotForBlind();
           settingScreen.colorCount = 0;
@@ -97,7 +102,7 @@ public class SettingScreenMenu extends JPanel {
           //화면 크기 초기화
           settingScreen.fileInputOutput.OutputScreenSize800800();
 
-        } else if (e.getSource() == buttons[5]) {
+        } else if (e.getSource() == buttons[6]) {
           settingScreen.setVisible(false);
           StartScreen startScreen = new StartScreen();
         }

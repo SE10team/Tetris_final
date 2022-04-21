@@ -12,14 +12,14 @@ public class FileInputOutput {
   // 경로설정 바꿀곳!
 
   // 맥 (유빈)
-//  private final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
-//  private final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
-//  private final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
+  private final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
+  private final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
+  private final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
 
-  // 윈도우 (윤재)
-   private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
-   private final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
-   private final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
+//  // 윈도우 (윤재)
+//   private final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
+//   private final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
+//   private final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
 
 //   // 윈도우 (의정)
 //   private final String colorFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/colorSetting.ser";

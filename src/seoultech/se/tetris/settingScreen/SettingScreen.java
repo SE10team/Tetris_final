@@ -11,7 +11,7 @@ public class SettingScreen extends JFrame {
   FileInputOutput fileInputOutput = new FileInputOutput();
   SettingScreenMenu settingScreenMenu;
 
-  public SettingScreen() throws Exception {
+  public SettingScreen() {
 
     settingScreenMenu = new SettingScreenMenu(this);
 
@@ -44,6 +44,12 @@ public class SettingScreen extends JFrame {
                 fileInputOutput.OutputColorFileNotForBlind();
                 colorCount++;
               }
+
+        } else if (e.getActionCommand() == "게임 난이도 선택") {
+
+          setVisible(false);
+          GameDifficultyScreen gameDifficultyScreen = new GameDifficultyScreen();
+
 
         } else if (e.getActionCommand() == "설정 초기화") {
 
