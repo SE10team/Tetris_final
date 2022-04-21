@@ -14,11 +14,11 @@ public class PlayScreen extends JFrame { // 게임 화면을 그리는 곳
 
 	private Board mainBoard;
 
-//	public static void main(String[] args) throws Exception {
-//		PlayScreen tetris = new PlayScreen();
-//		tetris.setVisible(true);
-//
-//	}
+	public static void main(String[] args) throws Exception {
+		PlayScreen tetris = new PlayScreen();
+		tetris.setVisible(true);
+
+	}
 
 	public PlayScreen() throws Exception {
 		super("일반 모드 테트리스"); // 게임 실행시 이름

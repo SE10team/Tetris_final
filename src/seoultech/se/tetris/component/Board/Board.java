@@ -82,7 +82,7 @@ public class Board extends JPanel {
         //Set timer for block drops.
         timer = new Timer(initInterval, e -> {
             try {
-                moveBlockDown(); // 블럭 내려보내기
+                 moveBlockDown(); // 블럭 내려보내기
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -472,7 +472,7 @@ public class Board extends JPanel {
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == keySettingArr[1]) {
                 try {
-                    moveBlockDown();
+                    if(!isBlockOutOfBounds()) moveBlockDown();
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -485,8 +485,10 @@ public class Board extends JPanel {
                 rotateBlock();
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 try {
-                    dropBlock();
-                    moveBlockToBackground();
+                    if(!isBlockOutOfBounds()){
+                        dropBlock();
+                        moveBlockToBackground();
+                    }
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
