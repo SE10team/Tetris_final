@@ -68,14 +68,14 @@ public class StartScreen extends JFrame {
 
 
     // 맥 (유빈)
-//    final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
-//    final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
-//    final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
+    final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
+    final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
+    final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
 
     // 윈도우 (윤재)
-    final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
-    final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
-    final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
+//    final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
+//    final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
+//    final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
 
     FileInputOutput fileInputOutput = new FileInputOutput();
     if (!(new File((colorFilename)).exists())) {
