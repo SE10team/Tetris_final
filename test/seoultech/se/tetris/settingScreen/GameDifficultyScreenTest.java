@@ -31,7 +31,6 @@ class GameDifficultyScreenTest{
 
         JButton jButtons = new JButton(btnText[0]);
         KeyEvent keyEvent = new KeyEvent(jButtons,0,0,1,KeyEvent.VK_ENTER );
-        ActionEvent actionEvent = new ActionEvent(jButtons,0, "Easy 모드", 1) ;
 
 
         playerKeyListener.keyPressed(keyEvent);

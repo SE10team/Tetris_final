@@ -102,7 +102,6 @@ public class ItemModeBoard extends JPanel {
                 ex.printStackTrace();
             }
 
-            System.out.println(curr.getColor());
         });
 
         timer.start();
@@ -200,7 +199,7 @@ public class ItemModeBoard extends JPanel {
 
     }
 
-    public void clearLines() {
+    public void clearLines() throws InterruptedException {
         boolean lineFilled;
         int completeRows =0;
 
@@ -219,10 +218,15 @@ public class ItemModeBoard extends JPanel {
 
             if(lineFilled)
             {
+                clearEvent(row);
+                this.paint(this.getGraphics());
+                Thread.sleep(100);
                 clearLine(row);
                 shiftDown(row);
                 clearLine(0);
                 row++;
+
+
                 gameScore.line();
                 completeLines++;
                 countCompleteLines = completeLines;
@@ -240,6 +244,16 @@ public class ItemModeBoard extends JPanel {
         {
             background[row][i] = null;
         }
+    }
+
+    protected void clearEvent(int row) {
+        for(int i = 0; i < WIDTH; i++)
+        {
+            background[row][i] = Color.LIGHT_GRAY;
+        }
+
+        System.out.println("ClearEvent");
+
     }
 
     private void shiftDown(int row) {
@@ -425,8 +439,8 @@ public class ItemModeBoard extends JPanel {
                 curr = new NullBlock();
             }
             moveBlockToBackground();
-            clearLines();
             spawnBlock();
+            clearLines();
             repaint();
         }
         curr.moveDown();

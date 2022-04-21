@@ -48,8 +48,8 @@ public class Board extends JPanel {
     int[] keySettingArr;
 
     protected int initInterval = 1000;
-    protected int completeLines = 0; //완료 행 수
-    protected int levelLines= 5; //레벨 올라갈 때 필요한 줄 수
+    protected int completeLines = 0; // 완료 행 수
+    protected int levelLines= 5; // 레벨 올라갈 때 필요한 줄 수
     protected int pluslevelLines = 5; // 필요한 줄 수 더하기
 
     public Board(PlayScreen playScreen, GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard, NormalScoreCsv normalScoreCsv) throws Exception{
@@ -143,7 +143,7 @@ public class Board extends JPanel {
 
                 clearEvent(row);
                 this.paint(this.getGraphics());
-                Thread.sleep(150);
+                Thread.sleep(100);
                 clearLine(row);
                 shiftDown(row);
                 clearLine(0);
@@ -359,7 +359,6 @@ public class Board extends JPanel {
             moveBlockToBackground();
             spawnBlock();
             clearLines();
-
             repaint();
 
         }

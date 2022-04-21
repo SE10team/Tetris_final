@@ -10,7 +10,7 @@ import java.util.List;
 
 public class NormalScoreCsv extends ScoreCsv{
     // 파일 경로
-    private File f = new File("C:\\Users\\USER\\OneDrive - 서울과학기술대학교\\Tetris_final\\src\\seoultech\\se\\tetris\\scoreData\\resource\\NormalScoreResult.csv");
+    private File f = new File("D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/NormalScoreResult.csv");
     private NormalScore score;
     private List<List<String>> records;
     private String level;

@@ -35,6 +35,7 @@ public class EasyBoard extends Board {
         nextBlock.generateEasyBlock();
         nextBoard.updateBlock();
     }
+
     public void clearLines() throws InterruptedException {
         boolean lineFilled;
         int completeRows =0;
