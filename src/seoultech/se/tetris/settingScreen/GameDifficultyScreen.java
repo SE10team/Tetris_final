@@ -31,7 +31,7 @@ public class GameDifficultyScreen extends JFrame {
 
 
         } else if (e.getActionCommand() == "Hard 모드") {
-          fileInputOutput.OutputModeSetting(2);
+          fileInputOutput.OutputModeSetting(3);
 
 
         } else if (e.getActionCommand() == "뒤로가기") {

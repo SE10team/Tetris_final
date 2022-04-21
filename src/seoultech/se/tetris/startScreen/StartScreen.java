@@ -1,6 +1,7 @@
 package seoultech.se.tetris.startScreen;
 
 
+import seoultech.se.tetris.GUI.HighScoreScreen;
 import seoultech.se.tetris.itemMode.ItemModePlayScreen;
 import seoultech.se.tetris.GUI.PlayScreen;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
@@ -48,6 +49,14 @@ public class StartScreen extends JFrame {
           }
           // 추후 추가 예정
         } else if (e.getActionCommand() == "스코어 보드") {
+            setVisible(false);
+            HighScoreScreen highScoreScreen = null; // Tetris -> PlayScreen으로
+            try {
+                 highScoreScreen = new HighScoreScreen();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            highScoreScreen.setVisible(true);
           System.out.println("스코어 보드 버튼을 눌렀음");
           // 추후 추가 예정
         } else if (e.getActionCommand() == "게임 종료") {
@@ -73,17 +82,17 @@ public class StartScreen extends JFrame {
 //  final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
 //  final String modeSettingFilename = "/Users/home/Desktop/modeSetting.ser";
 
-//  // 윈도우 (윤재)
-    final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
-    final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
-    final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
-    final String modeSettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/modeSetting.ser";
+////  // 윈도우 (윤재)
+//    final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
+//    final String keySettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/keySetting.ser";
+//    final String screenSizeFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/screenSizeSetting.ser";
+//    final String modeSettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/modeSetting.ser";
 
-//   // 윈도우 (의정)
-//   final String colorFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/colorSetting.ser";
-//   final String keySettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/keySetting.ser";
-//   final String screenSizeFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/screenSizeSetting.ser";
-//   final String modeSettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/modeSetting.ser";
+   // 윈도우 (의정)
+   final String colorFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/colorSetting.ser";
+   final String keySettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/keySetting.ser";
+   final String screenSizeFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/screenSizeSetting.ser";
+   final String modeSettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/modeSetting.ser";
 
     FileInputOutput fileInputOutput = new FileInputOutput();
     if (!(new File((colorFilename)).exists())) {

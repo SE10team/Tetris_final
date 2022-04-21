@@ -1,5 +1,6 @@
 package seoultech.se.tetris.startScreen;
 
+import seoultech.se.tetris.GUI.PlayScreen;
 import seoultech.se.tetris.itemMode.ItemModePlayScreen;
 import seoultech.se.tetris.main.Tetris;
 import seoultech.se.tetris.settingScreen.SettingScreen;
@@ -56,8 +57,8 @@ public class StartScreenMenu extends JPanel{
         if (e.getSource() == buttons[0]) {
           startScreen.setVisible(false);
           try {
-            Tetris tetris = new Tetris();
-            tetris.setVisible(true);
+            PlayScreen playScreen = new PlayScreen();
+            playScreen.setVisible(true);
           } catch (Exception ex) {
             ex.printStackTrace();
           }
@@ -78,13 +79,13 @@ public class StartScreenMenu extends JPanel{
           }
         } else if (e.getSource() == buttons[3]) {
           startScreen.setVisible(false);
-          Tetris tetris = null;
+          PlayScreen playScreen = null;
           try {
-            tetris = new Tetris();
+            playScreen = new PlayScreen();
           } catch (Exception ex) {
             ex.printStackTrace();
           }
-          tetris.setVisible(true);
+          playScreen.setVisible(true);
         } else if (e.getSource() == buttons[4]) {
           System.exit(0);
         }

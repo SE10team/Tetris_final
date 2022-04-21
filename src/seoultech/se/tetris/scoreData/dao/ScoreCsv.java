@@ -36,6 +36,7 @@ abstract class ScoreCsv { // writer 부분을 다르게 한 추상화 클래스
                 String[] lineArr = line.split(","); // 파일의 한 주를 ,로 나누어 배열에 저장 후 리스트로 변환
                 aLine = Arrays.asList(lineArr);
                 records.add(aLine);
+
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

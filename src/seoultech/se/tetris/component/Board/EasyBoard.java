@@ -4,12 +4,13 @@ import seoultech.se.tetris.GUI.NextBoard;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
+import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
 
 public class EasyBoard extends Board {
 
 
-    public EasyBoard(GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard) throws Exception {
-        super(gameScore, scoreBoard, nextGBlock, nextBoard);
+    public EasyBoard(GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard , NormalScoreCsv normalScoreCsv) throws Exception {
+        super(gameScore, scoreBoard, nextGBlock, nextBoard, normalScoreCsv);
         System.out.println("Easy");
 
         //속도 증가
@@ -72,5 +73,6 @@ public class EasyBoard extends Board {
 
         if (completeRows >=2) gameScore.multiEasyLine(completeRows);
     }
+
 
 }

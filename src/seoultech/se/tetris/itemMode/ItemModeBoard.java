@@ -1,7 +1,5 @@
 package seoultech.se.tetris.itemMode;
 
-import seoultech.se.tetris.blocks.OneBlock;
-import seoultech.se.tetris.blocks.WeightBlock;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.Block;
@@ -11,9 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Objects;
-
-import static seoultech.se.tetris.itemMode.ItemModeNextGenerateBlock.currItemBlock;
 
 
 public class ItemModeBoard extends JPanel {

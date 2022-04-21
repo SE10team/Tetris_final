@@ -6,6 +6,7 @@ import seoultech.se.tetris.component.Board.EasyBoard;
 import seoultech.se.tetris.component.Board.HardBoard;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
+import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import javax.swing.*;
@@ -42,16 +43,16 @@ public class PlayScreen extends JFrame { // 게임 화면을 그리는 곳
 
 		switch (setMode){
 			case 1 -> {
-				EasyBoard mainBoard = new EasyBoard(score,scoreBoard,nextBlock,nextBoard);
+				EasyBoard mainBoard = new EasyBoard(score,scoreBoard,nextBlock,nextBoard, new NormalScoreCsv("Easy"));
 				add(mainBoard);
 			}
 
 			case 2 -> {
-				Board mainBoard = new Board(score,scoreBoard,nextBlock,nextBoard);
+				Board mainBoard = new Board(score,scoreBoard,nextBlock,nextBoard, new NormalScoreCsv("Normal"));
 				add(mainBoard);
 			}
 			case 3 -> {
-				HardBoard mainBoard = new HardBoard(score,scoreBoard,nextBlock,nextBoard);
+				HardBoard mainBoard = new HardBoard(score,scoreBoard,nextBlock,nextBoard, new NormalScoreCsv("Hard"));
 				add(mainBoard);
 			}
 		}
