@@ -10,5 +10,7 @@ public class OneBlock extends Block{
     };
 
     color = Color.PINK;
+
+    thisBlock = 2;
   }
 }

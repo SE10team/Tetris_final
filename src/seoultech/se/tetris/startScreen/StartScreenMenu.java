@@ -1,5 +1,6 @@
 package seoultech.se.tetris.startScreen;
 
+import seoultech.se.tetris.GUI.HighScoreScreen;
 import seoultech.se.tetris.GUI.PlayScreen;
 import seoultech.se.tetris.itemMode.ItemModePlayScreen;
 import seoultech.se.tetris.main.Tetris;
@@ -79,13 +80,13 @@ public class StartScreenMenu extends JPanel{
           }
         } else if (e.getSource() == buttons[3]) {
           startScreen.setVisible(false);
-          PlayScreen playScreen = null;
+          HighScoreScreen highScoreScreen = null; // Tetris -> PlayScreen으로
           try {
-            playScreen = new PlayScreen();
+            highScoreScreen = new HighScoreScreen();
           } catch (Exception ex) {
             ex.printStackTrace();
           }
-          playScreen.setVisible(true);
+          highScoreScreen.setVisible(true);
         } else if (e.getSource() == buttons[4]) {
           System.exit(0);
         }
