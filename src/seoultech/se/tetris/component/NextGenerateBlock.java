@@ -4,7 +4,7 @@ import seoultech.se.tetris.blocks.*;
 
 import java.util.Random;
 
-public class NextGenerateBlock {
+public class NextGenerateBlock extends Block {
 
     private Block nextblock;
 
@@ -31,8 +31,6 @@ public class NextGenerateBlock {
     public void generateHardBlock() throws Exception {
         nextblock = getHardRandomBlock();
     }
-
-
 
 
     public Block getRandomBlock() throws Exception {

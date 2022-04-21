@@ -1,5 +1,6 @@
 package seoultech.se.tetris.GUI;
 
+
 import seoultech.se.tetris.component.Board.Board;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
