@@ -37,6 +37,7 @@ public class StartScreen extends JFrame {
           setVisible(false);
           try {
             ItemModePlayScreen itemModePlayScreen = new ItemModePlayScreen();
+            itemModePlayScreen.setVisible(true);
           } catch (Exception ex) {
             ex.printStackTrace();
           }

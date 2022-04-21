@@ -6,21 +6,12 @@ public class GameScore {
     /*field*/
     private int total_score; // 최종 점수
     private int plus; // 최종 가산 점수
-    private int speed; // 속도가 증가함에 따라
-    //private int state; // game state에 따라 점수가 자동으로 증가 되어야 함
 
     /*construct*/
     public GameScore() // 기본 생성자
     {
         this.total_score = 0; // 최종 점수
         this.plus = 1;
-        this.speed = 0;
-    }
-
-    public GameScore(int total_score, int plus) { // Level이 올라가면 호출
-        this.total_score = total_score;
-        this.plus = plus;
-        this.speed = 0;
     }
 
     public void playScore(){

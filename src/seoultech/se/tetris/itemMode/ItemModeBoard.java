@@ -1,5 +1,8 @@
 package seoultech.se.tetris.itemMode;
 
+import seoultech.se.tetris.blocks.IBlock;
+import seoultech.se.tetris.blocks.OneBlock;
+import seoultech.se.tetris.blocks.WeightBlock;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.GUI.ScoreBoard;
 import seoultech.se.tetris.blocks.Block;
@@ -9,6 +12,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Objects;
+
+import static seoultech.se.tetris.itemMode.ItemModeNextGenerateBlock.currItemBlock;
 
 
 public class ItemModeBoard extends JPanel {
@@ -78,19 +84,23 @@ public class ItemModeBoard extends JPanel {
 
 
         background = new Color[HEIGHT][WIDTH];
+        WeightBlock weightBlock = new WeightBlock();
 
         //Set timer for block drops.
         timer = new Timer(initInterval, e -> {
             try {
-                moveBlockDown();
-//                if (currItemBlock == 1) {
-//                    whenWeightBlockTouchingBottom();
-//                } else {
-//                    moveBlockDown(); // 블럭 내려보내기
-//                }
+//                moveBlockDown();
+                if (curr.getThisBlock() == weightBlock.getThisBlock()) {
+                    System.out.println("weight!");
+                    whenWeightBlockTouchingBottom();
+                } else {
+                    moveBlockDown(); // 블럭 내려보내기
+                }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+
+            System.out.println(curr.getColor());
         });
 
         timer.start();
@@ -116,14 +126,27 @@ public class ItemModeBoard extends JPanel {
 
     public void whenWeightBlockTouchingBottom() throws Exception {
 
-        for (int x = curr.getBottomEdge(); x < gridRows; x++) {
-            for (int y = curr.getLeftEdge(); y < curr.getRightEdge(); y++) {
-                background[x][y] = null;
+        if(!checkBottom()){
+            for (int x = curr.getBottomEdge(); x < gridRows; x++) {
+                for (int y = curr.getLeftEdge(); y < curr.getRightEdge(); y++) {
+                    background[x][y] = null;
+                }
+                curr.moveDown();
+                gameScore.playScore(); // 스코어 증가
+                scoreBoard.updateScore(); // 점수 보여주기~
+
             }
-            curr.moveDown();
+            moveBlockToBackground();
+            clearLines();
+            spawnBlock();
             repaint();
+
         }
-        moveBlockToBackground();
+        curr.moveDown();
+        gameScore.playScore(); // 스코어 증가
+        scoreBoard.updateScore(); // 점수 보여주기~
+        repaint();
+
 
     }
 

@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class WeightBlock extends Block{
 
+
   public WeightBlock() throws Exception{
     shape = new int[][] {
       {0, 1, 1, 0},
@@ -11,5 +12,9 @@ public class WeightBlock extends Block{
     };
 
     color = Color.RED.darker();
+
+    thisBlock = 1;
   }
+
+
 }

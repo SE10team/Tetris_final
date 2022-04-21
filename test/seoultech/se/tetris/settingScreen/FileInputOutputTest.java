@@ -162,6 +162,52 @@ class FileInputOutputTest {
 
   }
 
+  @DisplayName("난이도 설정 파일 Easy 불러오기")
+  @Test
+  void input_Mode_Setting_File_When_Easy() throws Exception {
+
+    //given
+    fileInputOutput.OutputModeSetting(1);
+    int setMode;
+
+    //when
+    setMode = fileInputOutput.InputModeFile();
+
+    //then
+    assertEquals(1, setMode);
+  }
+
+  @DisplayName("난이도 설정 파일 Normal 불러오기")
+  @Test
+  void input_Mode_Setting_File_When_Normal() throws Exception {
+
+    //given
+    fileInputOutput.OutputModeSetting(2);
+    int setMode;
+
+    //when
+    setMode = fileInputOutput.InputModeFile();
+
+    //then
+    assertEquals(2, setMode);
+  }
+
+  @DisplayName("난이도 설정 파일 Hard 불러오기")
+  @Test
+  void input_Mode_Setting_File_When_Hard() throws Exception {
+
+    //given
+    fileInputOutput.OutputModeSetting(3);
+    int setMode;
+
+    //when
+    setMode = fileInputOutput.InputModeFile();
+
+    //then
+    assertEquals(3, setMode);
+  }
+
+
   @DisplayName("일반 색 모드 파일 출력하는 경우")
   @Test
   void output_Color_File_Not_For_Blind() throws Exception {
@@ -283,4 +329,49 @@ class FileInputOutputTest {
     assertEquals(sizes[7], 500);
 
   }
+
+  @DisplayName("난이도 설정 파일 Easy 출력")
+  @Test
+  void outputModeSettingEasy() throws Exception {
+
+    //given
+    fileInputOutput.OutputModeSetting(1);
+
+    //when
+    int setMode = fileInputOutput.InputModeFile();
+
+    //then
+    assertEquals(1, setMode);
+  }
+
+  @DisplayName("난이도 설정 파일 Normal 출력")
+  @Test
+  void outputModeSettingNormal() throws Exception {
+
+    //given
+    fileInputOutput.OutputModeSetting(2);
+    int setMode;
+
+    //when
+    setMode = fileInputOutput.InputModeFile();
+
+    //then
+    assertEquals(2, setMode);
+  }
+
+  @DisplayName("난이도 설정 파일 Hard 출력")
+  @Test
+  void outputModeSettindHard() throws Exception {
+
+    //given
+    fileInputOutput.OutputModeSetting(3);
+    int setMode;
+
+    //when
+    setMode = fileInputOutput.InputModeFile();
+
+    //then
+    assertEquals(3, setMode);
+  }
+
 }

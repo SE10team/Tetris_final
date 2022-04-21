@@ -12,6 +12,8 @@ public class Block {
 	private int WIDTH = 10;
 	public FileInputOutput fileInputOutput = new FileInputOutput();
 	public Color[] colors = fileInputOutput.InputColorFile();
+
+	protected int thisBlock;
 	
 	public Block() throws Exception {
 
@@ -24,6 +26,10 @@ public class Block {
 
 		x= (WIDTH - width()) / 2 ;
 		y= 0;
+	}
+
+	public int getThisBlock() {
+		return thisBlock;
 	}
 
 	
