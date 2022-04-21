@@ -51,12 +51,13 @@ public class ItemModeNextGenerateBlock {
 //                  default -> new OBlock();
 //              };
 //        }
-        int block = rnd.nextInt(2);
+        int block = rnd.nextInt(3);
         return
-                switch (block) {
-                    case 0 -> new JBlock();
-                    default -> new WeightBlock();
-                };
+          switch (block) {
+              case 0 -> new JBlock();
+              case 1 -> new OneBlock();
+              default -> new WeightBlock();
+          };
 
     }
 }

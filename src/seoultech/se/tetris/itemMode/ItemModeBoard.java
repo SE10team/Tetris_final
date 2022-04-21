@@ -1,12 +1,9 @@
 package seoultech.se.tetris.itemMode;
 
 import seoultech.se.tetris.GUI.HighScoreScreen;
-import seoultech.se.tetris.blocks.IBlock;
-import seoultech.se.tetris.blocks.OneBlock;
-import seoultech.se.tetris.blocks.WeightBlock;
+import seoultech.se.tetris.blocks.*;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.GUI.ScoreBoard;
-import seoultech.se.tetris.blocks.Block;
 import seoultech.se.tetris.scoreData.dao.ItemScoreCsv;
 import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
 import seoultech.se.tetris.scoreData.model.ItemScore;
@@ -18,9 +15,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Objects;
-
-import static seoultech.se.tetris.itemMode.ItemModeNextGenerateBlock.currItemBlock;
-
 
 public class ItemModeBoard extends JPanel {
 
@@ -130,6 +124,43 @@ public class ItemModeBoard extends JPanel {
 
     public void whenOneBlockTouchedBottom() throws Exception {
 
+        if(!checkBottom()){
+
+            moveBlockToBackground();
+            if (curr.getY() < 19) {
+                background[curr.getY() + 1][curr.getX()] = null;
+                background[curr.getY()][curr.getX()] = null;
+                background[curr.getY() - 1][curr.getX()] = null;
+                if (curr.getX() - 1 > 0) {
+                    background[curr.getY()][curr.getX() - 1] = null;
+                    background[curr.getY() + 1][curr.getX() - 1] = null;
+                    background[curr.getY() - 1][curr.getX() - 1] = null;
+                }
+                if (curr.getX() + 1 < 10) {
+                    background[curr.getY()][curr.getX() + 1] = null;
+                    background[curr.getY() + 1][curr.getX() + 1] = null;
+                    background[curr.getY() - 1][curr.getX() + 1] = null;
+                }
+            } else {
+                background[curr.getY()][curr.getX()] = null;
+                background[curr.getY() - 1][curr.getX()] = null;
+
+                if (curr.getX() + 1 < 10) {
+                    background[curr.getY()][curr.getX() + 1] = null;
+                    background[curr.getY() - 1][curr.getX() + 1] = null;
+                }
+                if (curr.getX() - 1 > 0) {
+                    background[curr.getY()][curr.getX() - 1] = null;
+                    background[curr.getY() - 1][curr.getX() - 1] = null;
+                }
+
+            }
+
+            gameScore.playScore();
+            scoreBoard.updateScore();
+        }
+        repaint();
+
     }
 
     public void whenWeightBlockTouchingBottom() throws Exception {
@@ -206,9 +237,9 @@ public class ItemModeBoard extends JPanel {
 
     private void clearLine(int row) {
         for(int i = 0; i < WIDTH; i++)
-            {
-                background[row][i] = null;
-            }
+        {
+            background[row][i] = null;
+        }
     }
 
     private void shiftDown(int row) {
@@ -388,6 +419,10 @@ public class ItemModeBoard extends JPanel {
             }
             if(curr.getThisBlock()==1){
                 whenWeightBlockTouchingBottom();
+                curr = new NullBlock();
+            } else if (curr.getThisBlock() == 2) {
+                whenOneBlockTouchedBottom();
+                curr = new NullBlock();
             }
             moveBlockToBackground();
             clearLines();
