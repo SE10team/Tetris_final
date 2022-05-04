@@ -3,6 +3,7 @@ package seoultech.se.tetris.blocks;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Block {
 		
@@ -32,7 +33,10 @@ public class Block {
 		return thisBlock;
 	}
 
-	
+	public void setThisBlock(int thisBlock) {
+		this.thisBlock = thisBlock;
+	}
+
 	public int[][] getShape() {
 		return shape;
 	}
@@ -82,6 +86,46 @@ public class Block {
 	public int getLeftEdge() {return x;}
 
 	public int getRightEdge() {return x + width();}
+
+	public Block getRandomLineBlock(Block block){
+		int row = 0;
+		int col = 0;
+		Random random = new Random();
+		// 줄블록의 글자가 채워질 부분 찾기
+		loop:
+		for (row = 0; row < block.height(); row++) {
+			for (col = 0; col < block.width(); col++) {
+				if (block.shape[row][col]==1) { // 1인 겨우
+					if(random.nextBoolean()){
+						block.shape[row][col] = 3; // 글자로 채우기
+						block.setThisBlock(2);
+						break loop; // 끝
+					}
+					else{
+						block.setThisBlock(0);
+					}
+				}
+			}
+		}
+		return block;
+	}
+	public Block getRandomClearBlock(Block block){
+		int row = 0;
+		int col = 0;
+		Random random = new Random();
+		// 줄블록의 글자가 채워질 부분 찾기
+		loop:
+		for (row = 0; row < block.height(); row++) {
+			for (col = 0; col < block.width(); col++) {
+				if (block.shape[row][col]==1) { // 1인 겨우
+						block.shape[row][col] = 5; // 글자로 채우기
+						break loop; // 끝
+					}
+				}
+			}
+		return block;
+	}
+
 
 
 }

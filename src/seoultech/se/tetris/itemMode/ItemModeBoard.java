@@ -16,6 +16,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Objects;
 
+import static seoultech.se.tetris.itemMode.ItemModeNextGenerateBlock.currItemBlock;
+
+
 public class ItemModeBoard extends JPanel {
 
     private static final long serialVersionUID = 2434035659171694595L;
@@ -24,11 +27,12 @@ public class ItemModeBoard extends JPanel {
     public static final int WIDTH = 10;
     private int gridCellSize;
 
-    private Color[][] background;
+    private Color[][] background; // 색깔 채워야 하는 부분
 
     //GameOver 설정
     private JLabel text;
     private Font font;
+    private Font font2; // 블록 글자
 
     private KeyListener playerKeyListener;
     private Timer timer;
@@ -78,12 +82,13 @@ public class ItemModeBoard extends JPanel {
         text.setBounds(100,300, 250,120);
 
         /*폰트 설정*/
-        font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
+        font = new Font("Pixel Emulator", Font.BOLD, 60); // 폰트 설정
         text.setForeground(Color.RED);
         text.setFont(font);
         text.setVisible(false);
         this.add(text); // 글자 표시
 
+        font2 = new Font("Pixel Emulator", Font.PLAIN, 20); // 폰트 설정
 
         background = new Color[HEIGHT][WIDTH];
         WeightBlock weightBlock = new WeightBlock();
@@ -189,6 +194,25 @@ public class ItemModeBoard extends JPanel {
 
     }
 
+    // Line Block touch Bottom
+    public int whenLineBlockTouchingBottom() throws Exception {
+        int thisRow = 0;
+
+        if(!checkBottom()) { // 뭔가 부딪혔을 때
+             moveBlockToBackground(); // 옮겨
+            for (int row = 0; row < curr.height(); row++) {
+                for (int col = 0; col < curr.width(); col++) {
+                    if (curr.getShape()[row][col] == 3) { // 2인 경우
+                        thisRow = curr.getY() + row;
+                        return thisRow;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+
     @Override
     public void paintComponent(Graphics g) { //컴포넌트 그리기
         super.paintComponent(g);
@@ -256,6 +280,22 @@ public class ItemModeBoard extends JPanel {
 
     }
 
+    private void clearLine2(int col) {
+        for(int i = 0; i < HEIGHT; i++)
+        {
+            background[i][col] = null;
+        }
+    }
+    private void clearLine3() {
+        for(int i = 0; i < WIDTH; i++){
+            for(int j = 0; j < HEIGHT; j++)
+            {
+                background[j][i] = null;
+            }
+        }
+
+    }
+
     private void shiftDown(int row) {
         for(int r = row; r >0; r--){
             for (int col = 0; col < WIDTH; col++)
@@ -290,14 +330,17 @@ public class ItemModeBoard extends JPanel {
         {
             for (int col = 0; col < w; col++)
             {
-                if(shape[row][col]==1)
+                if(shape[row][col]==1 || shape[row][col]==3 || shape[row][col]==4 || shape[row][col]==5 )
                 {
-                    background[row + yPos][col + xPos] = color;
+                    background[row + yPos][col + xPos] = color; // 여기서 블럭 색깔을...
                 }
+
             }
         }
     }
 
+
+    /*그리기 담당*/
     private void placeBlock(Graphics g) { // 블럭 그리기
 
         Color color = curr.getColor();
@@ -305,18 +348,39 @@ public class ItemModeBoard extends JPanel {
 
         for (int row = 0; row < curr.height(); row++) {
             for (int col = 0; col < curr.width(); col++) {
-                if (shape[row][col]==1) {
+                if (shape[row][col]==1) { // 1인 겨우
                     int x = (curr.getX() + col) * gridCellSize;
                     int y = (curr.getY() + row) * gridCellSize;
 
                     drawGridSquare(g,color, x, y);
+                }
+                else if(shape[row][col]==3){ // 2인 경우
+                    int x = (curr.getX() + col)*gridCellSize;
+                    int y = (curr.getY() + row)*gridCellSize;
+
+                    drawGridSquare(g, color, x, y);
+                    drawGridLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
+                }
+                else if(shape[row][col]==4){ // 3인 경우 BombBlock;
+                    int x = (curr.getX() + col)*gridCellSize;
+                    int y = (curr.getY() + row)*gridCellSize;
+
+                    drawGridSquare(g, color, x, y);
+                    drawBombLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
+                }
+                else if(shape[row][col]==5){ // 4인 경우 cLearBlock;
+                    int x = (curr.getX() + col)*gridCellSize;
+                    int y = (curr.getY() + row)*gridCellSize;
+
+                    drawGridSquare(g, color, x, y);
+                    drawClearLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
                 }
             }
         }
     }
 
     private void drawBackground(Graphics g) { // background 그리기
-        Color color;
+        Color color; // 색칠해야 하는 부분
 
         for (int row = 0; row < HEIGHT; row++)
         {
@@ -326,20 +390,37 @@ public class ItemModeBoard extends JPanel {
 
                 if (color != null)
                 {
-                    int x = col * gridCellSize;
-                    int y = row * gridCellSize;
+                    int x = col * gridCellSize; // 즉 열의 위치*cell 한 칸 크기
+                    int y = row * gridCellSize; // 행의 위치*cell 한 칸 크기
 
-                    drawGridSquare(g, color, x, y );
+                    drawGridSquare(g,color, x, y ); // 이건 바탕 검정 화면 그리는 거임
                 }
             }
         }
     }
 
-    private void drawGridSquare(Graphics g, Color color, int x , int y) { //블럭 그리기(painting)
+    private void drawGridSquare(Graphics g, Color color, int x , int y) { //블럭 그리기(painting) - 색칠
         g.setColor(color);
         g.fillRect(x, y, gridCellSize, gridCellSize); //블럭 그리고
         g.setColor(Color.BLACK);
         g.drawRect(x, y, gridCellSize, gridCellSize); // 테두리 그리기
+    }
+
+    // 글자를 입력해주기 위한 거
+    private void drawGridLine(Graphics g, int x, int y){
+        g.setColor(Color.BLACK);
+        g.setFont(font2);
+        g.drawString("L",x,y);
+    }
+    private void drawBombLine(Graphics g, int x, int y){
+        g.setColor(Color.WHITE);
+        g.setFont(font2);
+        g.drawString("B",x,y);
+    }
+    private void drawClearLine(Graphics g, int x, int y){
+        g.setColor(Color.BLACK);
+        g.setFont(font2);
+        g.drawString("C",x,y);
     }
 
     public void spawnBlock() throws Exception{ // 새로운 블럭 스폰
@@ -416,6 +497,8 @@ public class ItemModeBoard extends JPanel {
 
 
     protected void moveBlockDown() throws Exception { //블럭 내리기
+        int row = 0;
+        int col = 0;
         if(!checkBottom()) {
             if(isBlockOutOfBounds())
             {
@@ -438,9 +521,29 @@ public class ItemModeBoard extends JPanel {
                 whenOneBlockTouchedBottom();
                 curr = new NullBlock();
             }
+            if(curr.getThisBlock()==3){
+                row = whenLineBlockTouchingBottom();
+            }
+            if(curr.getThisBlock()==4){
+                //moveBlockToBackground();
+                col = curr.getX();
+                clearLine2(col);
+            }
+            if(curr.getThisBlock()==5){
+                moveBlockToBackground();
+            }
+
             moveBlockToBackground();
+            clearLines();
+            if(curr.getThisBlock()==3){
+                clearLine(row);
+            }
+            if(curr.getThisBlock()==5){
+                clearLine3();
+            }
             spawnBlock();
             clearLines();
+
             repaint();
         }
         curr.moveDown();
@@ -518,7 +621,7 @@ public class ItemModeBoard extends JPanel {
     //바닥 체크
     private boolean checkBottom() {
         if (curr.getBottomEdge() == HEIGHT){
-            return false;
+            return false; // 멈추는거
         }
 
         int[][]shape = curr.getShape();

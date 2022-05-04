@@ -12,6 +12,7 @@ public class ItemModeNextBoard extends JPanel { // 다음 블럭을 그리는 �
     private ItemModeNextGenerateBlock itemModeNextGenerateBlock;
     private Block nextOne;
     private int cellDivider;
+    private Font font2; // 블록 글자
 
     public ItemModeNextBoard(ItemModeNextGenerateBlock itemModeNextGenerateBlock) throws Exception {
 
@@ -22,6 +23,8 @@ public class ItemModeNextBoard extends JPanel { // 다음 블럭을 그리는 �
         setBackground(Color.BLACK);
         setBorder(getBorder());
         setLayout(null);
+
+        font2 = new Font("Pixel Emulator", Font.PLAIN, 20); // 폰트 설정
 
         this.itemModeNextGenerateBlock = itemModeNextGenerateBlock;
     }
@@ -61,6 +64,30 @@ public class ItemModeNextBoard extends JPanel { // 다음 블럭을 그리는 �
 
                     drawGridSquare(g, color, x, y);
                 }
+                else if(shape[row][col]==3){ // 2인 경우
+                    int x = (col+wstart) * gridCellSize;
+                    int y = (row+hstart) * gridCellSize;
+
+                    drawGridSquare(g, color, x, y);
+                    drawGridLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
+                }
+                else if(shape[row][col]==4){ // 3인 경우 BombBlock;
+                    int x = (col+wstart) * gridCellSize;
+                    int y = (row+hstart) * gridCellSize;
+
+                    drawGridSquare(g, color, x, y);
+                    drawBombLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
+                }
+                else if(shape[row][col]==5){ // 4인 경우 cLearBlock;
+                    int x = (col+wstart) * gridCellSize;
+                    int y = (row+hstart) * gridCellSize;
+
+                    drawGridSquare(g, color, x, y);
+                    drawClearLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
+                }
+                else{
+                    //empty
+                }
             }
         }
     }
@@ -70,6 +97,24 @@ public class ItemModeNextBoard extends JPanel { // 다음 블럭을 그리는 �
         g.fillRect(x, y, gridCellSize, gridCellSize); //블럭 그리고
         g.setColor(Color.BLACK);
         g.drawRect(x, y, gridCellSize, gridCellSize); // 테두리 그리기
+    }
+
+    // 글자를 입력해주기 위한 거
+    private void drawGridLine(Graphics g, int x, int y){
+        g.setColor(Color.BLACK);
+        g.setFont(font2);
+        g.drawString("L",x,y);
+    }
+
+    private void drawBombLine(Graphics g, int x, int y){
+        g.setColor(Color.WHITE);
+        g.setFont(font2);
+        g.drawString("B",x,y);
+    }
+    private void drawClearLine(Graphics g, int x, int y){
+        g.setColor(Color.BLACK);
+        g.setFont(font2);
+        g.drawString("C",x,y);
     }
 
 }

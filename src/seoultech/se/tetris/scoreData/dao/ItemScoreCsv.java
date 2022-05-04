@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ItemScoreCsv extends ScoreCsv { // 아이템 모드
     // 파일 경로
-    private File f = new File("D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/ItemScoreResult.csv");
+    private File f = new File("C:\\Users\\USER\\OneDrive - 서울과학기술대학교\\Tetris_final\\src\\seoultech\\se\\tetris\\scoreData\\resource\\ItemScoreResult.csv");
     private ItemScore score;
     private List<List<String>> records;
     private int highlight;
