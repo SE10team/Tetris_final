@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 
 public class Board extends JPanel {
@@ -23,35 +24,92 @@ public class Board extends JPanel {
 
     public static final int HEIGHT = 20;
     public static final int WIDTH = 10;
-    protected final int gridCellSize;
+    protected int gridCellSize;
 
-    protected final Color[][] background;
+    protected Color[][] background;
 
     //GameOver 설정
-    protected final JLabel text;
+    protected JLabel text;
 
     protected KeyListener playerKeyListener;
-    protected final Timer timer;
+    protected Timer timer;
 
     // 다른 클래스
     protected GameScore gameScore;
     protected ScoreBoard scoreBoard;
-    protected final NextGenerateBlock nextBlock;
-    protected final NextBoard nextBoard;
+    protected NextGenerateBlock nextBlock;
+    protected NextBoard nextBoard;
     protected NormalScoreCsv normalScoreCsv;
     protected PlayScreen playScreen;
 
     protected Block curr;
 
-    FileInputOutput fileInputOutput;
+    protected FileInputOutput fileInputOutput;
 
-    int[] keySettingArr;
+    protected int[] keySettingArr;
 
     protected int initInterval = 1000;
     protected int completeLines = 0; // 완료 행 수
     protected int levelLines= 5; // 레벨 올라갈 때 필요한 줄 수
     protected int pluslevelLines = 5; // 필요한 줄 수 더하기
 
+    public Board() {
+
+    }
+    public Board(GameScore gameScore, ScoreBoard scoreBoard) throws Exception {
+        this.gameScore = gameScore;
+        this.scoreBoard = scoreBoard;
+
+        fileInputOutput = new FileInputOutput();
+
+        int[] locationArr = fileInputOutput.InputScreenSizeFile();
+
+        //보드 설정
+        setBounds(locationArr[2], locationArr[3], 350, 700);
+        this.gameScore = gameScore;
+        this.scoreBoard = scoreBoard;
+        setBackground(Color.BLACK);
+
+        gridCellSize = getBounds().width / WIDTH; //네모네모 크기 설정
+
+        /*컴포넌트 설정*/
+        text = new JLabel("Game Over"); // 글자
+        text.setBounds(100,300, 250,120);
+
+        /*폰트 설정*/
+        Font font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
+        text.setForeground(Color.RED);
+        text.setFont(font);
+        text.setVisible(false);
+        this.add(text); // 글자 표시
+
+
+        background = new Color[HEIGHT][WIDTH];
+
+        //Set timer for block drops.
+        timer = new Timer(initInterval, e -> {
+            try {
+                moveBlockDown(); // 블럭 내려보내기
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        timer.start();
+        spawnBlock();
+
+        //키 리스너
+        playerKeyListener = new PlayerKeyListener();
+        addKeyListener(playerKeyListener);
+        setFocusable(true);
+        requestFocus();
+
+
+        fileInputOutput = new FileInputOutput();
+        keySettingArr = fileInputOutput.InputKeyFile();
+
+        System.out.println("Normal");
+    }
     public Board(PlayScreen playScreen, GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard, NormalScoreCsv normalScoreCsv) throws Exception{
         this.playScreen = playScreen;
         this.gameScore = gameScore;
@@ -87,7 +145,7 @@ public class Board extends JPanel {
         //Set timer for block drops.
         timer = new Timer(initInterval, e -> {
             try {
-                 moveBlockDown(); // 블럭 내려보내기
+                moveBlockDown(); // 블럭 내려보내기
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -163,9 +221,9 @@ public class Board extends JPanel {
 
     protected void clearLine(int row) {
         for(int i = 0; i < WIDTH; i++)
-            {
-                background[row][i] = null;
-            }
+        {
+            background[row][i] = null;
+        }
     }
 
     protected void clearEvent(int row) {
@@ -363,8 +421,8 @@ public class Board extends JPanel {
 
         }
         curr.moveDown();
-            gameScore.playScore(); // 스코어 증가
-            scoreBoard.updateScore(); // 점수 보여주기~
+        gameScore.playScore(); // 스코어 증가
+        scoreBoard.updateScore(); // 점수 보여주기~
         repaint();
     }
 
