@@ -8,8 +8,6 @@ import seoultech.se.tetris.settingScreen.FileInputOutput;
 import javax.swing.*;
 import java.awt.*;
 
-import static seoultech.se.tetris.itemMode.ItemModeBoard.completeLines;
-
 
 public class ItemModePlayScreen extends JFrame { // 게임 화면을 그리는 곳
 

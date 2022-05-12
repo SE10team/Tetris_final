@@ -1,28 +1,19 @@
 package seoultech.se.tetris.itemMode;
 
 import seoultech.se.tetris.blocks.*;
+import seoultech.se.tetris.component.NextGenerateBlock;
 
 import java.util.Random;
 
 import static seoultech.se.tetris.itemMode.ItemModeBoard.countCompleteLines;
 
-public class ItemModeNextGenerateBlock {
+public class ItemModeNextGenerateBlock extends NextGenerateBlock {
 
-    private Block nextblock;
     public static int currItemBlock;
 
     public ItemModeNextGenerateBlock() throws Exception {
         nextblock = getRandomBlock();
     }
-
-    public Block getNextblock() {
-        return nextblock;
-    }
-
-    public void generateBlock() throws Exception {
-        nextblock = getRandomBlock();
-    }
-
 
     public Block getRandomBlock() throws Exception {
 
