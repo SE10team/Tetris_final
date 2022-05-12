@@ -136,14 +136,13 @@ public class ItemModeBoard extends Board {
     public void whenWeightBlockTouchingBottom() throws Exception {
 
         if(!checkBottom()){
-            for (int x = curr.getBottomEdge(); x < gridRows; x++) {
+            for (int x = curr.getTopEdge(); x < gridRows; x++) {
                 for (int y = curr.getLeftEdge(); y < curr.getRightEdge(); y++) {
                     background[x][y] = null;
                 }
                 curr.moveDown();
                 gameScore.playScore(); // 스코어 증가
                 scoreBoard.updateScore(); // 점수 보여주기~
-
             }
             clearLines();
         }
