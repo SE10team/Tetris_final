@@ -23,10 +23,10 @@ public class StartScreenMenu extends JPanel{
     this.startScreen = startScreen;
     playerKeyListener = new PlayerKeyListener();
 
-    String[] btnText = {"일반 모드 게임 시작", "아이템 모드 게임 시작", "게임 설정", "스코어 보드", "게임 종료"};
-    buttons = new JButton[5];
+    String[] btnText = {"일반 모드 게임 시작", "아이템 모드 게임 시작", "대전모드 게임 시작", "게임 설정", "스코어 보드", "게임 종료"};
+    buttons = new JButton[btnText.length];
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
       buttons[i] = new JButton(btnText[i]);
       add( buttons[i] );
 
@@ -73,12 +73,15 @@ public class StartScreenMenu extends JPanel{
           }
         } else if (e.getSource() == buttons[2]) {
           startScreen.setVisible(false);
+          FightModeSelectionScreen screen = new FightModeSelectionScreen();
+        } else if (e.getSource() == buttons[3]) {
+          startScreen.setVisible(false);
           try {
             SettingScreen settingScreen = new SettingScreen();
           } catch (Exception ex) {
             ex.printStackTrace();
           }
-        } else if (e.getSource() == buttons[3]) {
+        } else if (e.getSource() == buttons[4]) {
           startScreen.setVisible(false);
           HighScoreScreen highScoreScreen = null; // Tetris -> PlayScreen으로
           try {
@@ -87,7 +90,7 @@ public class StartScreenMenu extends JPanel{
             ex.printStackTrace();
           }
           highScoreScreen.setVisible(true);
-        } else if (e.getSource() == buttons[4]) {
+        } else if (e.getSource() == buttons[5]) {
           System.exit(0);
         }
 
