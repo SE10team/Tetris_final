@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class NextGenerateBlock extends Block {
 
-    private Block nextblock;
+    protected Block nextblock;
 
     public NextGenerateBlock() throws Exception {
         nextblock = getRandomBlock();

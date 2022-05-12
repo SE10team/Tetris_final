@@ -7,34 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb8e7121-d35c-4658-83ee-8229a20ce350" name="Default Changelist" comment="윤재_feat_2_난이도 경로 설정, 보드 연결">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/SE10_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/blocks/BombBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/blocks/ClearBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/blocks/LineBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/resource/NormalScoreResult-LAPTOP-U1L7CR06.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/blocks/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/blocks/Block.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/blocks/OneBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/blocks/OneBlock.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard$PlayerKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard$PlayerKeyListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeNextBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeNextBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeNextGenerateBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeNextGenerateBlock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/resource/NormalScoreResult.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/resource/NormalScoreResult.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/FileInputOutput.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/FileInputOutput.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/startScreen/StartScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/startScreen/StartScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenSizeSetting.ser" beforeDir="false" afterPath="$PROJECT_DIR$/screenSizeSetting.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/blocks/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/blocks/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/blocks/OneBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/blocks/OneBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/component/NextGenerateBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/component/NextGenerateBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeNextBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeNextBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeNextGenerateBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeNextGenerateBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/resource/NormalScoreResult.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/resource/NormalScoreResult.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/startScreen/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/startScreen/StartScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/seoultech/se/tetris/itemMode/ItemModeBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/seoultech/se/tetris/itemMode/ItemModeBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +71,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Tetris_final - 복사본" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />

@@ -58,27 +58,34 @@ public class ItemModeNextBoard extends JPanel { // 다음 블럭을 그리는 �
 
         for (int row = 0; row < nextOne.height(); row++) {
             for (int col = 0; col < nextOne.width(); col++) {
-                if (shape[row][col]==1) {
+                if (shape[row][col]==1) { //일반 Block
                     int x = (col+wstart) * gridCellSize;
                     int y = (row+hstart) * gridCellSize;
 
                     drawGridSquare(g, color, x, y);
                 }
-                else if(shape[row][col]==3){ // 2인 경우
+                else if(shape[row][col] == 2){// One Block 경우
+                    int x = (col+wstart) * gridCellSize;
+                    int y = (row+hstart) * gridCellSize;
+
+                    drawGridSquare(g, color, x, y); // 배경
+                    drawOne(g, x + (gridCellSize/3), y+ (gridCellSize - gridCellSize/3)); // 글자
+                }
+                else if(shape[row][col]==3){ // Line Block
                     int x = (col+wstart) * gridCellSize;
                     int y = (row+hstart) * gridCellSize;
 
                     drawGridSquare(g, color, x, y);
                     drawGridLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
                 }
-                else if(shape[row][col]==4){ // 3인 경우 BombBlock;
+                else if(shape[row][col]==4){ // 4인 경우 BombBlock;
                     int x = (col+wstart) * gridCellSize;
                     int y = (row+hstart) * gridCellSize;
 
                     drawGridSquare(g, color, x, y);
-                    drawBombLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
+                    drawBombLine(g, x + (gridCellSize/3), y+ (gridCellSize - gridCellSize/3));
                 }
-                else if(shape[row][col]==5){ // 4인 경우 cLearBlock;
+                else if(shape[row][col]==5){ // 5인 경우 cLearBlock;
                     int x = (col+wstart) * gridCellSize;
                     int y = (row+hstart) * gridCellSize;
 
@@ -100,18 +107,24 @@ public class ItemModeNextBoard extends JPanel { // 다음 블럭을 그리는 �
     }
 
     // 글자를 입력해주기 위한 거
-    private void drawGridLine(Graphics g, int x, int y){
+    protected void drawOne(Graphics g, int x, int y){ // OneBlock 사용
+        g.setColor(Color.BLACK);
+        g.setFont(font2);
+        g.drawString("O",x,y);
+
+    }
+    protected void drawGridLine(Graphics g, int x, int y){ // LineBlock 사용
         g.setColor(Color.BLACK);
         g.setFont(font2);
         g.drawString("L",x,y);
     }
 
-    private void drawBombLine(Graphics g, int x, int y){
+    protected void drawBombLine(Graphics g, int x, int y){ // BombBlock 사용
         g.setColor(Color.WHITE);
         g.setFont(font2);
         g.drawString("B",x,y);
     }
-    private void drawClearLine(Graphics g, int x, int y){
+    protected void drawClearLine(Graphics g, int x, int y){ // Clear Block 사용
         g.setColor(Color.BLACK);
         g.setFont(font2);
         g.drawString("C",x,y);

@@ -6,7 +6,7 @@ public class OneBlock extends Block{
 
   public OneBlock() throws Exception{
     shape = new int[][] {
-      {1}
+      {2}
     };
 
     color = Color.PINK;

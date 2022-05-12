@@ -20,16 +20,16 @@ public class ItemModeNextGenerateBlock extends NextGenerateBlock {
         currItemBlock = 3;
 
         Random rnd = new Random(System.currentTimeMillis());
-        if ((countCompleteLines != 0) && (countCompleteLines % 2 == 0)) {
+        if ((countCompleteLines != 0) && (countCompleteLines % 1 == 0)) {
             int block = rnd.nextInt(1);
             currItemBlock = block;
             countCompleteLines = 0;
             return
                     switch (block) {
-//                        case 0 -> new WeightBlock();
-//                        case 1 -> new BombBlock();
-//                        case 2 -> new ClearBlock();
-//                        case 3 -> new OneBlock();
+                        case 0 -> new LineBlock();
+                        case 1 -> new LineBlock();
+                        case 2 -> new ClearBlock();
+                        case 3 -> new OneBlock();
                         default -> new BombBlock();
                     };
         } else {
