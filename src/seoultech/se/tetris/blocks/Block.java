@@ -81,6 +81,10 @@ public class Block {
 	public void moveLeft() {x--;}
 	public void moveRight() {x++;}
 
+	public int getTopEdge() {
+		return y;
+	}
+
 	public int getBottomEdge() { return y + height(); }
 
 	public int getLeftEdge() {return x;}
