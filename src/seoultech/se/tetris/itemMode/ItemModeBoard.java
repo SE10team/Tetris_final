@@ -31,6 +31,8 @@ public class ItemModeBoard extends Board {
     private ItemModePlayScreen itemModePlayScreen;
 
     public ItemModeBoard(ItemModePlayScreen itemPlayScreen, GameScore gameScore, ScoreBoard scoreBoard, ItemModeNextGenerateBlock itemModeNextGenerateBlock, ItemModeNextBoard nextBoard, ItemScoreCsv itemScoreCsv) throws Exception{
+        super();
+
 
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
@@ -148,7 +150,12 @@ public class ItemModeBoard extends Board {
             }
             clearLines();
         }
+//        curr.moveDown();
+//        gameScore.playScore(); // 스코어 증가
+//        scoreBoard.updateScore(); // 점수 보여주기~
         repaint();
+
+
     }
 
     // Line Block touch Bottom
@@ -450,7 +457,7 @@ public class ItemModeBoard extends Board {
 
 
     /*중요*/
-    protected void moveBlockDown() throws Exception { //블럭이 바닥일 때 처리
+    public void moveBlockDown() throws Exception { //블럭이 바닥일 때 처리
         int row = 0;
         int col = 0;
         if(!checkBottom()) {

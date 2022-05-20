@@ -9,55 +9,47 @@ import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
 
 public class HardBoard extends Board {
 
-    public HardBoard(PlayScreen playScreen,GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard, NormalScoreCsv normalScoreCsv) throws Exception {
-        super(playScreen,gameScore, scoreBoard, nextGBlock, nextBoard, normalScoreCsv);
+    public HardBoard(PlayScreen playScreen, GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard, NormalScoreCsv normalScoreCsv) throws Exception {
+        super(playScreen, gameScore, scoreBoard, nextGBlock, nextBoard, normalScoreCsv);
         System.out.println("Hard");
     }
 
     protected void setInterval() {
-        if (completeLines >= levelLines) {
-            initInterval -= 120;
-            levelLines += pluslevelLines;
-            pluslevelLines += 2;
-            timer.setDelay(initInterval);
-            gameScore.setPlus(3);
-            System.out.println("Delay : " + timer.getDelay());
+        if (initInterval > 100) {
+            if (completeLines >= levelLines) {
+                initInterval -= 120;
+                levelLines += pluslevelLines;
+                pluslevelLines += 2;
+                timer.setDelay(initInterval);
+                gameScore.setPlus(3);
+                System.out.println("Delay : " + timer.getDelay());
+            }
         }
     }
 
-    public void spawnBlock() throws Exception{ // 새로운 블럭 스폰
+    public void spawnBlock() throws Exception { // 새로운 블럭 스폰
         curr = nextBlock.getNextblock(); // 새로운 블럭 스폰
         nextBlock.generateHardBlock();
         nextBoard.updateBlock();
     }
 
-    public void clearLines() throws InterruptedException {
+    public void checkLineFilled() throws InterruptedException {
         boolean lineFilled;
-        int completeRows =0;
+        int completeRows = 0;
 
-        for (int row = HEIGHT -1; row >=0; row--){
+        for (int row = HEIGHT - 1; row >= 0; row--) {
 
             lineFilled = true;
 
-            for(int col = 0; col < WIDTH; col++)
-            {
-                if(background[row][col] ==null)
-                {
+            for (int col = 0; col < WIDTH; col++) {
+                if (background[row][col] == null) {
                     lineFilled = false;
                     break;
                 }
             }
 
-            if(lineFilled)
-            {
-
-                clearEvent(row);
-                this.paint(this.getGraphics());
-                Thread.sleep(150);
-                clearLine(row);
-                shiftDown(row);
-                clearLine(0);
-                row++;
+            if (lineFilled) {
+                filledRows[row] = true;
 
                 //스코어 증가
                 gameScore.hardLine();
@@ -66,8 +58,10 @@ public class HardBoard extends Board {
                 repaint();
                 setInterval();
             }
+
         }
 
-        if (completeRows >=2) gameScore.multiHardLine(completeRows);
+        // 콤보 터졌을 때
+        if (completeRows >= 2) gameScore.multiHardLine(completeRows);
     }
 }

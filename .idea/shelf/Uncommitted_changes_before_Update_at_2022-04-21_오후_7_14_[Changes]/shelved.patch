@@ -1,0 +1,254 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_06__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_06__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_06__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_06__Changes_.xml	(revision 480e7e0bac861037eb37ea24d5455ee51a44a35d)
++++ /dev/null	(revision 480e7e0bac861037eb37ea24d5455ee51a44a35d)
+@@ -1,234 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_2022-04-21_오후_7_06_[Changes]" date="1650535619401" recycled="false" toDelete="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_06_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2022-04-21 오후 7:06 [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/scoreData/model/ItemScore.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/itemMode/ItemModeNextBoard.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/ScreenSettingScreen$PlayerKeyListener.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/GUI/ScoreBoard.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/SBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/OneBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard$PlayerKeyListener.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/ZBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/SettingScreenMenu.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/scoreData/resource/NormalScoreResult.csv" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/itemMode/ItemModeNextGenerateBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/startScreen/StartScreenTitle.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/itemMode/ItemModePlayScreen.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/FileInputOutput.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/KeySettingScreen.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/ScreenSettingScreen.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/component/NextGenerateBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/scoreData/resource/ItemScoreResult.csv" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/SettingScreen.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/SettingScreen$1.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/WeightBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/scoreData/model/NormalScore.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/KeySettingScreen$1.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/startScreen/StartScreen$1.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/LBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/scoreData/dao/ScoreCsv.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/scoreData/model/Score.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/IBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/OBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/main/Tetris$1.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/startScreen/StartScreenMenu.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/startScreen/StartScreen.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/GUI/NextBoard.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/Block.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/ScreenSettingScreen$1.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/GUI/PlayScreen.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/TBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/blocks/JBlock.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/KeySettingScreen$PlayerKeyListener.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/startScreen/StartScreenMenu$PlayerKeyListener.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/component/GameScore.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/settingScreen/SettingScreenMenu$PlayerKeyListener.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="out/production/SE10/seoultech/se/tetris/main/Tetris.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_09__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_09__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_09__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_09__Changes_.xml	(revision 480e7e0bac861037eb37ea24d5455ee51a44a35d)
++++ /dev/null	(revision 480e7e0bac861037eb37ea24d5455ee51a44a35d)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_2022-04-21_오후_7_09_[Changes]" date="1650535775668" recycled="false" toDelete="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_09_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2022-04-21 오후 7:09 [Changes]" />
+-</changelist>
+\ No newline at end of file
