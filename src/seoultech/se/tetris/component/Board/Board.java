@@ -1,9 +1,6 @@
 package seoultech.se.tetris.component.Board;
 
-import seoultech.se.tetris.GUI.HighScoreScreen;
-import seoultech.se.tetris.GUI.NextBoard;
-import seoultech.se.tetris.GUI.PlayScreen;
-import seoultech.se.tetris.GUI.ScoreBoard;
+import seoultech.se.tetris.GUI.*;
 import seoultech.se.tetris.blocks.Block;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
@@ -15,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.io.IOException;
 
 
@@ -41,6 +40,7 @@ public class Board extends JPanel {
     protected NextBoard nextBoard;
     protected NormalScoreCsv normalScoreCsv;
     protected PlayScreen playScreen;
+    protected MatchScreen matchScreen;
 
     protected Block curr;
 
@@ -49,72 +49,19 @@ public class Board extends JPanel {
     protected int[] keySettingArr;
 
     protected int initInterval = 1000;
+    protected boolean[] filledRows = new boolean[20]; // 지워질 때 행들 저장하는 배열
+    public Color[][] tempBackground = new Color[HEIGHT][WIDTH];
+    public ArrayList<Color[]> tossBackground = new ArrayList<>(10); // 보내는 줄
+
     protected int completeLines = 0; // 완료 행 수
     protected int levelLines= 5; // 레벨 올라갈 때 필요한 줄 수
     protected int pluslevelLines = 5; // 필요한 줄 수 더하기
 
-    public Board() {
-
-    }
-    public Board(GameScore gameScore, ScoreBoard scoreBoard) throws Exception {
+    // 대전모드 용
+    public Board(MatchScreen matchScreen, GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard) throws Exception{
+        this.matchScreen = matchScreen;
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
-
-        fileInputOutput = new FileInputOutput();
-
-        int[] locationArr = fileInputOutput.InputScreenSizeFile();
-
-        //보드 설정
-        setBounds(locationArr[2], locationArr[3], 350, 700);
-        this.gameScore = gameScore;
-        this.scoreBoard = scoreBoard;
-        setBackground(Color.BLACK);
-
-        gridCellSize = getBounds().width / WIDTH; //네모네모 크기 설정
-
-        /*컴포넌트 설정*/
-        text = new JLabel("Game Over"); // 글자
-        text.setBounds(100,300, 250,120);
-
-        /*폰트 설정*/
-        Font font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
-        text.setForeground(Color.RED);
-        text.setFont(font);
-        text.setVisible(false);
-        this.add(text); // 글자 표시
-
-
-        background = new Color[HEIGHT][WIDTH];
-
-        //Set timer for block drops.
-        timer = new Timer(initInterval, e -> {
-            try {
-                moveBlockDown(); // 블럭 내려보내기
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        timer.start();
-        spawnBlock();
-
-        //키 리스너
-        playerKeyListener = new PlayerKeyListener();
-        addKeyListener(playerKeyListener);
-        setFocusable(true);
-        requestFocus();
-
-
-        fileInputOutput = new FileInputOutput();
-        keySettingArr = fileInputOutput.InputKeyFile();
-
-        System.out.println("Normal");
-    }
-    public Board(PlayScreen playScreen, GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard, NormalScoreCsv normalScoreCsv) throws Exception{
-        this.playScreen = playScreen;
-        this.gameScore = gameScore;
-        this.scoreBoard = scoreBoard;
-        this.normalScoreCsv = normalScoreCsv;
 
         fileInputOutput = new FileInputOutput();
 
@@ -156,6 +103,72 @@ public class Board extends JPanel {
         this.nextBoard = nextBoard;
         spawnBlock();
 
+
+        // 배열 초기화
+        Arrays.fill(filledRows, false);
+
+        //키 리스너
+        playerKeyListener = new PlayerKeyListener();
+        addKeyListener(playerKeyListener);
+        setFocusable(true);
+        requestFocus();
+
+
+        fileInputOutput = new FileInputOutput();
+        keySettingArr = fileInputOutput.InputKeyFile();
+
+        System.out.println("Normal");
+    }
+
+    //일반모드 용
+    public Board(PlayScreen playScreen, GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard, NormalScoreCsv normalScoreCsv) throws Exception{
+        this.playScreen = playScreen;
+        this.gameScore = gameScore;
+        this.scoreBoard = scoreBoard;
+        this.normalScoreCsv = normalScoreCsv;
+
+        fileInputOutput = new FileInputOutput();
+
+        int[] locationArr = fileInputOutput.InputScreenSizeFile();
+
+        //보드 설정
+        setBounds(locationArr[2], locationArr[3], 350, 700);
+        this.gameScore = gameScore;
+        this.scoreBoard = scoreBoard;
+        setBackground(Color.BLACK);
+
+        gridCellSize = getBounds().width / WIDTH; //네모네모 크기 설정
+
+        /*컴포넌트 설정*/
+        text = new JLabel("Game Over"); // 글자
+        text.setBounds(100,300, 250,120);
+
+        /*폰트 설정*/
+        Font font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
+        text.setForeground(Color.RED);
+        text.setFont(font);
+        text.setVisible(false);
+        this.add(text); // 글자 표시
+
+        background = new Color[HEIGHT][WIDTH];
+
+        //Set timer for block drops.
+        timer = new Timer(initInterval, e -> {
+            try {
+                moveBlockDown(); // 블럭 내려보내기
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        timer.start();
+        this.nextBlock = nextGBlock;
+        this.nextBoard = nextBoard;
+        spawnBlock();
+
+        // 배열 초기화
+        Arrays.fill(filledRows, false);
+
         //키 리스너
         playerKeyListener = new PlayerKeyListener();
         addKeyListener(playerKeyListener);
@@ -179,9 +192,15 @@ public class Board extends JPanel {
 
     }
 
-    public void clearLines() throws InterruptedException {
+    public void saveBackground() {
+        Color[][] copy = background;
+        tempBackground = copy.clone();
+        System.out.println("saveBackground");
+    }
+
+    public void checkLineFilled() throws InterruptedException {
         boolean lineFilled;
-        int completeRows =0;
+        int completeRows = 0;
 
         for (int row = HEIGHT -1; row >=0; row--){
 
@@ -198,14 +217,7 @@ public class Board extends JPanel {
 
             if(lineFilled)
             {
-
-                clearEvent(row);
-                this.paint(this.getGraphics());
-                Thread.sleep(100);
-                clearLine(row);
-                shiftDown(row);
-                clearLine(0);
-                row++;
+                filledRows[row] = true;
 
                 //스코어 증가
                 gameScore.line();
@@ -216,7 +228,115 @@ public class Board extends JPanel {
             }
         }
 
-        if (completeRows >=2) gameScore.multiLine(completeRows);
+        // 콤보 터졌을 때
+        if (completeRows >=2){
+            gameScore.multiLine(completeRows);
+            waitingClearLines(completeRows);
+        }
+    }
+
+    // 대전모드 줄 저장
+    public void waitingClearLines(int completeRows) {
+        if (tossBackground.size() < 10) // 대기 줄 수가 10보다 작을 때
+        {
+            if (tossBackground.size() + completeRows > 10) // 합쳐서 10보다 클 때
+            {
+                int count = tossBackground.size() + completeRows - 10;
+
+                for (int i = 0; i < filledRows.length ; i++)
+                {
+                    if (filledRows[i])
+                    {
+                        Color[] line = tempBackground[i];
+                        tossBackground.add(line.clone()); //지금 있는 것의 밑에 들어가야 함.
+                        System.out.println("waitingClearLines " + tempBackground[i][9] + background[i][9]);
+                        count--;
+                    }
+
+                    if (count ==0)
+                        break;
+                }
+
+            }
+            else {
+                for (int i = 0; i < filledRows.length ; i++)
+                {
+                    if (filledRows[i])
+                    {
+                        Color[] line = tempBackground[i];
+                        System.out.println("tempbackground : " + i);
+                        tossBackground.add(line.clone()); //지금 있는 것의 밑에 들어가야 함.
+                        System.out.println("waitingClearLines : " + tempBackground[i][9]  + background[i][9]);
+                    }
+                }
+            }
+        }
+    }
+
+    // 대전모드 백그라운드 추가
+    public void getWaitingLines(ArrayList<Color[]> waitingLines) { // 대기 줄 자기 보드에 받기
+
+        for (Color[] line: waitingLines)
+        {
+            shiftUp();
+            background[HEIGHT-1] = line;
+            System.out.println("getWaitingLines");
+        }
+        repaint();
+    }
+
+    //대전모드 줄 초기화
+    public void clearWaitingLines(){ //자기 자신의 toss clear
+        tossBackground.clear();
+    }
+
+    // 한 줄씩 올려주기
+    public void shiftUp() {
+        for(int r = 0; r < HEIGHT-1; r++){
+            for (int col = 0; col < WIDTH; col++)
+            {
+                background[r][col] = background[r+1][col];
+            }
+        }
+
+        for(int col=0; col <WIDTH; col++)
+            background[HEIGHT-1][col] = null;
+    }
+
+    public void clearLines() throws InterruptedException {
+
+        for (int row = HEIGHT -1; row >=0; row--)
+        {
+            if (filledRows[row])
+            {
+                clearEvent(row);
+            }
+        }
+
+        this.paint(this.getGraphics());
+        Thread.sleep(100);
+
+        for (int row =HEIGHT -1; row >=0; row--)
+        {
+            if (filledRows[row])
+            {
+                clearLine(row);
+                shiftDown(row);
+                clearLine(0);
+                downFilledLines(row);
+                row++;
+            }
+        }
+
+        repaint();
+
+        Arrays.fill(filledRows, false); // 끝나기 전에 초기화 해줌
+    }
+
+    protected void downFilledLines(int row) {
+        for(int r = row; r >0; r--){
+            filledRows[r] = filledRows[r-1];
+        }
     }
 
     protected void clearLine(int row) {
@@ -229,14 +349,14 @@ public class Board extends JPanel {
     protected void clearEvent(int row) {
         for(int i = 0; i < WIDTH; i++)
         {
-            background[row][i] = Color.LIGHT_GRAY;
+            background[row][i] = Color.WHITE;
         }
 
         System.out.println("ClearEvent");
 
     }
 
-    protected void shiftDown(int row) {
+    protected void shiftDown(int row) { // 한 줄씩 내림
         for(int r = row; r >0; r--){
             for (int col = 0; col < WIDTH; col++)
             {
@@ -245,15 +365,18 @@ public class Board extends JPanel {
         }
     }
 
-    protected void setInterval() {
-        if (completeLines >= levelLines) {
-            initInterval -= 100;
-            levelLines += pluslevelLines;
-            pluslevelLines += 2;
-            timer.setDelay(initInterval);
-            gameScore.setPlus(2);
-            System.out.println("Delay : " + timer.getDelay());
+    protected void setInterval() { // Todo 내려가는 속도 복리로 처리.. 안 해도 되나?
+        if (initInterval > 100) {
+            if (completeLines >= levelLines) {
+                initInterval -= 100;
+                levelLines += pluslevelLines;
+                pluslevelLines += 2;
+                timer.setDelay(initInterval);
+                gameScore.setPlus(2);
+                System.out.println("Delay : " + timer.getDelay());
+            }
         }
+
     }
 
     protected void moveBlockToBackground(){ //블럭 background로 보내기
@@ -276,6 +399,7 @@ public class Board extends JPanel {
                 }
             }
         }
+        System.out.println("moveBlockToBackground();");
     }
 
     protected void placeBlock(Graphics g) { // 블럭 그리기
@@ -397,7 +521,9 @@ public class Board extends JPanel {
         return name;
     }
 
-    protected void moveBlockDown() throws Exception { //블럭 내리기
+    // 대전모드는 함수 다르게..?
+    public void moveBlockDown() throws Exception { //블럭 내리기
+
         if(!checkBottom()) {
             if(isBlockOutOfBounds())
             {
@@ -414,16 +540,23 @@ public class Board extends JPanel {
 
                 return;
             }
-            moveBlockToBackground();
-            spawnBlock();
-            clearLines();
-            repaint();
 
+            saveBackground(); //temp에 들어가고
+            System.out.println("bottom check");
+            moveBlockToBackground(); // background 바뀌고
+            checkLineFilled(); // 채운 줄 확인하고 toss에 채운 줄 넣어주기
+            spawnBlock(); // 블럭 옮겨주고
+            clearLines(); // 채운 줄 없애주고
+            matchScreen.sendWaitingLines(this);
+            repaint(); // 다시 그려줌.
         }
+
         curr.moveDown();
         gameScore.playScore(); // 스코어 증가
         scoreBoard.updateScore(); // 점수 보여주기~
         repaint();
+        System.out.println("not bottom");
+
     }
 
     protected void moveBlockRight() { // 오른쪽 이동
@@ -598,7 +731,7 @@ public class Board extends JPanel {
                 try {
                     if(!isBlockOutOfBounds()){
                         dropBlock();
-                        moveBlockToBackground();
+//                        moveBlockToBackground();
                     }
 
                 } catch (Exception ex) {

@@ -1,0 +1,64 @@
+<changelist name="Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]" date="1650536137150" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2022-04-21 오후 7:15 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/blocks/JBlockTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/JBlockTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/blocks/TBlockTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/TBlockTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/blocks/BlockTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/BlockTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/component/NextGenerateBlockTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/NextGenerateBlockTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/score/GameScoreTestTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/GameScoreTestTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/production/SE10/seoultech/se/tetris/component/Board/Board$PlayerKeyListener.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/Board$PlayerKeyListener.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/blocks/LBlockTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/LBlockTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/production/SE10/seoultech/se/tetris/component/Board/Board.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/Board.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/blocks/SBlockTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/SBlockTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/blocks/ZBlockTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/ZBlockTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/blocks/IBlockTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/IBlockTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="out/test/SE10/seoultech/se/tetris/blocks/OBlockTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21_오후_7_15_[Changes]/OBlockTest.class" />
+  </binary>
+</changelist>
