@@ -90,8 +90,6 @@ public class MatchScreen extends JFrame {
         add(waitingBoard2);
 
         boards = new Pair(mainBoard1, mainBoard2);
-
-
     }
 
     public void sendWaitingLines(Board board) {

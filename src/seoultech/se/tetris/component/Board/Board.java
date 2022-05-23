@@ -182,6 +182,10 @@ public class Board extends JPanel {
         System.out.println("Normal");
     }
 
+    public Board() {
+
+    }
+
     @Override
     public void paintComponent(Graphics g) { //컴포넌트 그리기
         super.paintComponent(g);
@@ -193,9 +197,12 @@ public class Board extends JPanel {
     }
 
     public void saveBackground() {
-        Color[][] copy = background;
-        tempBackground = copy.clone();
-        System.out.println("saveBackground");
+        for(int r = HEIGHT-1; r >= 0; r--){
+            for (int col = 0; col < WIDTH; col++)
+            {
+                tempBackground[r][col] = background[r][col];
+            }
+        }
     }
 
     public void checkLineFilled() throws InterruptedException {
@@ -249,7 +256,6 @@ public class Board extends JPanel {
                     {
                         Color[] line = tempBackground[i];
                         tossBackground.add(line.clone()); //지금 있는 것의 밑에 들어가야 함.
-                        System.out.println("waitingClearLines " + tempBackground[i][9] + background[i][9]);
                         count--;
                     }
 
@@ -264,9 +270,7 @@ public class Board extends JPanel {
                     if (filledRows[i])
                     {
                         Color[] line = tempBackground[i];
-                        System.out.println("tempbackground : " + i);
                         tossBackground.add(line.clone()); //지금 있는 것의 밑에 들어가야 함.
-                        System.out.println("waitingClearLines : " + tempBackground[i][9]  + background[i][9]);
                     }
                 }
             }
@@ -280,7 +284,6 @@ public class Board extends JPanel {
         {
             shiftUp();
             background[HEIGHT-1] = line;
-            System.out.println("getWaitingLines");
         }
         repaint();
     }
@@ -399,7 +402,6 @@ public class Board extends JPanel {
                 }
             }
         }
-        System.out.println("moveBlockToBackground();");
     }
 
     protected void placeBlock(Graphics g) { // 블럭 그리기
@@ -523,7 +525,6 @@ public class Board extends JPanel {
 
     // 대전모드는 함수 다르게..?
     public void moveBlockDown() throws Exception { //블럭 내리기
-
         if(!checkBottom()) {
             if(isBlockOutOfBounds())
             {
@@ -540,14 +541,14 @@ public class Board extends JPanel {
 
                 return;
             }
-
-            saveBackground(); //temp에 들어가고
-            System.out.println("bottom check");
+            if(matchScreen != null)
+                saveBackground(); //temp에 들어가고
             moveBlockToBackground(); // background 바뀌고
             checkLineFilled(); // 채운 줄 확인하고 toss에 채운 줄 넣어주기
             spawnBlock(); // 블럭 옮겨주고
             clearLines(); // 채운 줄 없애주고
-            matchScreen.sendWaitingLines(this);
+            if(matchScreen != null)
+                matchScreen.sendWaitingLines(this);
             repaint(); // 다시 그려줌.
         }
 
@@ -555,8 +556,6 @@ public class Board extends JPanel {
         gameScore.playScore(); // 스코어 증가
         scoreBoard.updateScore(); // 점수 보여주기~
         repaint();
-        System.out.println("not bottom");
-
     }
 
     protected void moveBlockRight() { // 오른쪽 이동
@@ -578,7 +577,32 @@ public class Board extends JPanel {
         while (checkBottom()) {
             moveBlockDown();
         }
-        repaint();
+        if(!checkBottom()) {
+            if(isBlockOutOfBounds())
+            {
+                timer.stop();
+                repaint();
+                System.out.println("Game Over");
+                this.makeGameOverbackground(); // 종료
+                text.setVisible(true);
+                gameOverScore(); // 스코어 처리
+                // 스코어 보드 화면 보여주기
+                HighScoreScreen highScoreScreen = new HighScoreScreen(normalScoreCsv);
+                highScoreScreen.setVisible(true);
+                playScreen.setVisible(false);
+
+                return;
+            }
+            if(matchScreen != null)
+                saveBackground(); //temp에 들어가고
+            moveBlockToBackground(); // background 바뀌고
+            checkLineFilled(); // 채운 줄 확인하고 toss에 채운 줄 넣어주기
+            spawnBlock(); // 블럭 옮겨주고
+            clearLines(); // 채운 줄 없애주고
+            if(matchScreen != null)
+                matchScreen.sendWaitingLines(this);
+            repaint(); // 다시 그려줌.
+        }
     }
 
     protected void rotateBlock() { // 블럭 회전
@@ -731,7 +755,6 @@ public class Board extends JPanel {
                 try {
                     if(!isBlockOutOfBounds()){
                         dropBlock();
-//                        moveBlockToBackground();
                     }
 
                 } catch (Exception ex) {

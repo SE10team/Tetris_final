@@ -33,7 +33,6 @@ public class ItemModeBoard extends Board {
     public ItemModeBoard(ItemModePlayScreen itemPlayScreen, GameScore gameScore, ScoreBoard scoreBoard, ItemModeNextGenerateBlock itemModeNextGenerateBlock, ItemModeNextBoard nextBoard, ItemScoreCsv itemScoreCsv) throws Exception{
         super();
 
-
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
         this.itemScoreCsv = itemScoreCsv;

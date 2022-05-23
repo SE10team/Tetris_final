@@ -55,7 +55,7 @@ public class WaitingBoard extends JPanel {
             {
                 if (tossBackground.get(row)[col] != null)
                 {
-//                    tossBackground.get(row)[col] = Color.gray;
+                    tossBackground.get(row)[col] = Color.gray;
                     color = tossBackground.get(row)[col];
 
                     int x = col * gridCellSize;
