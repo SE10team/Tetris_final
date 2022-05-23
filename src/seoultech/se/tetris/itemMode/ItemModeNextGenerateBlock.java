@@ -21,13 +21,13 @@ public class ItemModeNextGenerateBlock extends NextGenerateBlock {
 
         Random rnd = new Random(System.currentTimeMillis());
         if ((countCompleteLines != 0) && (countCompleteLines % 1 == 0)) {
-            int block = rnd.nextInt(1);
+            int block = rnd.nextInt(4);
             currItemBlock = block;
             countCompleteLines = 0;
             return
                     switch (block) {
                         case 0 -> new LineBlock();
-                        case 1 -> new LineBlock();
+                        case 1 -> new WeightBlock();
                         case 2 -> new ClearBlock();
                         case 3 -> new OneBlock();
                         default -> new BombBlock();

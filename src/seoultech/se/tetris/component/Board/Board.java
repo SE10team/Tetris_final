@@ -31,7 +31,7 @@ public class Board extends JPanel {
     protected JLabel text;
 
     protected KeyListener playerKeyListener;
-    protected Timer timer;
+    public Timer timer;
 
     // 다른 클래스
     protected GameScore gameScore;
@@ -368,7 +368,7 @@ public class Board extends JPanel {
         }
     }
 
-    protected void setInterval() { // Todo 내려가는 속도 복리로 처리.. 안 해도 되나?
+    protected void setInterval() {
         if (initInterval > 100) {
             if (completeLines >= levelLines) {
                 initInterval -= 100;
@@ -558,7 +558,7 @@ public class Board extends JPanel {
         repaint();
     }
 
-    protected void moveBlockRight() { // 오른쪽 이동
+    public void moveBlockRight() { // 오른쪽 이동
         if(isBlockOutOfBounds()) return;
 
         if(!checkRight()) return;
@@ -566,14 +566,14 @@ public class Board extends JPanel {
         repaint();
     }
 
-    protected void moveBlockLeft() { // 왼쪽 이동
+    public void moveBlockLeft() { // 왼쪽 이동
         if(isBlockOutOfBounds()) return;
         if(!checkLeft()) return;
         curr.moveLeft();
         repaint();
     }
 
-    protected void dropBlock() throws Exception {
+    public void dropBlock() throws Exception {
         while (checkBottom()) {
             moveBlockDown();
         }
@@ -605,7 +605,7 @@ public class Board extends JPanel {
         }
     }
 
-    protected void rotateBlock() { // 블럭 회전
+    public void rotateBlock() { // 블럭 회전
         if(!checkBottom())return;
         if(isBlockOutOfBounds()) return;
         if (checkRotate(curr.rotate())) curr.setShape(curr.rotate());
