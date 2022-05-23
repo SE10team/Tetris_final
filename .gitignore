@@ -2,3 +2,5 @@
 /keySetting.ser
 /screenSizeSetting.ser
 /modeSetting.ser
+.idea
+out/
