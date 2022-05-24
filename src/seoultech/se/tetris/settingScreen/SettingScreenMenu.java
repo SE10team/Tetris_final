@@ -102,6 +102,8 @@ public class SettingScreenMenu extends JPanel {
           //화면 크기 초기화
           settingScreen.fileInputOutput.OutputScreenSize800800();
 
+          settingScreen.fileInputOutput.OutputModeSetting(2);
+
         } else if (e.getSource() == buttons[6]) {
           settingScreen.setVisible(false);
           StartScreen startScreen = new StartScreen();

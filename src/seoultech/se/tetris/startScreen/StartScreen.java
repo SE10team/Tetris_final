@@ -17,6 +17,10 @@ public class StartScreen extends JFrame {
 
   StartScreenMenu startScreenMenu;
 
+  public static void main(String[] args) {
+    StartScreen startScreen = new StartScreen();
+  }
+
   public StartScreen() {
 
     startScreenMenu = new StartScreenMenu(this);

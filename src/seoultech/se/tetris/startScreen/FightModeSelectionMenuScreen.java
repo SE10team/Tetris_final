@@ -1,4 +1,7 @@
 package seoultech.se.tetris.startScreen;
+import seoultech.se.tetris.GUI.ItemMatchScreen;
+import seoultech.se.tetris.GUI.MatchScreen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -51,9 +54,19 @@ public class FightModeSelectionMenuScreen extends JPanel {
     public void keyPressed(KeyEvent e) {
       if (e.getKeyCode() == KeyEvent.VK_ENTER) {
         if (e.getSource() == buttons[0]) {
-
+          screen.setVisible(false);
+          try {
+            MatchScreen matchScreen = new MatchScreen();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
         } else if (e.getSource() == buttons[1]) {
-
+          screen.setVisible(false);
+          try {
+            ItemMatchScreen itemMatchScreen = new ItemMatchScreen();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
         } else if (e.getSource() == buttons[2]) {
 
         } else if (e.getSource() == buttons[3]) {

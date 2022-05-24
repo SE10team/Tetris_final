@@ -1,5 +1,8 @@
 package seoultech.se.tetris.startScreen;
 
+import seoultech.se.tetris.GUI.ItemMatchScreen;
+import seoultech.se.tetris.GUI.MatchScreen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,8 +19,19 @@ public class FightModeSelectionScreen extends JFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "일반 대전 모드") {
-
+          setVisible(false);
+          try {
+            MatchScreen matchScreen = new MatchScreen();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
         } else if (e.getActionCommand() == "아이템 대전 모드") {
+          setVisible(false);
+          try {
+            ItemMatchScreen itemMatchScreen = new ItemMatchScreen();
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
 
         }  else if (e.getActionCommand() == "시간제한 대전 모드") {
 

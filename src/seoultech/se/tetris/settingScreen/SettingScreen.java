@@ -71,6 +71,8 @@ public class SettingScreen extends JFrame {
               normalScoreCsv.resetCsv();
               itemScoreCsv.resetCsv();
 
+              fileInputOutput.OutputModeSetting(2);
+
         } else if (e.getActionCommand() == "메인 화면으로") {
 
               setVisible(false);
