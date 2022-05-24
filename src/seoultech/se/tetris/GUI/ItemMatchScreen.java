@@ -20,8 +20,7 @@ public class ItemMatchScreen extends JFrame {
   PlayerKeyListener playerKeyListener;
   ItemModeBoard mainBoard1;
   ItemModeBoard mainBoard2;
-  ItemModePlayScreen playScreen;
-  ItemScoreCsv scoreCsv;
+//  ItemScoreCsv scoreCsv; 그냥 GameScore()를 써도 될 것 같아용! 어차피 점수는 보여주기 용이니까?
 
   public static void main(String[] args) throws Exception {
     ItemMatchScreen tetris = new ItemMatchScreen();
@@ -30,7 +29,7 @@ public class ItemMatchScreen extends JFrame {
   }
 
   public ItemMatchScreen() throws Exception {
-    super("대전 모드 테트리스"); // 게임 실행시 이름
+    super("아이템 대전 모드 테트리스"); // 게임 실행시 이름
 
     FileInputOutput fileInputOutput = new FileInputOutput();
     int[] screenSizeArr = fileInputOutput.InputScreenSizeFile();
@@ -46,7 +45,7 @@ public class ItemMatchScreen extends JFrame {
     ItemModeNextGenerateBlock nextBlock1 = new ItemModeNextGenerateBlock();
     ItemModeNextBoard nextBoard1 = new ItemModeNextBoard(nextBlock1);
 //    playScreen = new ItemModePlayScreen();
-    mainBoard1 = new ItemModeBoard(playScreen, score1, scoreBoard1, nextBlock1, nextBoard1, scoreCsv);
+    mainBoard1 = new ItemModeBoard(this, score1, scoreBoard1, nextBlock1, nextBoard1);
 
     mainBoard1.setBounds(50, 50, 350, 700);
     scoreBoard1.setBounds(450, 50, 200, 100);
@@ -59,7 +58,7 @@ public class ItemMatchScreen extends JFrame {
     ScoreBoard scoreBoard2 = new ScoreBoard(score2);
     ItemModeNextGenerateBlock nextBlock2 = new ItemModeNextGenerateBlock();
     ItemModeNextBoard nextBoard2 = new ItemModeNextBoard(nextBlock2);
-    mainBoard2 = new ItemModeBoard(playScreen, score2, scoreBoard2, nextBlock2, nextBoard2, scoreCsv);
+    mainBoard2 = new ItemModeBoard(this, score2, scoreBoard2, nextBlock2, nextBoard2);
 
     mainBoard2.setBounds(800, 50, 350, 700);
     scoreBoard2.setBounds(1200, 50, 200, 100);

@@ -41,6 +41,7 @@ public class Board extends JPanel {
     protected NormalScoreCsv normalScoreCsv;
     protected PlayScreen playScreen;
     protected MatchScreen matchScreen;
+    protected TimeMatchScreen timeMatchScreen;
 
     protected Block curr;
 
@@ -60,6 +61,69 @@ public class Board extends JPanel {
     // 대전모드 용
     public Board(MatchScreen matchScreen, GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard) throws Exception{
         this.matchScreen = matchScreen;
+        this.gameScore = gameScore;
+        this.scoreBoard = scoreBoard;
+
+        fileInputOutput = new FileInputOutput();
+
+        int[] locationArr = fileInputOutput.InputScreenSizeFile();
+
+        //보드 설정
+        setBounds(locationArr[2], locationArr[3], 350, 700);
+        this.gameScore = gameScore;
+        this.scoreBoard = scoreBoard;
+        setBackground(Color.BLACK);
+
+        gridCellSize = getBounds().width / WIDTH; //네모네모 크기 설정
+
+        /*컴포넌트 설정*/
+        text = new JLabel("Game Over"); // 글자
+        text.setBounds(100,300, 250,120);
+
+        /*폰트 설정*/
+        Font font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
+        text.setForeground(Color.RED);
+        text.setFont(font);
+        text.setVisible(false);
+        this.add(text); // 글자 표시
+
+
+        background = new Color[HEIGHT][WIDTH];
+
+        //Set timer for block drops.
+        timer = new Timer(initInterval, e -> {
+            try {
+                moveBlockDown(); // 블럭 내려보내기
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        timer.start();
+        this.nextBlock = nextGBlock;
+        this.nextBoard = nextBoard;
+        spawnBlock();
+
+
+        // 배열 초기화
+        Arrays.fill(filledRows, false);
+
+        //키 리스너
+        playerKeyListener = new PlayerKeyListener();
+        addKeyListener(playerKeyListener);
+        setFocusable(true);
+        requestFocus();
+
+
+        fileInputOutput = new FileInputOutput();
+        keySettingArr = fileInputOutput.InputKeyFile();
+
+        System.out.println("Normal");
+    }
+
+    // 시간대전모드 용
+    public Board(TimeMatchScreen timeMatchScreen, GameScore gameScore, ScoreBoard scoreBoard, NextGenerateBlock nextGBlock, NextBoard nextBoard) throws Exception{
+        this.timeMatchScreen = timeMatchScreen;
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
 

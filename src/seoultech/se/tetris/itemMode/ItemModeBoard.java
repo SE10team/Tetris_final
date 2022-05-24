@@ -1,6 +1,7 @@
 package seoultech.se.tetris.itemMode;
 
 import seoultech.se.tetris.GUI.HighScoreScreen;
+import seoultech.se.tetris.GUI.ItemMatchScreen;
 import seoultech.se.tetris.GUI.MatchScreen;
 import seoultech.se.tetris.blocks.*;
 import seoultech.se.tetris.component.Board.Board;
@@ -31,16 +32,17 @@ public class ItemModeBoard extends Board {
     private int gridRows;
     private ItemScoreCsv itemScoreCsv;
     private ItemModePlayScreen itemModePlayScreen;
+    private ItemMatchScreen itemMatchScreen;
 
     /*대전 모드 용*/
-    public ItemModeBoard(MatchScreen matchScreen, GameScore gameScore, ScoreBoard scoreBoard, ItemModeNextGenerateBlock itemModeNextGenerateBlock, ItemModeNextBoard nextBoard, ItemScoreCsv itemScoreCsv) throws Exception
+    public ItemModeBoard(ItemMatchScreen itemMatchScreen, GameScore gameScore, ScoreBoard scoreBoard, ItemModeNextGenerateBlock itemModeNextGenerateBlock, ItemModeNextBoard nextBoard) throws Exception
     {
         super();
 
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
         this.itemScoreCsv = itemScoreCsv;
-        this.matchScreen = matchScreen;
+        this.itemMatchScreen = itemMatchScreen;
         fileInputOutput = new FileInputOutput();
 
         int[] locationArr = fileInputOutput.InputScreenSizeFile();

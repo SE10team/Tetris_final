@@ -7,30 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb8e7121-d35c-4658-83ee-8229a20ce350" name="Default Changelist" comment="윤재_feat_2_난이도 경로 설정, 보드 연결">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_14__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_15__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-21__7_15__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-22__12_52__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-04-22__12_52__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-05-04__1_48__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-05-04__1_48__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-05-04__2_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-05-04__2_51__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/GUI/TimeMatchScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modeSetting.ser" beforeDir="false" afterPath="$PROJECT_DIR$/modeSetting.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board/Board$PlayerKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board/Board$PlayerKeyListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/component/Board/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard$PlayerKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard$PlayerKeyListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeNextGenerateBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/itemMode/ItemModeNextGenerateBlock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/FileInputOutput.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/settingScreen/FileInputOutput.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/startScreen/StartScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/startScreen/StartScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SE10/seoultech/se/tetris/scoreData/resource/NormalScoreResult-LAPTOP-U1L7CR06.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/GUI/ItemMatchScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/GUI/ItemMatchScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/component/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/component/Board/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeNextGenerateBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/itemMode/ItemModeNextGenerateBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/ItemScoreCsv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/scoreData/dao/NormalScoreCsv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/settingScreen/FileInputOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seoultech/se/tetris/startScreen/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/seoultech/se/tetris/startScreen/StartScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +28,8 @@
       <list>
         <option value="JUnit4 Test Class" />
         <option value="Tag Library Descriptor" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -105,26 +91,13 @@
       <recent name="seoultech.se.tetris.GUI" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MatchScreen">
+  <component name="RunManager" selected="Application.TimeMatchScreen">
     <configuration name="ItemMatchScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="seoultech.se.tetris.GUI.ItemMatchScreen" />
       <module name="SE10" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="seoultech.se.tetris.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LineBlock" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="seoultech.se.tetris.blocks.LineBlock" />
-      <module name="SE10" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="seoultech.se.tetris.blocks.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -158,6 +131,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TimeMatchScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="seoultech.se.tetris.GUI.TimeMatchScreen" />
+      <module name="SE10" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="seoultech.se.tetris.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NextGenerateBlockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SE10" />
       <extension name="coverage">
@@ -175,11 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MatchScreen" />
+        <item itemvalue="Application.TimeMatchScreen" />
         <item itemvalue="Application.ItemMatchScreen" />
+        <item itemvalue="Application.MatchScreen" />
         <item itemvalue="Application.Tetris" />
         <item itemvalue="JUnit.NextGenerateBlockTest" />
-        <item itemvalue="Application.LineBlock" />
       </list>
     </recent_temporary>
   </component>
