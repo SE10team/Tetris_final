@@ -22,6 +22,7 @@ public class FightModeSelectionScreen extends JFrame {
           setVisible(false);
           try {
             MatchScreen matchScreen = new MatchScreen();
+            matchScreen.setVisible(true);
           } catch (Exception ex) {
             ex.printStackTrace();
           }
@@ -29,6 +30,7 @@ public class FightModeSelectionScreen extends JFrame {
           setVisible(false);
           try {
             ItemMatchScreen itemMatchScreen = new ItemMatchScreen();
+            itemMatchScreen.setVisible(true);
           } catch (Exception ex) {
             ex.printStackTrace();
           }
