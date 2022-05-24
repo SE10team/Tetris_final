@@ -41,8 +41,8 @@ public class MatchScreen extends JFrame {
 
     PlayerKeyListener playerKeyListener;
 
-    Board mainBoard1;
-    Board mainBoard2;
+    public Board mainBoard1;
+    public Board mainBoard2;
 
     public static void main(String[] args) throws Exception {
         MatchScreen tetris = new MatchScreen();

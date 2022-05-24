@@ -18,8 +18,8 @@ public class ItemMatchScreen extends JFrame {
 
   private Pair boards;
   PlayerKeyListener playerKeyListener;
-  ItemModeBoard mainBoard1;
-  ItemModeBoard mainBoard2;
+  public ItemModeBoard mainBoard1;
+  public ItemModeBoard mainBoard2;
 //  ItemScoreCsv scoreCsv; 그냥 GameScore()를 써도 될 것 같아용! 어차피 점수는 보여주기 용이니까?
 
   public static void main(String[] args) throws Exception {

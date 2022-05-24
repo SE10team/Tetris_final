@@ -7,6 +7,7 @@ import seoultech.se.tetris.component.NextGenerateBlock;
 import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
 import seoultech.se.tetris.scoreData.model.NormalScore;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
+import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -598,11 +599,32 @@ public class Board extends JPanel {
                 System.out.println("Game Over");
                 this.makeGameOverbackground(); // 종료
                 text.setVisible(true);
-                gameOverScore(); // 스코어 처리
-                // 스코어 보드 화면 보여주기
-                HighScoreScreen highScoreScreen = new HighScoreScreen(normalScoreCsv);
-                highScoreScreen.setVisible(true);
-                playScreen.setVisible(false);
+
+                if (matchScreen == null) {
+                    gameOverScore(); // 스코어 처리
+                    // 스코어 보드 화면 보여주기
+                    HighScoreScreen highScoreScreen = new HighScoreScreen(normalScoreCsv);
+                    highScoreScreen.setVisible(true);
+                    playScreen.setVisible(false);
+                } else {
+                    if (matchScreen.mainBoard1.isBlockOutOfBounds()) {
+                        int answer = JOptionPane.showConfirmDialog(this, "승자는 오른쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
+                        if (answer == JOptionPane.YES_OPTION) {
+                            matchScreen.setVisible(false);
+                            StartScreen startScreen = new StartScreen();
+                        } else {
+                            System.exit(0);
+                        }
+                    } else if(matchScreen.mainBoard2.isBlockOutOfBounds()){
+                        int answer = JOptionPane.showConfirmDialog(this, "승자는 왼쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
+                        if (answer == JOptionPane.YES_OPTION) {
+                            matchScreen.setVisible(false);
+                            StartScreen startScreen = new StartScreen();
+                        } else {
+                            System.exit(0);
+                        }
+                    }
+                }
 
                 return;
             }
