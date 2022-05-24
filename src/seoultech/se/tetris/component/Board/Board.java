@@ -186,6 +186,7 @@ public class Board extends JPanel {
 
     }
 
+    /*메소드들 */
     @Override
     public void paintComponent(Graphics g) { //컴포넌트 그리기
         super.paintComponent(g);
@@ -205,7 +206,7 @@ public class Board extends JPanel {
         }
     }
 
-    public void checkLineFilled() throws InterruptedException {
+    public void checkLineFilled() throws InterruptedException { // ㅣ건뭐니
         boolean lineFilled;
         int completeRows = 0;
 
@@ -306,11 +307,11 @@ public class Board extends JPanel {
             background[HEIGHT-1][col] = null;
     }
 
-    public void clearLines() throws InterruptedException {
+    public void clearLines() throws InterruptedException { // 효과 그리는 거
 
         for (int row = HEIGHT -1; row >=0; row--)
         {
-            if (filledRows[row])
+            if (filledRows[row]) // 효과를 그림
             {
                 clearEvent(row);
             }
@@ -323,7 +324,7 @@ public class Board extends JPanel {
         {
             if (filledRows[row])
             {
-                clearLine(row);
+                clearLine(row); // 줄 삭제
                 shiftDown(row);
                 clearLine(0);
                 downFilledLines(row);
@@ -336,7 +337,7 @@ public class Board extends JPanel {
         Arrays.fill(filledRows, false); // 끝나기 전에 초기화 해줌
     }
 
-    protected void downFilledLines(int row) {
+    protected void downFilledLines(int row) { // 대전모드
         for(int r = row; r >0; r--){
             filledRows[r] = filledRows[r-1];
         }

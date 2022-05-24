@@ -21,16 +21,16 @@ public class ItemModeNextGenerateBlock extends NextGenerateBlock {
 
         Random rnd = new Random(System.currentTimeMillis());
         if ((countCompleteLines != 0) && (countCompleteLines % 1 == 0)) {
-            int block = rnd.nextInt(4);
+            int block = rnd.nextInt(5);
             currItemBlock = block;
             countCompleteLines = 0;
             return
                     switch (block) {
-                        case 0 -> new LineBlock();
-                        case 1 -> new WeightBlock();
-                        case 2 -> new ClearBlock();
-                        case 3 -> new OneBlock();
-                        default -> new BombBlock();
+                        case 0 -> new WeightBlock();
+                        case 1 -> new OneBlock();
+                        case 2 -> new LineBlock();
+                        case 3 -> new BombBlock();
+                        default -> new ClearBlock();
                     };
         } else {
             int block = rnd.nextInt(7);
@@ -47,47 +47,3 @@ public class ItemModeNextGenerateBlock extends NextGenerateBlock {
         }
     }
 }
-//        int block = rnd.nextInt(5);
-//        return
-//          switch (block) {
-//              case 0 -> new JBlock();
-//              case 1 -> new OneBlock();
-//              default -> new WeightBlock();
-//          };
-//        if ((countCompleteLines != 0) && (countCompleteLines % 2 == 0)) {
-//            int block = rnd.nextInt(2);
-//            currItemBlock = block;
-//            countCompleteLines = 0;
-//            return
-//              switch (block) {
-//                  case 0 -> new OneBlock();
-//                  default -> new WeightBlock();
-//              };
-////        } else {
-////            int block = rnd.nextInt(7);
-////            return
-////              switch (block) {
-////                  case 0 -> new IBlock();
-////                  case 1 -> new JBlock();
-////                  case 2 -> new LBlock();
-////                  case 3 -> new ZBlock();
-////                  case 4 -> new SBlock();
-////                  case 5 -> new TBlock();
-////                  default -> new OBlock();
-////              };
-////        }
-//        int block = rnd.nextInt(6); // 아이템모드
-//        return
-//                switch (block) {
-//                    case 0 -> new WeightBlock();
-//                    case 1 -> new BombBlock();
-//                    case 2 -> new ClearBlock();
-//                    case 3 -> new OneBlock();
-//                    case 4 -> new JBlock();
-//                    default -> new LineBlock();
-//
-//                };
-//    }
-
-//        }
-//    }

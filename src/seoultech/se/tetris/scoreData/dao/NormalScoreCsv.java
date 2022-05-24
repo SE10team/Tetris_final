@@ -10,7 +10,7 @@ import java.util.List;
 
 public class NormalScoreCsv extends ScoreCsv{
     // 파일 경로
-    private File f = new File("D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/NormalScoreResult.csv");
+    private File f = new File("C:\\Users\\USER\\OneDrive - 서울과학기술대학교\\Tetris_final\\src\\seoultech\\se\\tetris\\scoreData\\resource\\NormalScoreResult.csv");
     private NormalScore score;
     private List<List<String>> records;
     private String level;
@@ -106,7 +106,7 @@ public class NormalScoreCsv extends ScoreCsv{
                 }
                 resetCsv(); // 초기화 후
                 writerCsv(records); // 적기
-                break; // 있어야 종료 된다.
+                return; // 있어야 종료 된다.
             }
         }
         if(records.size() != 10){
@@ -118,17 +118,17 @@ public class NormalScoreCsv extends ScoreCsv{
 
     // 현재 스코어 보드에 점수에 들어갈 수 있는지 확인
     public int isRank(int temp_score){
-            for(int i=0; i< records.size(); i++){
-                if(Integer.parseInt(records.get(i).get(1)) <= temp_score){
-                    // 값이 중간에 있는거 보다 큰 경우
-                    return i;
-                }
+        for(int i=0; i< records.size(); i++){
+            if(Integer.parseInt(records.get(i).get(1)) <= temp_score){
+                // 값이 중간에 있는거 보다 큰 경우
+                return i;
             }
+        }
         if(records.size() != 10){
             return records.size();
         }
-            // 들어갈 자리가 없으면
-            return 11;
+        // 들어갈 자리가 없으면
+        return 11;
     }
 
     @Override

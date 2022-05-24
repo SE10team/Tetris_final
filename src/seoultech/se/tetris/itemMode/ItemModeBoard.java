@@ -32,7 +32,7 @@ public class ItemModeBoard extends Board {
     private ItemScoreCsv itemScoreCsv;
     private ItemModePlayScreen itemModePlayScreen;
 
-    // 대전모드 용
+    /*대전 모드 용*/
     public ItemModeBoard(MatchScreen matchScreen, GameScore gameScore, ScoreBoard scoreBoard, ItemModeNextGenerateBlock itemModeNextGenerateBlock, ItemModeNextBoard nextBoard, ItemScoreCsv itemScoreCsv) throws Exception
     {
         super();
@@ -166,6 +166,7 @@ public class ItemModeBoard extends Board {
 
     }
 
+    /*메소드들 */
     /* One 블럭이 닿았을 때 처리 */
     public void whenOneBlockTouchedBottom() throws Exception {
 
@@ -201,6 +202,10 @@ public class ItemModeBoard extends Board {
 
             }
 
+            // 행 위에 남는다면?
+            //shiftDown(curr.getY()-1,curr.getX()); // 행을 아래로
+            clearLine(0);
+
             gameScore.playScore();
             scoreBoard.updateScore();
         }
@@ -209,24 +214,21 @@ public class ItemModeBoard extends Board {
     }
 
     /*WeightBlock이 닿았을 때 처리 */
-    public void whenWeightBlockTouchingBottom() throws Exception {
-
-        if(!checkBottom()){
-            for (int x = curr.getTopEdge(); x < gridRows; x++) {
-                for (int y = curr.getLeftEdge(); y < curr.getRightEdge(); y++) {
-                    background[x][y] = null;
+    public void whenWeightBlockTouchingBottom() throws Exception { // 즉 아래로 무언가 닿았어 일단 내려 컬러 부분이 블록에 가려지면 그 때 지우기
+        if(!checkBottom()){ // 무언가에 닿았다면
+            for (int x = curr.getBottomEdge()-1; x < 20; x++) { // Edge가 블록 마지막 부분의 한칸 아래임
+                this.paint(this.getGraphics()); // 이전의 null 값 업데이트 및 아래로 내리기
+                Thread.sleep(300);
+                curr.moveDown(); // 일단 아래로 두려고 함함
+                for (int y = curr.getX(); y < curr.getX()+curr.width(); y++) {
+                    background[x][y] = null; // 한 부분 행은 모두 null
                 }
-                curr.moveDown();
+
                 gameScore.playScore(); // 스코어 증가
                 scoreBoard.updateScore(); // 점수 보여주기~
             }
-            clearLines();
-        }
-//        curr.moveDown();
-//        gameScore.playScore(); // 스코어 증가
-//        scoreBoard.updateScore(); // 점수 보여주기~
-        repaint();
 
+        }
 
     }
 
@@ -247,56 +249,6 @@ public class ItemModeBoard extends Board {
         }
         return 0;
     }
-
-
-
-//    public void clearLines() throws InterruptedException {
-//        boolean lineFilled;
-//        int completeRows =0;
-//
-//        for (int row = HEIGHT -1; row >=0; row--){
-//
-//            lineFilled = true;
-//
-//            for(int col = 0; col < WIDTH; col++)
-//            {
-//                if(background[row][col] ==null)
-//                {
-//                    lineFilled = false;
-//                    break;
-//                }
-//            }
-//
-//            if(lineFilled) // 한 행 채워지면
-//            {
-//                clearEvent(row); // 삭제 Event 효과
-//                this.paint(this.getGraphics());
-//                Thread.sleep(100);
-//                clearLine(row); // background Color를 Null로
-//                shiftDown(row); // 행을 아래로
-//                clearLine(0);
-//                row++; // 행 확인
-//
-//
-//                gameScore.line();
-//                completeLines++;
-//                countCompleteLines = completeLines;
-//                completeRows++;
-//                repaint();
-//                setInterval();
-//            }
-//        }
-//
-//        if (completeRows >=2) gameScore.multiLine(completeRows);
-//    }
-
-//    /*clear처리*/
-//    protected void clearLine(int row) { // 일반 clearLine
-//        for(int i = 0; i < WIDTH; i++)
-//        {
-//            background[row][i] = null;
-//        }
-//    }
 
 
     protected void clearLine2(int col) throws InterruptedException { // Bomb Block, 한 열 없앰
@@ -335,6 +287,34 @@ public class ItemModeBoard extends Board {
                 background[r][col] = background[r-1][col];
             }
         }
+    }
+
+    protected void shiftDown(int row, int col) { // 행을 아래로
+        if(col == 0){
+            for(int r = row; r >0; r--){
+                for (int c = col; c < col+2; c++)
+                {
+                    background[r][c] = background[r-1][c];
+                }
+            }
+        }
+        else if(col == 9){
+            for(int r = row; r >0; r--){
+                for (int c = col-1; c < col+1; c++)
+                {
+                    background[r][c] = background[r-1][c];
+                }
+            }
+        }
+        else{
+            for(int r = row; r >0; r--){
+                for (int c = col-1; c < col+2; c++)
+                {
+                    background[r][c] = background[r-1][c];
+                }
+            }
+        }
+
     }
 
     protected void setInterval() {
@@ -394,21 +374,21 @@ public class ItemModeBoard extends Board {
                     drawGridSquare(g, color, x, y);
                     nextBoard.drawOne(g, x + (gridCellSize/3), y+ (gridCellSize - gridCellSize/3)); // 글자
                 }
-                else if(shape[row][col]==3){ // 2인 경우
+                else if(shape[row][col]==3){ // 3인 경우
                     int x = (curr.getX() + col)*gridCellSize;
                     int y = (curr.getY() + row)*gridCellSize;
 
                     drawGridSquare(g, color, x, y);
                     nextBoard.drawGridLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
                 }
-                else if(shape[row][col]==4){ // 3인 경우 BombBlock;
+                else if(shape[row][col]==4){ // 4인 경우 BombBlock;
                     int x = (curr.getX() + col)*gridCellSize;
                     int y = (curr.getY() + row)*gridCellSize;
 
                     drawGridSquare(g, color, x, y);
                     nextBoard.drawBombLine(g, x + (gridCellSize/4), y+ (gridCellSize - gridCellSize/4));
                 }
-                else if(shape[row][col]==5){ // 4인 경우 cLearBlock;
+                else if(shape[row][col]==5){ // 5인 경우 cLearBlock;
                     int x = (curr.getX() + col)*gridCellSize;
                     int y = (curr.getY() + row)*gridCellSize;
 
@@ -561,29 +541,31 @@ public class ItemModeBoard extends Board {
                 curr = new NullBlock(); // ClearBlock 없애주기
             }
 
+            //대전 모드 처리
             if(matchScreen != null)
                 saveBackground(); //temp에 들어가고
 
             moveBlockToBackground(); // 데이터 보내기
             if(curr.getThisBlock()==3){ // LineBlock 자체도 백그라운드를 넘겨주는 시간이 필요
                 clearLine(row);
-//                clearEvent(row); 아이템 이벤트 추가
                 shiftDown(row);
             }
 
             checkLineFilled(); // 채운 줄 확인하고 toss에 채운 줄 넣어주기
-            spawnBlock(); // 블럭 옮겨주고
-            clearLines(); // 채운 줄 없애주고
+
+//            clearLines(); // 채운 줄 없애주고
+//            spawnBlock(); // 블럭 옮겨주고
             if(matchScreen != null)
                 matchScreen.sendWaitingLines(this);
+
+            clearLines(); // 없앨 행 확인 여기서 붕 뜬거 처리
+            spawnBlock(); // 새로운 블럭 나타나게
+
             repaint();
         }
+
         curr.moveDown(); // 키보드 조종
 
-        if (curr.getThisBlock() == 2) {
-            background[curr.getY()][curr.getX()] = null;
-            repaint();
-        }
         gameScore.playScore(); // 스코어 증가
         scoreBoard.updateScore(); // 점수 보여주기~
         repaint();

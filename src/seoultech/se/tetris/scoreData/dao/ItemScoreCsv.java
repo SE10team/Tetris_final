@@ -97,7 +97,7 @@ public class ItemScoreCsv extends ScoreCsv { // 아이템 모드
                 }
                 resetCsv(); // 초기화 후
                 writerCsv(records); // 적기
-                break; // 있어야 종료 된다.
+                return; // 있어야 종료 된다.
             }
         }
         if(records.size() != 10){
