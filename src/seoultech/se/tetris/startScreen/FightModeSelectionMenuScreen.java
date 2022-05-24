@@ -1,6 +1,7 @@
 package seoultech.se.tetris.startScreen;
 import seoultech.se.tetris.GUI.ItemMatchScreen;
 import seoultech.se.tetris.GUI.MatchScreen;
+import seoultech.se.tetris.GUI.TimeMatchScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,6 +71,13 @@ public class FightModeSelectionMenuScreen extends JPanel {
             ex.printStackTrace();
           }
         } else if (e.getSource() == buttons[2]) {
+          screen.setVisible(false);
+          try {
+            TimeMatchScreen timeMatchScreen = new TimeMatchScreen();
+            timeMatchScreen.setVisible(true);
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
 
         } else if (e.getSource() == buttons[3]) {
           screen.setVisible(false);

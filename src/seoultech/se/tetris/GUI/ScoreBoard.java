@@ -28,10 +28,10 @@ public class ScoreBoard extends JPanel { // Score 현황을 그리는 곳
         text = new JLabel("Score"); // 그냥 글자
 
         /*폰트 설정*/
-        font = new Font("Roboto", Font.BOLD, 30); // 스코어 표시 폰트 설정
+        font = new Font("Pixel Emulator", Font.BOLD, 30); // 스코어 표시 폰트 설정
         scoreDisplay.setFont(font);
         scoreDisplay.setForeground(Color.BLACK);
-        font2 = new Font("Roboto", Font.BOLD, 40); // Score Text 표시 폰트 설저
+        font2 = new Font("Pixel Emulator", Font.BOLD, 40); // Score Text 표시 폰트 설저
         text.setFont(font2);
         text.setForeground(Color.RED);
 

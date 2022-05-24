@@ -1,14 +1,11 @@
 package seoultech.se.tetris.GUI;
 
+import org.w3c.dom.html.HTMLImageElement;
 import seoultech.se.tetris.component.Board.Board;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
-import seoultech.se.tetris.itemMode.ItemModeBoard;
-import seoultech.se.tetris.itemMode.ItemModeNextBoard;
-import seoultech.se.tetris.itemMode.ItemModeNextGenerateBlock;
-import seoultech.se.tetris.itemMode.ItemModePlayScreen;
-import seoultech.se.tetris.scoreData.dao.ItemScoreCsv;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
+import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +18,13 @@ public class TimeMatchScreen extends JFrame {
 
     PlayerKeyListener playerKeyListener;
 
-    Board mainBoard1;
-    Board mainBoard2;
+    public Board mainBoard1;
+    public Board mainBoard2;
+    public TimeBoard timeBoard;
+    private static int startTime; // 시작 시간
+    private static int endTime = 10; // 종료 시간
+    public Timer timer; // 타이머
+    public int sec; // 현재 시간
 
     public static void main(String[] args) throws Exception {
         TimeMatchScreen tetris = new TimeMatchScreen();
@@ -42,6 +44,44 @@ public class TimeMatchScreen extends JFrame {
         setLayout(null); // 레이아웃 설정
         setBackground(Color.WHITE);
 
+        /*시간 표시 */
+        timeBoard = new TimeBoard();
+        /*타이머 표시*/
+        timeBoard.setBounds(250,780,1000,150);
+        add(timeBoard);
+
+        /*타이머 시작 */
+        timer = new Timer(1000, e -> {
+            try {
+                timeBoard.add(timeBoard.timeText); // 아이콘 표시
+                this.sec = ((int) System.currentTimeMillis() / 1000) - startTime;
+                timeBoard.timeDisplay.setText(setTime(sec)); // 누적된 초를 시:분:초 로 출력
+                timeBoard.add(timeBoard.timeDisplay); // 시간 표시
+
+                /*시간 관련 멈춤*/
+                if(sec > 10){ // 시간 얼마 안 남았을 때
+                    timeBoard.timeDisplay.setForeground(Color.RED);
+                    timeBoard.timeText.setForeground(Color.RED);
+
+                }
+
+                /*timeout*/
+                if(sec==endTime){
+                    timerOFF();
+                    mainBoard1.timer.stop();
+                    mainBoard2.timer.stop();
+                    endDialog(mainBoard1.gameScore.getTotal_score(), mainBoard2.gameScore.getTotal_score());
+                }
+
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+
+        timerOn(); //시작 시간 측정
+        timer.start();
 
         GameScore score1 = new GameScore();
         ScoreBoard scoreBoard1 = new ScoreBoard(score1);
@@ -84,6 +124,8 @@ public class TimeMatchScreen extends JFrame {
         addKeyListener(playerKeyListener);
         setFocusable(true);
         requestFocus();
+
+
     }
 
     public void sendWaitingLines(Board board) {
@@ -100,64 +142,116 @@ public class TimeMatchScreen extends JFrame {
 
         @Override
         public void keyPressed(KeyEvent e) {
-
-            // 오른쪽 보드
-            if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                try {
-                    if(!mainBoard2.isBlockOutOfBounds()) mainBoard2.moveBlockDown();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                mainBoard2.moveBlockRight();
-            } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                mainBoard2.moveBlockLeft();
-            } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-                mainBoard2.rotateBlock();
-            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                try {
-                    if(!mainBoard2.isBlockOutOfBounds()){
-                        mainBoard2.dropBlock();
+            if(sec != endTime){
+                // 오른쪽 보드
+                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                    try {
+                        if(!mainBoard2.isBlockOutOfBounds()) mainBoard2.moveBlockDown();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+                } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    mainBoard2.moveBlockRight();
+                } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    mainBoard2.moveBlockLeft();
+                } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    mainBoard2.rotateBlock();
+                } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    try {
+                        if(!mainBoard2.isBlockOutOfBounds()){
+                            mainBoard2.dropBlock();
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    mainBoard1.timer.stop();
+                    mainBoard2.timer.stop();
+                    repaint();
+                    mainBoard1.showPopup();
+                    mainBoard2.timer.start();
+                    mainBoard1.timer.start();
                 }
-            } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                mainBoard1.timer.stop();
-                mainBoard2.timer.stop();
-                repaint();
-                mainBoard1.showPopup();
-                mainBoard2.timer.start();
-                mainBoard1.timer.start();
+
+                // 왼쪽 보드
+                else if (e.getKeyCode() == KeyEvent.VK_S) {
+                    try {
+                        if(!mainBoard1.isBlockOutOfBounds()) mainBoard1.moveBlockDown();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else if (e.getKeyCode() == KeyEvent.VK_D) {
+                    mainBoard1.moveBlockRight();
+                } else if (e.getKeyCode() == KeyEvent.VK_A) {
+                    mainBoard1.moveBlockLeft();
+                } else if (e.getKeyCode() == KeyEvent.VK_W) {
+                    mainBoard1.rotateBlock();
+                } else if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+                    try {
+                        if(!mainBoard1.isBlockOutOfBounds()){
+                            mainBoard1.dropBlock();
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
             }
 
-
-            // 왼쪽 보드
-            else if (e.getKeyCode() == KeyEvent.VK_S) {
-                try {
-                    if(!mainBoard1.isBlockOutOfBounds()) mainBoard1.moveBlockDown();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            } else if (e.getKeyCode() == KeyEvent.VK_D) {
-                mainBoard1.moveBlockRight();
-            } else if (e.getKeyCode() == KeyEvent.VK_A) {
-                mainBoard1.moveBlockLeft();
-            } else if (e.getKeyCode() == KeyEvent.VK_W) {
-                mainBoard1.rotateBlock();
-            } else if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-                try {
-                    if(!mainBoard1.isBlockOutOfBounds()){
-                        mainBoard1.dropBlock();
-                    }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
 
         @Override
         public void keyReleased(KeyEvent e) {
+        }
+    }
+
+    // 시간에 대한 사용자 입력에 대한 예외 처리
+    public String inputDialog(){
+        String name = JOptionPane.showInputDialog(this,"몇 분 동안 플레이하시겠습니까"); // 입력 요구
+        while(name == null || name.equals(name.toUpperCase())){ // null 값과 한글 입력의 경우
+            name = JOptionPane.showInputDialog(this, "영어 이름 입력하라구요! 왜 말을 안 들어!", "이럴 줄 알았다", JOptionPane.WARNING_MESSAGE);
+        }
+        return name;
+    }
+
+    public void timerOn(){
+        // 타이머 켜기
+        startTime = (int) System.currentTimeMillis() / 1000;
+    }
+
+    public void timerOFF(){
+        // 타이머 켜기
+        this.timer.stop();
+    }
+
+    // 정수로 된 시간 입력 받기
+    public static String setTime(int secs){
+        int min, s;
+        s = secs % 60;
+        min = secs / 60 % 60;
+
+        return String.format("%02d : %02d", min, s);
+    }
+
+    // 승자 가리기
+    public void endDialog(int s1, int s2){
+        int answer = 0;
+        //승자구분
+        if(s1 > s2){
+            answer = JOptionPane.showConfirmDialog(this, "승자는 왼쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
+        }
+        else if(s2 > s1){
+            answer = JOptionPane.showConfirmDialog(this, "승자는 오른쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
+        }
+        else{
+            answer = JOptionPane.showConfirmDialog(this, "이런 동점이네요ㅠㅠ 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
+        }
+
+        // 옵션 선택 처리
+        if (answer == JOptionPane.YES_OPTION) {
+            this.setVisible(false);
+            StartScreen startScreen = new StartScreen();
+        } else {
+            System.exit(0);
         }
     }
 }

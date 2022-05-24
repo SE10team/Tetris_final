@@ -35,7 +35,7 @@ public class Board extends JPanel {
     public Timer timer;
 
     // 다른 클래스
-    protected GameScore gameScore;
+    public GameScore gameScore;
     protected ScoreBoard scoreBoard;
     protected NextGenerateBlock nextBlock;
     protected NextBoard nextBoard;
@@ -82,7 +82,7 @@ public class Board extends JPanel {
         text.setBounds(100,300, 250,120);
 
         /*폰트 설정*/
-        Font font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
+        Font font = new Font("Pixel Emulator", Font.BOLD, 45); // 폰트 설정
         text.setForeground(Color.RED);
         text.setFont(font);
         text.setVisible(false);
@@ -145,7 +145,7 @@ public class Board extends JPanel {
         text.setBounds(100,300, 250,120);
 
         /*폰트 설정*/
-        Font font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
+        Font font = new Font("Pixel Emulator", Font.BOLD, 45); // 폰트 설정
         text.setForeground(Color.RED);
         text.setFont(font);
         text.setVisible(false);
@@ -209,7 +209,7 @@ public class Board extends JPanel {
         text.setBounds(100,300, 250,120);
 
         /*폰트 설정*/
-        Font font = new Font("Roboto", Font.BOLD, 60); // 폰트 설정
+        Font font = new Font("Pixel Emulator", Font.BOLD, 45); // 폰트 설정
         text.setForeground(Color.RED);
         text.setFont(font);
         text.setVisible(false);
@@ -600,14 +600,15 @@ public class Board extends JPanel {
                 this.makeGameOverbackground(); // 종료
                 text.setVisible(true);
 
-                if (matchScreen == null) {
+                if (matchScreen == null && timeMatchScreen == null) {
                     gameOverScore(); // 스코어 처리
                     // 스코어 보드 화면 보여주기
                     HighScoreScreen highScoreScreen = new HighScoreScreen(normalScoreCsv);
                     highScoreScreen.setVisible(true);
                     playScreen.setVisible(false);
-                } else {
+                } else if(matchScreen != null) {
                     if (matchScreen.mainBoard1.isBlockOutOfBounds()) {
+                        matchScreen.mainBoard2.timer.stop(); // 상태편 멈춤
                         int answer = JOptionPane.showConfirmDialog(this, "승자는 오른쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
                         if (answer == JOptionPane.YES_OPTION) {
                             matchScreen.setVisible(false);
@@ -616,6 +617,7 @@ public class Board extends JPanel {
                             System.exit(0);
                         }
                     } else if(matchScreen.mainBoard2.isBlockOutOfBounds()){
+                        matchScreen.mainBoard1.timer.stop(); // 상태편 멈춤
                         int answer = JOptionPane.showConfirmDialog(this, "승자는 왼쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
                         if (answer == JOptionPane.YES_OPTION) {
                             matchScreen.setVisible(false);
@@ -624,6 +626,29 @@ public class Board extends JPanel {
                             System.exit(0);
                         }
                     }
+                }
+                else{ // 시간 대전 모드
+                    timeMatchScreen.timerOFF(); // 타이머 멈춤
+                    if (timeMatchScreen.mainBoard1.isBlockOutOfBounds()) {
+                        timeMatchScreen.mainBoard2.timer.stop();
+                        int answer = JOptionPane.showConfirmDialog(this, "승자는 오른쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
+                        if (answer == JOptionPane.YES_OPTION) {
+                            timeMatchScreen.setVisible(false);
+                            StartScreen startScreen = new StartScreen();
+                        } else {
+                            System.exit(0);
+                        }
+                    } else if(timeMatchScreen.mainBoard2.isBlockOutOfBounds()){
+                        timeMatchScreen.mainBoard1.timer.stop();
+                        int answer = JOptionPane.showConfirmDialog(this, "승자는 왼쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
+                        if (answer == JOptionPane.YES_OPTION) {
+                            timeMatchScreen.setVisible(false);
+                            StartScreen startScreen = new StartScreen();
+                        } else {
+                            System.exit(0);
+                        }
+                    }
+
                 }
 
                 return;
@@ -636,6 +661,16 @@ public class Board extends JPanel {
             clearLines(); // 채운 줄 없애주고
             if(matchScreen != null)
                 matchScreen.sendWaitingLines(this);
+
+            if(timeMatchScreen != null)
+                saveBackground(); //temp에 들어가고
+            moveBlockToBackground(); // background 바뀌고
+            checkLineFilled(); // 채운 줄 확인하고 toss에 채운 줄 넣어주기
+            spawnBlock(); // 블럭 옮겨주고
+            clearLines(); // 채운 줄 없애주고
+            if(timeMatchScreen != null)
+                timeMatchScreen.sendWaitingLines(this);
+
             repaint(); // 다시 그려줌.
         }
 
@@ -643,6 +678,12 @@ public class Board extends JPanel {
         gameScore.playScore(); // 스코어 증가
         scoreBoard.updateScore(); // 점수 보여주기~
         repaint();
+    }
+
+    /*시간 모드*/
+    public void timeout(){
+        // 시간이 지나서 종료
+        this.timer.stop();
     }
 
     public void moveBlockRight() { // 오른쪽 이동

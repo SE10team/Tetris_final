@@ -21,7 +21,7 @@ import java.util.Arrays;
 public class ItemModeBoard extends Board {
 
     private Font font;
-    private Font font2; // 블록 글자
+
     // 다른 클래스
     private ItemModeNextGenerateBlock itemModeNextGenerateBlock;
     private ItemModeNextBoard nextBoard;
@@ -42,7 +42,6 @@ public class ItemModeBoard extends Board {
 
         this.gameScore = gameScore;
         this.scoreBoard = scoreBoard;
-        this.itemScoreCsv = itemScoreCsv;
         this.itemMatchScreen = itemMatchScreen;
         fileInputOutput = new FileInputOutput();
 
@@ -61,14 +60,14 @@ public class ItemModeBoard extends Board {
         text = new JLabel("Game Over"); // 글자
         text.setBounds(100,300, 250,120);
 
+
         /*폰트 설정*/
-        font = new Font("Pixel Emulator", Font.BOLD, 60); // 폰트 설정
+        font = new Font("Pixel Emulator", Font.BOLD, 45); // 폰트 설정
         text.setForeground(Color.RED);
         text.setFont(font);
         text.setVisible(false);
         this.add(text); // 글자 표시
 
-        font2 = new Font("Pixel Emulator", Font.PLAIN, 20); // 폰트 설정
 
         background = new Color[HEIGHT][WIDTH];
         WeightBlock weightBlock = new WeightBlock();
@@ -128,13 +127,12 @@ public class ItemModeBoard extends Board {
         text.setBounds(100,300, 250,120);
 
         /*폰트 설정*/
-        font = new Font("Pixel Emulator", Font.BOLD, 60); // 폰트 설정
+        font = new Font("Pixel Emulator", Font.BOLD, 45); // 폰트 설정
         text.setForeground(Color.RED);
         text.setFont(font);
         text.setVisible(false);
         this.add(text); // 글자 표시
 
-        font2 = new Font("Pixel Emulator", Font.PLAIN, 20); // 폰트 설정
 
         background = new Color[HEIGHT][WIDTH];
         WeightBlock weightBlock = new WeightBlock();
@@ -522,8 +520,9 @@ public class ItemModeBoard extends Board {
                     HighScoreScreen highScoreScreen = new HighScoreScreen(itemScoreCsv);
                     highScoreScreen.setVisible(true);
                     itemModePlayScreen.setVisible(false);
-                } else {
+                } else { // MatchScreen일 경우
                     if (itemMatchScreen.mainBoard1.isBlockOutOfBounds()) {
+                        itemMatchScreen.mainBoard2.timer.stop(); // 상대 편도 멈춤
                         int answer = JOptionPane.showConfirmDialog(this, "승자는 오른쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
                         if (answer == JOptionPane.YES_OPTION) {
                             itemMatchScreen.setVisible(false);
@@ -532,6 +531,7 @@ public class ItemModeBoard extends Board {
                             System.exit(0);
                         }
                     } else if(itemMatchScreen.mainBoard2.isBlockOutOfBounds()){
+                        itemMatchScreen.mainBoard1.timer.stop(); // 상대 편도 멈춤
                         int answer = JOptionPane.showConfirmDialog(this, "승자는 왼쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);
                         if (answer == JOptionPane.YES_OPTION) {
                             itemMatchScreen.setVisible(false);
