@@ -87,10 +87,10 @@ public class StartScreen extends JFrame {
 
 
 // 맥 (유빈)
-//    final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
-//    final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
-//    final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
-//    final String modeSettingFilename = "/Users/home/Desktop/modeSetting.ser";
+    final String colorFilename = "/Users/home/Desktop/colorSetting.ser";
+    final String keySettingFilename = "/Users/home/Desktop/keySetting.ser";
+    final String screenSizeFilename = "/Users/home/Desktop/screenSizeSetting.ser";
+    final String modeSettingFilename = "/Users/home/Desktop/modeSetting.ser";
 
   // 윈도우 (윤재)
 //    final String colorFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/colorSetting.ser";
@@ -99,10 +99,10 @@ public class StartScreen extends JFrame {
 //    final String modeSettingFilename = "D:/OneDrive/Documents/Assignment/SE_Tetris/Tetris_final/modeSetting.ser";
 
     //윈도우 (의정)
-   final String colorFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/colorSetting.ser";
-   final String keySettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/keySetting.ser";
-   final String screenSizeFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/screenSizeSetting.ser";
-   final String modeSettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/modeSetting.ser";
+//   final String colorFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/colorSetting.ser";
+//   final String keySettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/keySetting.ser";
+//   final String screenSizeFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/screenSizeSetting.ser";
+//   final String modeSettingFilename = "C:/Users/USER/OneDrive - 서울과학기술대학교/Tetris_final/modeSetting.ser";
 
     FileInputOutput fileInputOutput = new FileInputOutput();
     if (!(new File((colorFilename)).exists())) {

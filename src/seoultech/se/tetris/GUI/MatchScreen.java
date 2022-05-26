@@ -165,10 +165,16 @@ public class MatchScreen extends JFrame {
                 mainBoard1.timer.stop();
                 mainBoard2.timer.stop();
                 repaint();
-                escPopUp();
-                mainBoard2.timer.start();
-                mainBoard1.timer.start();
-
+                int input = escPopUp();
+                if (input == 1 || input == 2) {
+                    mainBoard2.timer.start();
+                    mainBoard1.timer.start();
+                    mainBoard1.timer.start();
+                    mainBoard2.timer.start();
+                } else {
+                    mainBoard2.timer.stop();
+                    mainBoard1.timer.stop();
+                }
             }
 
 

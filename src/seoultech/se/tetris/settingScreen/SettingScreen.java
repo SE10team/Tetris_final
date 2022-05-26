@@ -12,11 +12,12 @@ import java.awt.event.ActionEvent;
 
 public class SettingScreen extends JFrame {
 
-  int colorCount = 0;
+  int colorCount;
   FileInputOutput fileInputOutput = new FileInputOutput();
   SettingScreenMenu settingScreenMenu;
 
   public SettingScreen() {
+    colorCount = 0;
 
     settingScreenMenu = new SettingScreenMenu(this);
 
@@ -36,16 +37,16 @@ public class SettingScreen extends JFrame {
               KeySettingScreen keySettingScreen = new KeySettingScreen();
 
         } else if (e.getActionCommand() == "스코어 보드 기록 초기화") {
+
             NormalScoreCsv normalScoreCsv = new NormalScoreCsv();
             ItemScoreCsv itemScoreCsv = new ItemScoreCsv();
             normalScoreCsv.resetCsv();
             itemScoreCsv.resetCsv();
             System.out.println("스코어 보드 기록 초기화 버튼을 눌렀음");
-              // 추후 추가 예정
 
         } else if (e.getActionCommand() == "색맹 모드") {
 
-              if (colorCount % 2 == 1) {
+              if (colorCount % 2 == 0) {
                 fileInputOutput.OutputColorFileForBlind();
                 colorCount++;
               } else {

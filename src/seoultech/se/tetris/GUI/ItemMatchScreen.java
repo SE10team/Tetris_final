@@ -144,6 +144,9 @@ public class ItemMatchScreen extends JFrame {
           mainBoard1.timer.start();
           mainBoard1.timer.start();
           mainBoard2.timer.start();
+        } else {
+          mainBoard2.timer.stop();
+          mainBoard1.timer.stop();
         }
       }
 

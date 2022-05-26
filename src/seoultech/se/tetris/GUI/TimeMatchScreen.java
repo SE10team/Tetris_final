@@ -183,13 +183,16 @@ public class TimeMatchScreen extends JFrame {
                 } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     mainBoard1.timer.stop();
                     mainBoard2.timer.stop();
-                    timer.stop();
                     repaint();
                     int input = escPopUp();
                     if (input == 1 || input == 2) {
                         mainBoard2.timer.start();
                         mainBoard1.timer.start();
-                        timer.start();
+                        mainBoard1.timer.start();
+                        mainBoard2.timer.start();
+                    } else {
+                        mainBoard2.timer.stop();
+                        mainBoard1.timer.stop();
                     }
                 }
 
