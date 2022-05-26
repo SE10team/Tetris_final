@@ -22,7 +22,7 @@ public class TimeMatchScreen extends JFrame {
     public Board mainBoard2;
     public TimeBoard timeBoard;
     private static int startTime; // 시작 시간
-    private static int endTime = 10; // 종료 시간
+    private static int endTime = 180; // 종료 시간
     public Timer timer; // 타이머
     public int sec = 0; // 현재 시간
     public int temp = 0;

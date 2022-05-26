@@ -20,61 +20,61 @@ class GameDifficultyScreenTest{
     FileInputOutput fileInputOutput = new FileInputOutput();
     GameDifficultyScreen gameDifficultyScreen = new GameDifficultyScreen();
 
-    @Test
-    void button_Easy() throws IOException, ClassNotFoundException {
-        gameDifficultyScreen.fileInputOutput.OutputModeSetting(1);
-
-        int setMode = fileInputOutput.InputModeFile();
-        assertEquals(1, setMode);
-
-        GameDifficultyScreen.PlayerKeyListener playerKeyListener = gameDifficultyScreen.playerKeyListener;
-
-        JButton jButtons = new JButton(btnText[0]);
-        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,1,KeyEvent.VK_ENTER );
-
-
-        playerKeyListener.keyPressed(keyEvent);
-        playerKeyListener.keyReleased(keyEvent);
-
-
-
-    }
-
-    @Test
-    void button_Normal() throws IOException, ClassNotFoundException {
-        gameDifficultyScreen.fileInputOutput.OutputModeSetting(2);
-
-        int setMode = fileInputOutput.InputModeFile();
-        assertEquals(2, setMode);
-
-        GameDifficultyScreen.PlayerKeyListener playerKeyListener = gameDifficultyScreen.playerKeyListener;
-
-        JButton jButtons = new JButton("Normal 모드");
-        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,0,KeyEvent.VK_DOWN );
-
-        playerKeyListener.keyPressed(keyEvent);
-
-        playerKeyListener.keyReleased(keyEvent);
-
-    }
-
-    @Test
-    void button_Hard() throws IOException, ClassNotFoundException {
-        gameDifficultyScreen.fileInputOutput.OutputModeSetting(3);
-
-        int setMode = fileInputOutput.InputModeFile();
-        assertEquals(3, setMode);
-
-        GameDifficultyScreen.PlayerKeyListener playerKeyListener = gameDifficultyScreen.playerKeyListener;
-
-        JButton jButtons = new JButton("Hard 모드");
-        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,0,KeyEvent.VK_ENTER );
-
-        playerKeyListener.keyPressed(keyEvent);
-
-        playerKeyListener.keyReleased(keyEvent);
-
-    }
+//    @Test
+//    void button_Easy() throws IOException, ClassNotFoundException {
+//        gameDifficultyScreen.fileInputOutput.OutputModeSetting(1);
+//
+//        int setMode = fileInputOutput.InputModeFile();
+//        assertEquals(1, setMode);
+//
+//        GameDifficultyScreen.PlayerKeyListener playerKeyListener = gameDifficultyScreen.playerKeyListener;
+//
+//        JButton jButtons = new JButton(btnText[0]);
+//        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,1,KeyEvent.VK_ENTER );
+//
+//
+//        playerKeyListener.keyPressed(keyEvent);
+//        playerKeyListener.keyReleased(keyEvent);
+//
+//
+//
+//    }
+//
+//    @Test
+//    void button_Normal() throws IOException, ClassNotFoundException {
+//        gameDifficultyScreen.fileInputOutput.OutputModeSetting(2);
+//
+//        int setMode = fileInputOutput.InputModeFile();
+//        assertEquals(2, setMode);
+//
+//        GameDifficultyScreen.PlayerKeyListener playerKeyListener = gameDifficultyScreen.playerKeyListener;
+//
+//        JButton jButtons = new JButton("Normal 모드");
+//        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,0,KeyEvent.VK_DOWN );
+//
+//        playerKeyListener.keyPressed(keyEvent);
+//
+//        playerKeyListener.keyReleased(keyEvent);
+//
+//    }
+//
+//    @Test
+//    void button_Hard() throws IOException, ClassNotFoundException {
+//        gameDifficultyScreen.fileInputOutput.OutputModeSetting(3);
+//
+//        int setMode = fileInputOutput.InputModeFile();
+//        assertEquals(3, setMode);
+//
+//        GameDifficultyScreen.PlayerKeyListener playerKeyListener = gameDifficultyScreen.playerKeyListener;
+//
+//        JButton jButtons = new JButton("Hard 모드");
+//        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,0,KeyEvent.VK_ENTER );
+//
+//        playerKeyListener.keyPressed(keyEvent);
+//
+//        playerKeyListener.keyReleased(keyEvent);
+//
+//    }
 
 
 

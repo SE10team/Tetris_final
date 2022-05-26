@@ -31,20 +31,20 @@ class SettingScreenMenuTest {
 
     }
 
-    @Test
-    void button_Key() throws IOException, ClassNotFoundException {
-
-
-        SettingScreenMenu.PlayerKeyListener playerKeyListener = settingScreenMenu.playerKeyListener;
-
-        JButton jButtons = new JButton(btnText[1]);
-        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,1,KeyEvent.VK_DOWN );
-
-
-        playerKeyListener.keyPressed(keyEvent);
-        playerKeyListener.keyReleased(keyEvent);
-
-    }
+//    @Test
+//    void button_Key() throws IOException, ClassNotFoundException {
+//
+//
+//        SettingScreenMenu.PlayerKeyListener playerKeyListener = settingScreenMenu.playerKeyListener;
+//
+//        JButton jButtons = new JButton(btnText[1]);
+//        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,1,KeyEvent.VK_DOWN );
+//
+//
+//        playerKeyListener.keyPressed(keyEvent);
+//        playerKeyListener.keyReleased(keyEvent);
+//
+//    }
 
     @Test
     void button_ScoreBoard() throws IOException, ClassNotFoundException {

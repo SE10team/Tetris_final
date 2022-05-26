@@ -17,12 +17,12 @@ class OneBlockTest {
     OneBlockTest() throws Exception {
     }
 
-    @Test
-    void getShape() {
-        int[] row = block.getShape()[0];
-        int[] expected = {1};
-        assertArrayEquals(expected, row);
-    }
+//    @Test
+//    void getShape() {
+//        int[] row = block.getShape()[0];
+//        int[] expected = {1};
+//        assertArrayEquals(expected, row);
+//    }
 
     @Test
     void getColor() {

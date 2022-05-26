@@ -45,10 +45,10 @@ class BoardTest {
 //        mainBoard.paintComponent(g);
 //    }
 
-    @Test
-    void clearLines1() throws InterruptedException {
-        mainBoard.clearLines();
-    }
+//    @Test
+//    void clearLines1() throws InterruptedException {
+//        mainBoard.clearLines();
+//    }
 
     @Test
     void clearLine() {
@@ -110,22 +110,22 @@ class BoardTest {
         mainBoard.isBlockOutOfBounds();
     }
 
-    @Test
-    void gameOverScore() {
-        normalScoreCsv.isRank(23);
-        mainBoard.gameOverScore();
-    }
+//    @Test
+//    void gameOverScore() {
+//        normalScoreCsv.isRank(23);
+//        mainBoard.gameOverScore();
+//    }
 
-    @Test
-    void inputDialog() {
-        mainBoard.inputDialog();
-    }
+//    @Test
+//    void inputDialog() {
+//        mainBoard.inputDialog();
+//    }
 
-    @Test
-    void moveBlockDown() throws Exception {
-        mainBoard.background[2][4] = Color.BLUE;
-        mainBoard.moveBlockDown();
-    }
+//    @Test
+//    void moveBlockDown() throws Exception {
+//        mainBoard.background[2][4] = Color.BLUE;
+//        mainBoard.moveBlockDown();
+//    }
 
     @Test
     void moveBlockRight() {
@@ -139,10 +139,10 @@ class BoardTest {
         mainBoard.moveBlockLeft();
     }
 
-    @Test
-    void dropBlock() throws Exception {
-        mainBoard.dropBlock();
-    }
+//    @Test
+//    void dropBlock() throws Exception {
+//        mainBoard.dropBlock();
+//    }
 
     @Test
     void rotateBlock() {
@@ -171,10 +171,10 @@ class BoardTest {
         mainBoard.checkRight();
     }
 
-    @Test
-    void showPopup() {
-        mainBoard.showPopup();
-    }
+//    @Test
+//    void showPopup() {
+//        mainBoard.showPopup();
+//    }
 
     @Test
     void key_0() throws IOException, ClassNotFoundException {
@@ -229,18 +229,18 @@ class BoardTest {
         playerKeyListener.keyReleased(keyEvent);
     }
 
-    @Test
-    void key_ESCAPE() throws IOException, ClassNotFoundException {
-        Board.PlayerKeyListener playerKeyListener = (Board.PlayerKeyListener) mainBoard.playerKeyListener;
-
-        keySettingArr = fileInputOutput.InputKeyFile();
-
-        JButton jButtons = new JButton(String.valueOf(KeyEvent.VK_ESCAPE));
-        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,1,KeyEvent.VK_ESCAPE);
-
-        playerKeyListener.keyPressed(keyEvent);
-        playerKeyListener.keyReleased(keyEvent);
-    }
+//    @Test
+//    void key_ESCAPE() throws IOException, ClassNotFoundException {
+//        Board.PlayerKeyListener playerKeyListener = (Board.PlayerKeyListener) mainBoard.playerKeyListener;
+//
+//        keySettingArr = fileInputOutput.InputKeyFile();
+//
+//        JButton jButtons = new JButton(String.valueOf(KeyEvent.VK_ESCAPE));
+//        KeyEvent keyEvent = new KeyEvent(jButtons,0,0,1,KeyEvent.VK_ESCAPE);
+//
+//        playerKeyListener.keyPressed(keyEvent);
+//        playerKeyListener.keyReleased(keyEvent);
+//    }
 
     @Test
     void key_3() throws IOException, ClassNotFoundException {

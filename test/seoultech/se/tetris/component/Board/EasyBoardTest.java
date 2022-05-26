@@ -36,8 +36,8 @@ class EasyBoardTest {
         mainBoard.spawnBlock();
     }
 
-    @Test
-    void clearLines() throws InterruptedException {
-        mainBoard.clearLines();
-    }
+//    @Test
+//    void clearLines() throws InterruptedException {
+//        mainBoard.clearLines();
+//    }
 }
