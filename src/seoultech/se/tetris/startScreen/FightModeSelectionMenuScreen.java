@@ -25,6 +25,9 @@ public class FightModeSelectionMenuScreen extends JPanel {
     for (int i = 0; i < btnText.length; i++) {
       buttons[i] = new JButton(btnText[i]);
       buttons[i].setUI(new StyledButtonUI());
+      buttons[i].setUI(new StyledButtonUI());
+      buttons[i].setSize(200,30);
+      buttons[i].setFont(new Font("나눔", Font.BOLD, 30));
       add(buttons[i]);
 
       Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>(buttons[i].getFocusTraversalKeys(

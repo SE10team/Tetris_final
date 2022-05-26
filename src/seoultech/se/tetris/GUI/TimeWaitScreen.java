@@ -63,6 +63,7 @@ public class TimeWaitScreen extends JFrame {
         for (int i = 0; i < btnText.length; i++) {
             buttons[i] = new JButton(btnText[i]);
             buttons[i].setUI(new StyledButtonUI());
+
             if(i == 0){
                 buttons[i].setBounds(30, 400, 200, 40);
             }

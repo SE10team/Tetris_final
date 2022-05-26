@@ -24,7 +24,8 @@ public class TimeMatchScreen extends JFrame {
     private static int startTime; // 시작 시간
     private static int endTime = 10; // 종료 시간
     public Timer timer; // 타이머
-    public int sec; // 현재 시간
+    public int sec = 0; // 현재 시간
+    public int temp = 0;
 
     public static void main(String[] args) throws Exception {
         TimeMatchScreen tetris = new TimeMatchScreen();
@@ -54,12 +55,12 @@ public class TimeMatchScreen extends JFrame {
         timer = new Timer(1000, e -> {
             try {
                 timeBoard.add(timeBoard.timeText); // 아이콘 표시
-                this.sec = ((int) System.currentTimeMillis() / 1000) - startTime;
+                this.sec = ((int) System.currentTimeMillis() / 1000) - startTime + this.temp;
                 timeBoard.timeDisplay.setText(setTime(sec)); // 누적된 초를 시:분:초 로 출력
                 timeBoard.add(timeBoard.timeDisplay); // 시간 표시
 
                 /*시간 관련 멈춤*/
-                if(sec > 10){ // 시간 얼마 안 남았을 때
+                if(sec > 170){ // 시간 얼마 안 남았을 때
                     timeBoard.timeDisplay.setForeground(Color.RED);
                     timeBoard.timeText.setForeground(Color.RED);
 
@@ -167,11 +168,12 @@ public class TimeMatchScreen extends JFrame {
                 } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     mainBoard1.timer.stop();
                     mainBoard2.timer.stop();
-                    timer.stop();
+                    timerOFF();
                     repaint();
                     mainBoard1.showPopup();
                     mainBoard2.timer.start();
                     mainBoard1.timer.start();
+                    timerOn();
                     timer.start();
                 }
 
@@ -212,11 +214,12 @@ public class TimeMatchScreen extends JFrame {
     }
 
     public void timerOFF(){
-        // 타이머 켜기
+        // 타이머 끄기
+        this.temp = ((int) System.currentTimeMillis() / 1000) - startTime;
+        System.out.println(temp);
         this.timer.stop();
     }
 
-    // 정수로 된 시간 입력 받기
     public static String setTime(int secs){
         int min, s;
         s = secs % 60;

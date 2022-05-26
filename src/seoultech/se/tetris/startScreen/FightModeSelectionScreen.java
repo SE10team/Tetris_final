@@ -62,7 +62,7 @@ public class FightModeSelectionScreen extends JFrame {
 
     // 메뉴 버튼들
 //    StartScreenMenu startScreenMenu = new StartScreenMenu();
-    menuScreen.setBounds(180, 180, 145, 300);
+    menuScreen.setBounds(100, 130, 300, 300);
     for (int i = 0; i < menuScreen.buttons.length; i++) {
       menuScreen.buttons[i].addActionListener(buttonPressed);
     }

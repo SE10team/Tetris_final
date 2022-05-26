@@ -127,7 +127,7 @@ public class StartScreen extends JFrame {
 
     // 메뉴 버튼들
 //    StartScreenMenu startScreenMenu = new StartScreenMenu();
-    startScreenMenu.setBounds(130, 190, 145, 300);
+    startScreenMenu.setBounds(100, 170, 200, 500);
     startScreenMenu.setBackground(new Color(0,0,0,0));
     for (int i = 0; i < startScreenMenu.buttons.length; i++) {
       startScreenMenu.buttons[i].addActionListener(buttonPressed);

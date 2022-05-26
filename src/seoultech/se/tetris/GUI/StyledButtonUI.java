@@ -34,10 +34,11 @@ public class StyledButtonUI extends BasicButtonUI { // 버튼 UI와 관련된 �
         Dimension size = c.getSize();
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setColor(Color.WHITE.darker());
-        g.fillRoundRect(0, yOffset, size.width, size.height - yOffset, 10, 10);
-        g.setColor(Color.WHITE);
+        g.setColor(new Color(127,100,0));
+        g.fillRoundRect(0, yOffset, size.width, size.height-yOffset , 10, 10);
+        g.setColor(Color.ORANGE);
         g.fillRoundRect(0, yOffset, size.width, size.height + yOffset - 5, 10, 10);
 
     }
+
 }

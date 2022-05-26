@@ -36,6 +36,8 @@ public class SettingScreenMenu extends JPanel {
     for (int i = 0; i < 7; i++) {
       buttons[i] = new JButton(btnText[i]);
       buttons[i].setUI(new StyledButtonUI());
+      buttons[i].setSize(190,30);
+      buttons[i].setFont(new Font("나눔", Font.BOLD, 15));
       add(buttons[i]);
 
       Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(

@@ -57,6 +57,7 @@ public class SettingScreen extends JFrame {
 
           setVisible(false);
           GameDifficultyScreen gameDifficultyScreen = new GameDifficultyScreen();
+          gameDifficultyScreen.setVisible(true);
 
 
         } else if (e.getActionCommand() == "설정 초기화") {
@@ -96,7 +97,7 @@ public class SettingScreen extends JFrame {
 
 
     SettingScreenMenu settingScreenMenu = new SettingScreenMenu(this);
-    settingScreenMenu.setBounds(120,100,160,300);
+    settingScreenMenu.setBounds(80,100,230,300);
     for (int i = 0; i < settingScreenMenu.buttons.length; i++) {
        settingScreenMenu.buttons[i].addActionListener(buttonPressed);
     }

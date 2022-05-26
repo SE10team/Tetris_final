@@ -28,11 +28,14 @@ public class StartScreenMenu extends JPanel {
 
     String[] btnText = {"일반 모드 게임 시작", "아이템 모드 게임 시작", "대전모드 게임 시작", "게임 설정", "스코어 보드", "게임 종료"};
     buttons = new JButton[btnText.length];
+    setLayout(new FlowLayout());
 
     for (int i = 0; i < 6; i++) {
       buttons[i] = new JButton(btnText[i]);
       buttons[i].setUI(new StyledButtonUI());
       buttons[i].requestFocus(); // 포커스 되도록
+      buttons[i].setSize(180,30);
+      buttons[i].setFont(new Font("나눔", Font.BOLD, 15));
       add(buttons[i]);
 
       Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>(buttons[i].getFocusTraversalKeys(
