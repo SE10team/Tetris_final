@@ -40,15 +40,11 @@ class BoardTest {
     BoardTest() throws Exception {
     }
 
-//    @Test
-//    void paintComponent() {
-//        mainBoard.paintComponent(g);
-//    }
+    @Test
+    void paintComponent() {
+        mainBoard.paintComponent(g);
+    }
 
-//    @Test
-//    void clearLines1() throws InterruptedException {
-//        mainBoard.clearLines();
-//    }
 
     @Test
     void clearLine() {
@@ -79,20 +75,11 @@ class BoardTest {
         mainBoard.moveBlockToBackground();
     }
 
-//    @Test
-//    void placeBlock() {
-//        mainBoard.placeBlock(g);
-//    }
 
-//    @Test
-//     void drawBackground() {
-//        drawBackground();
-//    }
-
-//    @Test
-//    void drawGridSquare() {
-//        mainBoard.drawGridSquare(g, Color.WHITE, 5,15);
-//    }
+    @Test
+    void drawGridSquare() {
+        mainBoard.drawGridSquare(g, Color.WHITE, 5,15);
+    }
 
     @Test
     void spawnBlock() throws Exception {
@@ -110,22 +97,6 @@ class BoardTest {
         mainBoard.isBlockOutOfBounds();
     }
 
-//    @Test
-//    void gameOverScore() {
-//        normalScoreCsv.isRank(23);
-//        mainBoard.gameOverScore();
-//    }
-
-//    @Test
-//    void inputDialog() {
-//        mainBoard.inputDialog();
-//    }
-
-//    @Test
-//    void moveBlockDown() throws Exception {
-//        mainBoard.background[2][4] = Color.BLUE;
-//        mainBoard.moveBlockDown();
-//    }
 
     @Test
     void moveBlockRight() {
@@ -139,22 +110,17 @@ class BoardTest {
         mainBoard.moveBlockLeft();
     }
 
-//    @Test
-//    void dropBlock() throws Exception {
-//        mainBoard.dropBlock();
-//    }
-
     @Test
     void rotateBlock() {
         mainBoard.rotateBlock();
     }
 
-//    @Test
-//    void checkRotate() throws Exception {
-//        curr = new IBlock();
-//
-//        mainBoard.checkRotate(curr.getShape());
-//    }
+    @Test
+    void checkRotate() throws Exception {
+        curr = new IBlock();
+
+        mainBoard.checkRotate(curr.getShape());
+    }
 
     @Test
     void checkBottom() {

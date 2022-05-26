@@ -89,10 +89,10 @@ public class SettingScreenMenu extends JPanel {
           // 추후 추가 예정
 
         } else if (e.getSource() == buttons[3]) {
-
-          if (settingScreen.colorCount % 2 == 1) {
+          if (settingScreen.colorCount % 2 == 0) {
             settingScreen.fileInputOutput.OutputColorFileForBlind();
             settingScreen.colorCount++;
+
           } else {
             settingScreen.fileInputOutput.OutputColorFileNotForBlind();
             settingScreen.colorCount++;
@@ -118,6 +118,7 @@ public class SettingScreenMenu extends JPanel {
         } else if (e.getSource() == buttons[6]) {
           settingScreen.setVisible(false);
           StartScreen startScreen = new StartScreen();
+
         }
 
       } else if (e.getKeyCode() != KeyEvent.VK_ENTER || e.getKeyCode() != KeyEvent.VK_DOWN || e.getKeyCode() != KeyEvent.VK_UP) {

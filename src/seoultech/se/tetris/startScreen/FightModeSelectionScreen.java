@@ -40,6 +40,7 @@ public class FightModeSelectionScreen extends JFrame {
           setVisible(false);
           try {
             TimeWaitScreen timeWaitScreen = new TimeWaitScreen();
+            timeWaitScreen.setBackground(Color.BLACK);
             timeWaitScreen.setVisible(true);
           } catch (Exception ex) {
             ex.printStackTrace();

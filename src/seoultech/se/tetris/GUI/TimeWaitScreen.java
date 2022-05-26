@@ -32,7 +32,7 @@ public class TimeWaitScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 버튼 설정
         setLayout(null); // 레이아웃 설정
         setResizable(false); // 창의 크기 변경 못함
-        setContentPane(new ImageBack());
+        setBackground(Color.BLACK);
         setLocationRelativeTo(null); //화면 중앙에 생성
 
         // 문구

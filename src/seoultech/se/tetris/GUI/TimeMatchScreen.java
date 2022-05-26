@@ -60,7 +60,7 @@ public class TimeMatchScreen extends JFrame {
                 timeBoard.add(timeBoard.timeDisplay); // 시간 표시
 
                 /*시간 관련 멈춤*/
-                if(sec > 170){ // 시간 얼마 안 남았을 때
+                if(this.sec > 170){ // 시간 얼마 안 남았을 때
                     timeBoard.timeDisplay.setForeground(Color.RED);
                     timeBoard.timeText.setForeground(Color.RED);
 
@@ -137,14 +137,16 @@ public class TimeMatchScreen extends JFrame {
 
     public int escPopUp() {
         String[] strings = {"시작 메뉴로", "프로그램 종료", "취소"};
+        timerOFF();
         int input = JOptionPane.showOptionDialog(this, "게임을 중단하시겠습니까? 시작메뉴로 돌아가시려면 \"시작메뉴로\" 버튼을, 게임을 완전히 종료시키시려면 \"프로그램 종료\" 버튼을, 다시 게임을 재개하시려면 \"취소\" 버튼을 눌러주세요.", "confirm", 0, 0, null, strings, strings[2]);
         if (input == 0) {
             setVisible(false);
-            timerOFF();
             StartScreen startScreen = new StartScreen();
         } else if (input == 1) {
             System.exit(0);
         } else {
+            timerOn();
+            timer.start();
             repaint();
         }
         return input;
@@ -227,6 +229,22 @@ public class TimeMatchScreen extends JFrame {
         }
     }
 
+    public class DialogKeyListner implements KeyListener{
+        @Override
+        public void keyTyped(KeyEvent e) {
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+        }
+
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+        }
+    }
+
     public void timerOn(){
         // 타이머 켜기
         startTime = (int) System.currentTimeMillis() / 1000;
@@ -250,6 +268,9 @@ public class TimeMatchScreen extends JFrame {
     // 승자 가리기
     public void endDialog(int s1, int s2){
         int answer = 0;
+        PlayerKeyListener listener = new PlayerKeyListener();
+        addKeyListener(listener);
+
         //승자구분
         if(s1 > s2){
             answer = JOptionPane.showConfirmDialog(this, "승자는 왼쪽 플레이어 입니다! 시작 화면으로 돌아가시려면 \"예\"버튼, 프로그램을 종료하시려면 \"아니오\"버튼을 눌러주세요.", "confirm", JOptionPane.YES_NO_OPTION);

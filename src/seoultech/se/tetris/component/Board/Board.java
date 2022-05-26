@@ -713,12 +713,17 @@ public class Board extends JPanel {
             }
             if(matchScreen != null)
                 saveBackground(); //temp에 들어가고
+            if(timeMatchScreen != null)
+                saveBackground(); //temp에 들어가고
             moveBlockToBackground(); // background 바뀌고
             checkLineFilled(); // 채운 줄 확인하고 toss에 채운 줄 넣어주기
             spawnBlock(); // 블럭 옮겨주고
             clearLines(); // 채운 줄 없애주고
             if(matchScreen != null)
                 matchScreen.sendWaitingLines(this);
+            if(timeMatchScreen != null)
+                timeMatchScreen.sendWaitingLines(this);
+
             repaint(); // 다시 그려줌.
         }
     }

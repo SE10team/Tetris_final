@@ -5,8 +5,6 @@ import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.itemMode.ItemModeBoard;
 import seoultech.se.tetris.itemMode.ItemModeNextBoard;
 import seoultech.se.tetris.itemMode.ItemModeNextGenerateBlock;
-import seoultech.se.tetris.itemMode.ItemModePlayScreen;
-import seoultech.se.tetris.scoreData.dao.ItemScoreCsv;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 import seoultech.se.tetris.startScreen.StartScreen;
 
@@ -15,9 +13,34 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+class ItemPair {
+  ItemModeBoard first;
+  ItemModeBoard second;
+
+  public ItemPair(ItemModeBoard first, ItemModeBoard second) {
+    this.first = first;
+    this.second = second;
+  }
+
+//    public Board getFirst() {
+//        return first;
+//    }
+//
+//    public Board getSecond() {
+//        return second;
+//    }
+
+  public ItemModeBoard getOthers(ItemModeBoard board) {
+    if (board == first)
+      return second;
+    else
+      return first;
+  }
+}
+
 public class ItemMatchScreen extends JFrame {
 
-  private Pair boards;
+  private ItemPair boards;
   PlayerKeyListener playerKeyListener;
   public ItemModeBoard mainBoard1;
   public ItemModeBoard mainBoard2;
@@ -76,7 +99,7 @@ public class ItemMatchScreen extends JFrame {
     add(waitingBoard1);
     add(waitingBoard2);
 
-    boards = new Pair(mainBoard1, mainBoard2);
+    boards = new ItemPair(mainBoard1, mainBoard2);
 
     playerKeyListener = new PlayerKeyListener();
     addKeyListener(playerKeyListener);
@@ -84,7 +107,7 @@ public class ItemMatchScreen extends JFrame {
     requestFocus();
   }
 
-  public void sendWaitingLines(Board board) {
+  public void sendWaitingLines(ItemModeBoard board) {
 
     board.getWaitingLines(boards.getOthers(board).tossBackground);
     boards.getOthers(board).clearWaitingLines();

@@ -20,12 +20,12 @@ class Pair {
         this.second = second;
     }
 
-////    public Board getFirst() {
-////        return first;
-////    }
-////
-////    public Board getSecond() {
-////        return second;
+//    public Board getFirst() {
+//        return first;
+//    }
+//
+//    public Board getSecond() {
+//        return second;
 //    }
 
     public Board getOthers(Board board) {

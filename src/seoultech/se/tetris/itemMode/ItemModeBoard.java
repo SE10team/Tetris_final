@@ -2,7 +2,6 @@ package seoultech.se.tetris.itemMode;
 
 import seoultech.se.tetris.GUI.HighScoreScreen;
 import seoultech.se.tetris.GUI.ItemMatchScreen;
-import seoultech.se.tetris.GUI.MatchScreen;
 import seoultech.se.tetris.blocks.*;
 import seoultech.se.tetris.component.Board.Board;
 import seoultech.se.tetris.component.GameScore;
@@ -565,7 +564,7 @@ public class ItemModeBoard extends Board {
             }
 
             //대전 모드 처리
-            if(matchScreen != null)
+            if(itemMatchScreen != null)
                 saveBackground(); //temp에 들어가고
 
             moveBlockToBackground(); // 데이터 보내기
@@ -578,8 +577,8 @@ public class ItemModeBoard extends Board {
 
 //            clearLines(); // 채운 줄 없애주고
 //            spawnBlock(); // 블럭 옮겨주고
-            if(matchScreen != null)
-                matchScreen.sendWaitingLines(this);
+            if(itemMatchScreen != null)
+                itemMatchScreen.sendWaitingLines(this);
 
             clearLines(); // 없앨 행 확인 여기서 붕 뜬거 처리
             spawnBlock(); // 새로운 블럭 나타나게
@@ -690,7 +689,7 @@ public class ItemModeBoard extends Board {
                 curr = new NullBlock(); // ClearBlock 없애주기
             }
 
-            if(matchScreen != null)
+            if(itemMatchScreen != null)
                 saveBackground(); //temp에 들어가고
 
             moveBlockToBackground(); // 데이터 보내기
@@ -703,8 +702,8 @@ public class ItemModeBoard extends Board {
             checkLineFilled(); // 채운 줄 확인하고 toss에 채운 줄 넣어주기
             spawnBlock(); // 블럭 옮겨주고
             clearLines(); // 채운 줄 없애주고
-            if(matchScreen != null)
-                matchScreen.sendWaitingLines(this);
+            if(itemMatchScreen != null)
+                itemMatchScreen.sendWaitingLines(this);
             repaint();
         }
         repaint();
