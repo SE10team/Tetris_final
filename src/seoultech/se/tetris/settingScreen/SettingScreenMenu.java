@@ -2,6 +2,8 @@ package seoultech.se.tetris.settingScreen;
 
 import seoultech.se.tetris.GUI.StyledButtonUI;
 import seoultech.se.tetris.main.Tetris;
+import seoultech.se.tetris.scoreData.dao.ItemScoreCsv;
+import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
 import seoultech.se.tetris.startScreen.StartScreen;
 import seoultech.se.tetris.startScreen.StartScreenMenu;
 
@@ -79,6 +81,10 @@ public class SettingScreenMenu extends JPanel {
 
         } else if (e.getSource() == buttons[2]) {
 
+          NormalScoreCsv normalScoreCsv = new NormalScoreCsv();
+          ItemScoreCsv itemScoreCsv = new ItemScoreCsv();
+          normalScoreCsv.resetCsv();
+          itemScoreCsv.resetCsv();
           System.out.println("스코어 보드 기록 초기화 버튼을 눌렀음");
           // 추후 추가 예정
 
@@ -94,7 +100,7 @@ public class SettingScreenMenu extends JPanel {
 
         } else if (e.getSource() == buttons[4]) {
 
-          setVisible(false);
+          settingScreen.setVisible(false);
           GameDifficultyScreen gameDifficultyScreen = new GameDifficultyScreen();
 
         } else if (e.getSource() == buttons[5]) {

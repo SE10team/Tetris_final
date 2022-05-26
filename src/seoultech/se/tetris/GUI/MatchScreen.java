@@ -4,6 +4,7 @@ import seoultech.se.tetris.component.Board.Board;
 import seoultech.se.tetris.component.GameScore;
 import seoultech.se.tetris.component.NextGenerateBlock;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
+import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -113,6 +114,20 @@ public class MatchScreen extends JFrame {
         boards.getOthers(board).clearWaitingLines();
     }
 
+    public int escPopUp() {
+        String[] strings = {"시작 메뉴로", "프로그램 종료", "취소"};
+        int input = JOptionPane.showOptionDialog(this, "게임을 중단하시겠습니까? 시작메뉴로 돌아가시려면 \"시작메뉴로\" 버튼을, 게임을 완전히 종료시키시려면 \"프로그램 종료\" 버튼을, 다시 게임을 재개하시려면 \"취소\" 버튼을 눌러주세요.", "confirm", 0, 0, null, strings, strings[2]);
+        if (input == 0) {
+            setVisible(false);
+            StartScreen startScreen = new StartScreen();
+        } else if (input == 1) {
+            System.exit(0);
+        } else {
+            repaint();
+        }
+        return input;
+    }
+
     public class PlayerKeyListener implements KeyListener {
         @Override
         public void keyTyped(KeyEvent e) {
@@ -136,7 +151,7 @@ public class MatchScreen extends JFrame {
                 mainBoard2.moveBlockLeft();
             } else if (e.getKeyCode() == KeyEvent.VK_UP) {
                 mainBoard2.rotateBlock();
-            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            } else if (e.getKeyCode() == KeyEvent.VK_COMMA) {
                 try {
                     if(!mainBoard2.isBlockOutOfBounds()){
                         mainBoard2.dropBlock();
@@ -150,10 +165,16 @@ public class MatchScreen extends JFrame {
                 mainBoard1.timer.stop();
                 mainBoard2.timer.stop();
                 repaint();
-                mainBoard1.showPopup();
-                mainBoard2.timer.start();
-                mainBoard1.timer.start();
-
+                int input = escPopUp();
+                if (input == 1 || input == 2) {
+                    mainBoard2.timer.start();
+                    mainBoard1.timer.start();
+                    mainBoard1.timer.start();
+                    mainBoard2.timer.start();
+                } else {
+                    mainBoard2.timer.stop();
+                    mainBoard1.timer.stop();
+                }
             }
 
 

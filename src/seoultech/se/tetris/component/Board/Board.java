@@ -844,6 +844,21 @@ public class Board extends JPanel {
         }
     }
 
+    public int escPopUp() {
+        String[] strings = {"시작 메뉴로", "프로그램 종료", "취소"};
+        int input = JOptionPane.showOptionDialog(this, "게임을 중단하시겠습니까? 시작메뉴로 돌아가시려면 \"시작메뉴로\" 버튼을, 게임을 완전히 종료시키시려면 \"프로그램 종료\" 버튼을, 다시 게임을 재개하시려면 \"취소\" 버튼을 눌러주세요.", "confirm", 0, 0, null, strings, strings[2]);
+        if (input == 0) {
+            playScreen.setVisible(false);
+            this.timer.stop();
+            StartScreen startScreen = new StartScreen();
+        } else if (input == 1) {
+            System.exit(0);
+        } else {
+            repaint();
+        }
+        return input;
+    }
+
 
 
     /* 사용자의 키보드 입력에 대한 메소드 */
@@ -881,9 +896,12 @@ public class Board extends JPanel {
             } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 timer.stop();
                 repaint();
-                showPopup();
-                timer.start();
-
+                int input = escPopUp();
+                if (input == 1 || input == 2) {
+                    timer.start();
+                } else {
+                    timer.stop();
+                }
             }
         }
 
