@@ -126,7 +126,7 @@ public class ItemMatchScreen extends JFrame {
         mainBoard2.moveBlockLeft();
       } else if (e.getKeyCode() == KeyEvent.VK_UP) {
         mainBoard2.rotateBlock();
-      } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+      } else if (e.getKeyCode() == KeyEvent.VK_COMMA) {
         try {
           if(!mainBoard2.isBlockOutOfBounds()){
             mainBoard2.dropBlock();

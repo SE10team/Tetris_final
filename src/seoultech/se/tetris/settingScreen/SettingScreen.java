@@ -12,12 +12,11 @@ import java.awt.event.ActionEvent;
 
 public class SettingScreen extends JFrame {
 
-  int colorCount;
+  static int colorCount = 0;
   FileInputOutput fileInputOutput = new FileInputOutput();
   SettingScreenMenu settingScreenMenu;
 
   public SettingScreen() {
-    colorCount = 0;
 
     settingScreenMenu = new SettingScreenMenu(this);
 

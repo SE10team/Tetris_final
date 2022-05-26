@@ -146,7 +146,6 @@ public class FileInputOutput {
     return setMode;
   }
 
-
   public void OutputColorFileNotForBlind() {
     try {
       File colorSettingFile = new File(colorFilename);
