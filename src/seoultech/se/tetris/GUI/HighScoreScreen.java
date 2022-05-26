@@ -43,7 +43,7 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 버튼 설정
         setLayout(null); // 레이아웃 설정
         setResizable(false); // 창의 크기 변경 못함
-        setContentPane(new ImagePanel());
+        setContentPane(new ImagePanel(600,700));
         setLocationRelativeTo(null); //화면 중앙에 생성
 
         title.setFont(font);
@@ -114,7 +114,7 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 버튼 설정
         setLayout(null); // 레이아웃 설정
         setResizable(false); // 창의 크기 변경 못함
-        setContentPane(new ImagePanel());
+        setContentPane(new ImagePanel(600,700));
         setLocationRelativeTo(null); //화면 중앙에 생성
 
         title.setFont(font);
@@ -261,7 +261,7 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 버튼 설정
         setLayout(null); // 레이아웃 설정
         setResizable(false); // 창의 크기 변경 못함
-        setContentPane(new ImagePanel());
+        setContentPane(new ImagePanel(600,700));
         setLocationRelativeTo(null); //화면 중앙에 생성
 
         // 타이틀
@@ -526,12 +526,3 @@ public class HighScoreScreen extends JFrame { // 스코어 보드
 }
 
 
-class ImagePanel extends JComponent { // 이미지 추가를 위한 클래스
-    private Image image = new ImageIcon(HighScoreScreen.class.getResource("../image/score_background.png")).getImage();;
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0, this);
-    }
-}

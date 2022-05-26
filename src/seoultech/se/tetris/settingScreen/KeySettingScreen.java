@@ -1,5 +1,7 @@
 package seoultech.se.tetris.settingScreen;
 
+import seoultech.se.tetris.GUI.ImagePanel;
+import seoultech.se.tetris.GUI.StyledButtonUI;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
 import seoultech.se.tetris.settingScreen.SettingScreen;
 import seoultech.se.tetris.startScreen.StartScreen;
@@ -53,18 +55,21 @@ public class KeySettingScreen extends JFrame {
     setLayout(null);
     setLocationRelativeTo(null); // 창 가운데로
     jButtons = new JButton[3];
+    setContentPane(new ImagePanel()); // 이미지 설정
 
     String[] btnText = {"W, A, S, D 키로 조작", "화살표 방향키로 조작", "뒤로가기"};
 
     JLabel jLabel1 = new JLabel("W, A, S, D 키로 조작");
-    Font font = new Font("Arial", Font.PLAIN, 15);
+    Font font = new Font("나눔", Font.BOLD, 15);
     jLabel1.setFont(font);
     jLabel1.setLayout(null);
-    jLabel1.setBounds(125,140,150,20);
+    jLabel1.setBounds(125,130,150,20);
+    jLabel1.setForeground(Color.white);
     add(jLabel1);
 
     jButtons[0] = new JButton(btnText[0]);
-    jButtons[0].setBounds(125, 180, 150, 25);
+    jButtons[0].setBounds(125, 170, 150, 25);
+    jButtons[0].setUI(new StyledButtonUI());
     add( jButtons[0] );
     buttonAction(jButtons[0]);
     jButtons[0].addActionListener(buttonPressed);
@@ -72,11 +77,13 @@ public class KeySettingScreen extends JFrame {
     JLabel jLabel2 = new JLabel("화살표 방향키로 조작");
     jLabel2.setFont(font);
     jLabel2.setLayout(null);
-    jLabel2.setBounds(125,220,150,20);
+    jLabel2.setBounds(125,210,150,20);
+    jLabel2.setForeground(Color.white);
     add(jLabel2);
 
     jButtons[1] = new JButton(btnText[1]);
-    jButtons[1].setBounds(125, 260, 150, 25);
+    jButtons[1].setBounds(125, 250, 150, 25);
+    jButtons[1].setUI(new StyledButtonUI());
     add( jButtons[1] );
     buttonAction(jButtons[1]);
     jButtons[1].addActionListener(buttonPressed);
@@ -84,11 +91,13 @@ public class KeySettingScreen extends JFrame {
     JLabel jLabel3 = new JLabel("뒤로가기");
     jLabel3.setFont(font);
     jLabel3.setLayout(null);
-    jLabel3.setBounds(125,300,150,20);
+    jLabel3.setForeground(Color.white);
+    jLabel3.setBounds(125,290,150,20);
     add(jLabel3);
 
     jButtons[2] = new JButton(btnText[2]);
-    jButtons[2].setBounds(125, 340, 150, 25);
+    jButtons[2].setUI(new StyledButtonUI());
+    jButtons[2].setBounds(125, 330, 150, 25);
     add( jButtons[2] );
     buttonAction(jButtons[2]);
     jButtons[2].addActionListener(buttonPressed);

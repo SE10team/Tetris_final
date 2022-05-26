@@ -22,6 +22,7 @@ public class ScoreBoard extends JPanel { // Score 현황을 그리는 곳
         /*배경 설정*/
         setLayout(new GridLayout(2,1));
         setBounds(locationArr[4],locationArr[5], 200,100);
+        setBackground(getBackground());
 
         /*컴포넌트 설정*/
         scoreDisplay = new JLabel(); // 점수 보여주는 객체

@@ -1,8 +1,6 @@
 package seoultech.se.tetris.startScreen;
 
-import seoultech.se.tetris.GUI.ItemMatchScreen;
-import seoultech.se.tetris.GUI.MatchScreen;
-import seoultech.se.tetris.GUI.TimeMatchScreen;
+import seoultech.se.tetris.GUI.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +13,9 @@ public class FightModeSelectionScreen extends JFrame {
   public FightModeSelectionScreen() {
     menuScreen = new FightModeSelectionMenuScreen(this);
 
-
+    // Frame 레이아웃
+    setLayout(null); // 레이아웃 설정
+    this.setContentPane(new FightModeSelectionScreen.ImagePanel());
     AbstractAction buttonPressed = new AbstractAction() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -39,8 +39,8 @@ public class FightModeSelectionScreen extends JFrame {
         }  else if (e.getActionCommand() == "시간제한 대전 모드") {
           setVisible(false);
           try {
-            TimeMatchScreen timeMatchScreen = new TimeMatchScreen();
-            timeMatchScreen.setVisible(true);
+            TimeWaitScreen timeWaitScreen = new TimeWaitScreen();
+            timeWaitScreen.setVisible(true);
           } catch (Exception ex) {
             ex.printStackTrace();
           }
@@ -53,7 +53,7 @@ public class FightModeSelectionScreen extends JFrame {
     };
 
     setTitle("대전 게임 모드 선택 화면");
-    setSize(400, 500);
+    setSize(500, 500);
     setResizable(false);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBackground(Color.PINK);
@@ -62,12 +62,23 @@ public class FightModeSelectionScreen extends JFrame {
 
     // 메뉴 버튼들
 //    StartScreenMenu startScreenMenu = new StartScreenMenu();
-    menuScreen.setBounds(130, 190, 145, 300);
+    menuScreen.setBounds(180, 180, 145, 300);
     for (int i = 0; i < menuScreen.buttons.length; i++) {
       menuScreen.buttons[i].addActionListener(buttonPressed);
     }
     add(menuScreen);
 
     setVisible(true);
+  }
+
+  class ImagePanel extends JComponent { // 이미지 추가를 위한 클래스
+    private Image image = new ImageIcon(HighScoreScreen.class.getResource("../image/timeImage.jpg")).getImage();
+    Image changeImg = image.getScaledInstance(500, 500, Image.SCALE_SMOOTH);
+
+    @Override
+    protected void paintComponent(Graphics g) {
+      super.paintComponent(g);
+      g.drawImage(changeImg, 0, 0, this);
+    }
   }
 }

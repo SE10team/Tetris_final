@@ -2,6 +2,7 @@ package seoultech.se.tetris.startScreen;
 
 
 import seoultech.se.tetris.GUI.HighScoreScreen;
+import seoultech.se.tetris.GUI.ImagePanel;
 import seoultech.se.tetris.itemMode.ItemModePlayScreen;
 import seoultech.se.tetris.GUI.PlayScreen;
 import seoultech.se.tetris.settingScreen.FileInputOutput;
@@ -80,9 +81,9 @@ public class StartScreen extends JFrame {
     setSize(400, 500);
     setResizable(false);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setBackground(Color.PINK);
     setLayout(null);
     setLocationRelativeTo(null); // 창 가운데로
+    setContentPane(new ImagePanel());
 
 
 // 맥 (유빈)
@@ -118,16 +119,16 @@ public class StartScreen extends JFrame {
     }
 
 
-
-
     // 테트리스 제목
     StartScreenTitle startScreenTitle = new StartScreenTitle();
-    startScreenTitle.setBounds(125,80,150,50);
+    startScreenTitle.setBounds(110,80,180,50);
+    startScreenTitle.setBackground(new Color(0,0,0,0));
     add(startScreenTitle);
 
     // 메뉴 버튼들
 //    StartScreenMenu startScreenMenu = new StartScreenMenu();
     startScreenMenu.setBounds(130, 190, 145, 300);
+    startScreenMenu.setBackground(new Color(0,0,0,0));
     for (int i = 0; i < startScreenMenu.buttons.length; i++) {
       startScreenMenu.buttons[i].addActionListener(buttonPressed);
     }
@@ -135,4 +136,6 @@ public class StartScreen extends JFrame {
 
     setVisible(true);
   }
+
 }
+

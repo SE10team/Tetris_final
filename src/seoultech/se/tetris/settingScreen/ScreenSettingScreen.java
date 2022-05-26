@@ -1,5 +1,8 @@
 package seoultech.se.tetris.settingScreen;
 
+import seoultech.se.tetris.GUI.ImagePanel;
+import seoultech.se.tetris.GUI.StyledButtonUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -52,18 +55,21 @@ public class ScreenSettingScreen extends JFrame{
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(null);
     setLocationRelativeTo(null);
+    setContentPane(new ImagePanel(500,600));
 
     String[] btnText = {"800 X 800", "1000 X 1000", "1300 X 1000", "뒤로가기"};
 
     JLabel jLabel1 = new JLabel("800 X 800");
-    Font font = new Font("Arial", Font.PLAIN, 15);
+    Font font = new Font("나눔", Font.BOLD, 15);
     jLabel1.setFont(font);
     jLabel1.setLayout(null);
+    jLabel1.setForeground(Color.WHITE);
     jLabel1.setBounds(125,140,150,20);
     add(jLabel1);
 
     button800800 = new JButton(btnText[0]);
     button800800.setBounds(125, 180, 150, 25);
+    button800800.setUI(new StyledButtonUI());
     add( button800800 );
     button800800.addActionListener(buttonPressed);
     button800800.addKeyListener(playerKeyListener);
@@ -72,11 +78,13 @@ public class ScreenSettingScreen extends JFrame{
     JLabel jLabel2 = new JLabel("1000 X 1000");
     jLabel2.setFont(font);
     jLabel2.setLayout(null);
+    jLabel2.setForeground(Color.WHITE);
     jLabel2.setBounds(125,220,150,20);
     add(jLabel2);
 
     button10001000 = new JButton(btnText[1]);
     button10001000.setBounds(125, 260, 150, 25);
+    button10001000.setUI(new StyledButtonUI());
     add( button10001000 );
     button10001000.addActionListener(buttonPressed);
     button10001000.addKeyListener(playerKeyListener);
@@ -85,11 +93,13 @@ public class ScreenSettingScreen extends JFrame{
     JLabel jLabel3 = new JLabel("1300 X 1000");
     jLabel3.setFont(font);
     jLabel3.setLayout(null);
+    jLabel3.setForeground(Color.WHITE);
     jLabel3.setBounds(125,300,150,20);
     add(jLabel3);
 
     button13001000 = new JButton(btnText[2]);
     button13001000.setBounds(125, 340, 150, 25);
+    button13001000.setUI(new StyledButtonUI());
     add( button13001000 );
     button13001000.addActionListener(buttonPressed);
     button13001000.addKeyListener(playerKeyListener);
@@ -98,11 +108,13 @@ public class ScreenSettingScreen extends JFrame{
     JLabel jLabel4 = new JLabel("뒤로가기");
     jLabel4.setFont(font);
     jLabel4.setLayout(null);
+    jLabel4.setForeground(Color.WHITE);
     jLabel4.setBounds(125,380,150,20);
     add(jLabel4);
 
     back = new JButton(btnText[3]);
     back.setBounds(125, 420, 150, 25);
+    back.setUI(new StyledButtonUI());
     add( back );
     back.addActionListener(buttonPressed);
     buttonAction(back);

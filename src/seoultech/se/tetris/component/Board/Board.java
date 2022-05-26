@@ -655,19 +655,15 @@ public class Board extends JPanel {
             }
             if(matchScreen != null)
                 saveBackground(); //temp에 들어가고
+             if(timeMatchScreen != null)
+                saveBackground(); //temp에 들어가고
+
             moveBlockToBackground(); // background 바뀌고
             checkLineFilled(); // 채운 줄 확인하고 toss에 채운 줄 넣어주기
             spawnBlock(); // 블럭 옮겨주고
             clearLines(); // 채운 줄 없애주고
             if(matchScreen != null)
                 matchScreen.sendWaitingLines(this);
-
-            if(timeMatchScreen != null)
-                saveBackground(); //temp에 들어가고
-            moveBlockToBackground(); // background 바뀌고
-            checkLineFilled(); // 채운 줄 확인하고 toss에 채운 줄 넣어주기
-            spawnBlock(); // 블럭 옮겨주고
-            clearLines(); // 채운 줄 없애주고
             if(timeMatchScreen != null)
                 timeMatchScreen.sendWaitingLines(this);
 
@@ -678,12 +674,6 @@ public class Board extends JPanel {
         gameScore.playScore(); // 스코어 증가
         scoreBoard.updateScore(); // 점수 보여주기~
         repaint();
-    }
-
-    /*시간 모드*/
-    public void timeout(){
-        // 시간이 지나서 종료
-        this.timer.stop();
     }
 
     public void moveBlockRight() { // 오른쪽 이동
@@ -893,6 +883,7 @@ public class Board extends JPanel {
                 repaint();
                 showPopup();
                 timer.start();
+
             }
         }
 

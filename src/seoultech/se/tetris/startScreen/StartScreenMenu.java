@@ -2,18 +2,21 @@ package seoultech.se.tetris.startScreen;
 
 import seoultech.se.tetris.GUI.HighScoreScreen;
 import seoultech.se.tetris.GUI.PlayScreen;
+import seoultech.se.tetris.GUI.StyledButtonUI;
 import seoultech.se.tetris.itemMode.ItemModePlayScreen;
 import seoultech.se.tetris.main.Tetris;
 import seoultech.se.tetris.settingScreen.SettingScreen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashSet;
 import java.util.Set;
 
-public class StartScreenMenu extends JPanel{
+public class StartScreenMenu extends JPanel {
 
   StartScreen startScreen;
   private PlayerKeyListener playerKeyListener;
@@ -28,25 +31,28 @@ public class StartScreenMenu extends JPanel{
 
     for (int i = 0; i < 6; i++) {
       buttons[i] = new JButton(btnText[i]);
-      add( buttons[i] );
+      buttons[i].setUI(new StyledButtonUI());
+      buttons[i].requestFocus(); // 포커스 되도록
+      add(buttons[i]);
 
-      Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(
-        KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS ) );
-      set.add( KeyStroke.getKeyStroke( "UP" ) );
+      Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>(buttons[i].getFocusTraversalKeys(
+              KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
+      set.add(KeyStroke.getKeyStroke("UP"));
       buttons[i].setFocusTraversalKeys(
-        KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, set );
+              KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, set);
 
-      Set<AWTKeyStroke> set2 = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(
-        KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS ) );
-      set2.add( KeyStroke.getKeyStroke( "DOWN" ) );
+
+      Set<AWTKeyStroke> set2 = new HashSet<AWTKeyStroke>(buttons[i].getFocusTraversalKeys(
+              KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+      set2.add(KeyStroke.getKeyStroke("DOWN"));
       buttons[i].setFocusTraversalKeys(
-        KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, set2 );
+              KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, set2);
 
       buttons[i].addKeyListener(playerKeyListener);
     }
   }
 
-  public class PlayerKeyListener extends Component implements KeyListener{
+  public class PlayerKeyListener extends Component implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
 

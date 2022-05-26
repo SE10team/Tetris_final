@@ -167,10 +167,12 @@ public class TimeMatchScreen extends JFrame {
                 } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     mainBoard1.timer.stop();
                     mainBoard2.timer.stop();
+                    timer.stop();
                     repaint();
                     mainBoard1.showPopup();
                     mainBoard2.timer.start();
                     mainBoard1.timer.start();
+                    timer.start();
                 }
 
                 // 왼쪽 보드
@@ -202,15 +204,6 @@ public class TimeMatchScreen extends JFrame {
         @Override
         public void keyReleased(KeyEvent e) {
         }
-    }
-
-    // 시간에 대한 사용자 입력에 대한 예외 처리
-    public String inputDialog(){
-        String name = JOptionPane.showInputDialog(this,"몇 분 동안 플레이하시겠습니까"); // 입력 요구
-        while(name == null || name.equals(name.toUpperCase())){ // null 값과 한글 입력의 경우
-            name = JOptionPane.showInputDialog(this, "영어 이름 입력하라구요! 왜 말을 안 들어!", "이럴 줄 알았다", JOptionPane.WARNING_MESSAGE);
-        }
-        return name;
     }
 
     public void timerOn(){

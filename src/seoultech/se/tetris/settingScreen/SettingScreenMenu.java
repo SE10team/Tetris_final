@@ -1,5 +1,6 @@
 package seoultech.se.tetris.settingScreen;
 
+import seoultech.se.tetris.GUI.StyledButtonUI;
 import seoultech.se.tetris.main.Tetris;
 import seoultech.se.tetris.startScreen.StartScreen;
 import seoultech.se.tetris.startScreen.StartScreenMenu;
@@ -30,9 +31,11 @@ public class SettingScreenMenu extends JPanel {
 
     String[] btnText = {"게임 화면 크기 조절", "게임 조작 키 설정", "스코어 보드 기록 초기화", "색맹 모드", "게임 난이도 선택", "설정 초기화", "메인 화면으로"};
     buttons = new JButton[7];
+    setBackground(new Color(0,0,0,0));
 
     for (int i = 0; i < 7; i++) {
       buttons[i] = new JButton(btnText[i]);
+      buttons[i].setUI(new StyledButtonUI());
       add(buttons[i]);
 
       Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(

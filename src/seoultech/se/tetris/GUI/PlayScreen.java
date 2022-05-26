@@ -32,7 +32,6 @@ public class PlayScreen extends JFrame { // 게임 화면을 그리는 곳
 		setSize(screenSizeArr[0],screenSizeArr[1]); // 전체 화면 크기
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 버튼 설정
 		setLayout(null); // 레이아웃 설정
-		setBackground(Color.WHITE);
 
 
 		GameScore score = new GameScore();

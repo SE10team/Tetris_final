@@ -1,7 +1,5 @@
 package seoultech.se.tetris.startScreen;
-import seoultech.se.tetris.GUI.ItemMatchScreen;
-import seoultech.se.tetris.GUI.MatchScreen;
-import seoultech.se.tetris.GUI.TimeMatchScreen;
+import seoultech.se.tetris.GUI.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,30 +17,31 @@ public class FightModeSelectionMenuScreen extends JPanel {
   public FightModeSelectionMenuScreen(FightModeSelectionScreen screen) {
     this.screen = screen;
     playerKeyListener = new PlayerKeyListener();
+    this.setBackground(new Color(255, 0, 0, 0));
 
     String[] btnText = {"일반 대전 모드", "아이템 대전 모드", "시간제한 대전 모드", "뒤로가기"};
     buttons = new JButton[btnText.length];
 
     for (int i = 0; i < btnText.length; i++) {
       buttons[i] = new JButton(btnText[i]);
-      add( buttons[i] );
+      buttons[i].setUI(new StyledButtonUI());
+      add(buttons[i]);
 
-      Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(
-        KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS ) );
-      set.add( KeyStroke.getKeyStroke( "UP" ) );
+      Set<AWTKeyStroke> set = new HashSet<AWTKeyStroke>(buttons[i].getFocusTraversalKeys(
+              KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
+      set.add(KeyStroke.getKeyStroke("UP"));
       buttons[i].setFocusTraversalKeys(
-        KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, set );
+              KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, set);
 
-      Set<AWTKeyStroke> set2 = new HashSet<AWTKeyStroke>( buttons[i].getFocusTraversalKeys(
-        KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS ) );
-      set2.add( KeyStroke.getKeyStroke( "DOWN" ) );
+      Set<AWTKeyStroke> set2 = new HashSet<AWTKeyStroke>(buttons[i].getFocusTraversalKeys(
+              KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+      set2.add(KeyStroke.getKeyStroke("DOWN"));
       buttons[i].setFocusTraversalKeys(
-        KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, set2 );
+              KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, set2);
 
       buttons[i].addKeyListener(playerKeyListener);
     }
   }
-
 
 
   public class PlayerKeyListener extends Component implements KeyListener {
@@ -73,8 +72,8 @@ public class FightModeSelectionMenuScreen extends JPanel {
         } else if (e.getSource() == buttons[2]) {
           screen.setVisible(false);
           try {
-            TimeMatchScreen timeMatchScreen = new TimeMatchScreen();
-            timeMatchScreen.setVisible(true);
+            TimeWaitScreen timeWaitScreen = new TimeWaitScreen();
+            timeWaitScreen.setVisible(true);
           } catch (Exception ex) {
             ex.printStackTrace();
           }
@@ -94,4 +93,5 @@ public class FightModeSelectionMenuScreen extends JPanel {
 
     }
   }
+
 }

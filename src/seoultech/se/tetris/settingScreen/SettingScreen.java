@@ -1,10 +1,13 @@
 package seoultech.se.tetris.settingScreen;
 
+import seoultech.se.tetris.GUI.ImagePanel;
+import seoultech.se.tetris.GUI.TimeWaitScreen;
 import seoultech.se.tetris.scoreData.dao.ItemScoreCsv;
 import seoultech.se.tetris.scoreData.dao.NormalScoreCsv;
 import seoultech.se.tetris.startScreen.StartScreen;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class SettingScreen extends JFrame {
@@ -88,6 +91,9 @@ public class SettingScreen extends JFrame {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(null);
     setLocationRelativeTo(null); // 창 가운데로
+    setContentPane(new ImagePanel());
+
+
 
     SettingScreenMenu settingScreenMenu = new SettingScreenMenu(this);
     settingScreenMenu.setBounds(120,100,160,300);

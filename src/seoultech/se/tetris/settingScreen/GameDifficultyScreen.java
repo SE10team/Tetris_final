@@ -1,5 +1,8 @@
 package seoultech.se.tetris.settingScreen;
 
+import seoultech.se.tetris.GUI.ImagePanel;
+import seoultech.se.tetris.GUI.StyledButtonUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -51,19 +54,22 @@ public class GameDifficultyScreen extends JFrame {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(null);
     setLocationRelativeTo(null); // 창 가운데로
+    setContentPane(new ImagePanel(500,600)); // 이미지 설정
     jButtons = new JButton[4];
 
     String[] btnText = {"Easy 모드", "Normal 모드", "Hard 모드", "뒤로가기"};
 
     JLabel jLabel1 = new JLabel("Easy 모드");
-    Font font = new Font("Arial", Font.PLAIN, 15);
+    Font font = new Font("나눔", Font.BOLD, 15);
     jLabel1.setFont(font);
     jLabel1.setLayout(null);
+    jLabel1.setForeground(Color.WHITE);
     jLabel1.setBounds(125,140,150,20);
     add(jLabel1);
 
     jButtons[0] = new JButton(btnText[0]);
     jButtons[0].setBounds(125, 180, 150, 25);
+    jButtons[0].setUI(new StyledButtonUI());
     add( jButtons[0] );
     buttonAction(jButtons[0]);
     jButtons[0].addActionListener(buttonPressed);
@@ -71,11 +77,13 @@ public class GameDifficultyScreen extends JFrame {
     JLabel jLabel2 = new JLabel("Normal 모드");
     jLabel2.setFont(font);
     jLabel2.setLayout(null);
+    jLabel2.setForeground(Color.WHITE);
     jLabel2.setBounds(125,220,150,20);
     add(jLabel2);
 
     jButtons[1] = new JButton(btnText[1]);
     jButtons[1].setBounds(125, 260, 150, 25);
+    jButtons[1].setUI(new StyledButtonUI());
     add( jButtons[1] );
     buttonAction(jButtons[1]);
     jButtons[1].addActionListener(buttonPressed);
@@ -83,11 +91,13 @@ public class GameDifficultyScreen extends JFrame {
     JLabel jLabel3 = new JLabel("Hard 모드");
     jLabel3.setFont(font);
     jLabel3.setLayout(null);
+    jLabel3.setForeground(Color.WHITE);
     jLabel3.setBounds(125,300,150,20);
     add(jLabel3);
 
     jButtons[2] = new JButton(btnText[2]);
     jButtons[2].setBounds(125, 340, 150, 25);
+    jButtons[2].setUI(new StyledButtonUI());
     add( jButtons[2] );
     buttonAction(jButtons[2]);
     jButtons[2].addActionListener(buttonPressed);
@@ -95,11 +105,13 @@ public class GameDifficultyScreen extends JFrame {
     JLabel jLabel4 = new JLabel("뒤로가기");
     jLabel4.setFont(font);
     jLabel4.setLayout(null);
+    jLabel4.setForeground(Color.WHITE);
     jLabel4.setBounds(125,380,150,20);
     add(jLabel4);
 
     jButtons[3] = new JButton(btnText[3]);
     jButtons[3].setBounds(125, 420, 150, 25);
+    jButtons[3].setUI(new StyledButtonUI());
     add( jButtons[3] );
     buttonAction(jButtons[3]);
     jButtons[3].addActionListener(buttonPressed);

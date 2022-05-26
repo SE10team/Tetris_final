@@ -20,7 +20,7 @@ public class ItemModeNextGenerateBlock extends NextGenerateBlock {
         currItemBlock = 3;
 
         Random rnd = new Random(System.currentTimeMillis());
-        if ((countCompleteLines != 0) && (countCompleteLines % 1 == 0)) {
+        if ((countCompleteLines != 0) && (countCompleteLines % 10 == 0)) {
             int block = rnd.nextInt(5);
             currItemBlock = block;
             countCompleteLines = 0;
